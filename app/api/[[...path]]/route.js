@@ -70,8 +70,8 @@ export async function POST(request, { params }) {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              from: 'notifications@send.bureauweb.ca',  // ← Plus clair
-              to: 'bureauwebcontact@gmail.com',
+              from: 'BureauWeb <info@bureauweb.ca>',
+              to: 'info@bureauweb.ca', // ou ton vrai email pro
               subject: `🎯 Nouveau Lead - ${lead.secteur} (${lead.region})`,
               html: `
                 <!DOCTYPE html>
