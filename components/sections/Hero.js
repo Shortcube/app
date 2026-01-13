@@ -59,13 +59,18 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Visual - Hero Image */}
+          {/* Visual - Hero Image OPTIMISÉE */}
           <div className="relative order-first lg:order-last">
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl">
-              <img 
+              {/* Image optimisée avec Next.js Image */}
+              <Image 
                 src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80"
                 alt="Plans de construction et outils professionnels sur un bureau de travail"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+                quality={85}
               />
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent" />
