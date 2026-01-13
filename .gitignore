@@ -51,6 +51,11 @@ __pycache__/
 venv/
 .venv/
 
+# Environment variables
+.env
+.env.local
+.env*.local
+
 # Development tools
 chainlit.md
 .chainlit
