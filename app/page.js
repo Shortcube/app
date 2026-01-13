@@ -12,6 +12,7 @@ import {
   Reviews,
   Compliance
 } from '@/components/sections'
+import { LeadForm } from '@/components/forms'
 
 export default function Home() {
   return (
@@ -46,13 +47,8 @@ export default function Home() {
       {/* Compliance / Loi 25 */}
       <Compliance />
       
-      {/* Contact Form - Placeholder for Phase 5 */}
-      <section id="contact" className="py-24 bg-white scroll-mt-header">
-        <div className="section-container text-center">
-          <h2 className="text-navy mb-4">Formulaire de contact</h2>
-          <p className="text-concrete-500">[Section à développer en Phase 5]</p>
-        </div>
-      </section>
+      {/* Lead Capture Form */}
+      <LeadForm />
       
       {/* Footer */}
       <Footer />

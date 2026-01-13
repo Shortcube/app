@@ -23,29 +23,47 @@ const Header = () => {
     { href: '#contact', label: 'Contact' },
   ]
 
+  const handleNavClick = (e, href) => {
+    e.preventDefault()
+    const element = document.querySelector(href)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+    setIsMobileMenuOpen(false)
+  }
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-sm shadow-sm' 
-          : 'bg-transparent'
+          : 'bg-white/80 backdrop-blur-sm'
       }`}
     >
       <div className="section-container">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center space-x-2">
+          <a 
+            href="#" 
+            className="flex items-center space-x-2"
+            onClick={(e) => {
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
+            aria-label="Retour à l'accueil BureauWeb"
+          >
             <span className="text-xl md:text-2xl font-bold text-navy">
               Bureau<span className="text-safety">Web</span>
             </span>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8" aria-label="Navigation principale">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-concrete-700 hover:text-navy font-medium transition-colors"
               >
                 {link.label}
@@ -55,16 +73,18 @@ const Header = () => {
 
           {/* Phone + CTA */}
           <div className="flex items-center space-x-4">
+            {/* Téléphone toujours visible */}
             <a 
               href="tel:514-XXX-XXXX" 
-              className="hidden md:flex items-center space-x-2 text-navy font-semibold hover:text-safety transition-colors"
+              className="flex items-center space-x-2 text-navy font-semibold hover:text-safety transition-colors"
+              aria-label="Appelez-nous au 514-XXX-XXXX"
             >
               <Phone className="w-4 h-4" />
-              <span>514-XXX-XXXX</span>
+              <span className="hidden sm:inline">514-XXX-XXXX</span>
             </a>
             <Button 
-              className="hidden sm:inline-flex btn-cta"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="hidden md:inline-flex btn-cta"
+              onClick={(e) => handleNavClick(e, '#contact')}
             >
               Démarrer mon projet
             </Button>
@@ -73,7 +93,8 @@ const Header = () => {
             <button
               className="lg:hidden p-2 text-navy"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Menu de navigation"
+              aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -82,32 +103,22 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-concrete-200 py-4">
-            <nav className="flex flex-col space-y-4">
+          <div className="lg:hidden bg-white border-t border-concrete-200 py-4" role="navigation" aria-label="Menu mobile">
+            <nav className="flex flex-col space-y-1">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-concrete-700 hover:text-navy font-medium px-4 py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="text-concrete-700 hover:text-navy hover:bg-concrete-50 font-medium px-4 py-3 rounded-lg transition-colors"
                 >
                   {link.label}
                 </a>
               ))}
-              <a 
-                href="tel:514-XXX-XXXX" 
-                className="flex items-center space-x-2 text-navy font-semibold px-4 py-2"
-              >
-                <Phone className="w-4 h-4" />
-                <span>514-XXX-XXXX</span>
-              </a>
-              <div className="px-4">
+              <div className="px-4 pt-4 border-t border-concrete-100 mt-2">
                 <Button 
                   className="w-full btn-cta"
-                  onClick={() => {
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-                    setIsMobileMenuOpen(false)
-                  }}
+                  onClick={(e) => handleNavClick(e, '#contact')}
                 >
                   Démarrer mon projet
                 </Button>

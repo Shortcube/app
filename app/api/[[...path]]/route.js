@@ -1,104 +1,85 @@
-import { MongoClient } from 'mongodb'
-import { v4 as uuidv4 } from 'uuid'
 import { NextResponse } from 'next/server'
+import { v4 as uuidv4 } from 'uuid'
 
-// MongoDB connection
-let client
-let db
-
-async function connectToMongo() {
-  if (!client) {
-    client = new MongoClient(process.env.MONGO_URL)
-    await client.connect()
-    db = client.db(process.env.DB_NAME)
-  }
-  return db
+// GET handler pour tester l'API
+export async function GET(request) {
+  return NextResponse.json({ 
+    message: 'BureauWeb API - Bienvenue',
+    status: 'ok',
+    timestamp: new Date().toISOString()
+  })
 }
 
-// Helper function to handle CORS
-function handleCORS(response) {
-  response.headers.set('Access-Control-Allow-Origin', process.env.CORS_ORIGINS || '*')
-  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-  response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-  response.headers.set('Access-Control-Allow-Credentials', 'true')
-  return response
-}
-
-// OPTIONS handler for CORS
-export async function OPTIONS() {
-  return handleCORS(new NextResponse(null, { status: 200 }))
-}
-
-// Route handler function
-async function handleRoute(request, { params }) {
-  const { path = [] } = params
-  const route = `/${path.join('/')}`
-  const method = request.method
-
-  try {
-    const db = await connectToMongo()
-
-    // Root endpoint - GET /api/root (since /api/ is not accessible with catch-all)
-    if (route === '/root' && method === 'GET') {
-      return handleCORS(NextResponse.json({ message: "Hello World" }))
-    }
-    // Root endpoint - GET /api/root (since /api/ is not accessible with catch-all)
-    if (route === '/' && method === 'GET') {
-      return handleCORS(NextResponse.json({ message: "Hello World" }))
-    }
-
-    // Status endpoints - POST /api/status
-    if (route === '/status' && method === 'POST') {
+// POST handler pour le formulaire de lead
+export async function POST(request, { params }) {
+  const pathSegments = params?.path || []
+  const path = '/' + pathSegments.join('/')
+  
+  // Route pour les leads
+  if (path === '/lead') {
+    try {
       const body = await request.json()
       
-      if (!body.client_name) {
-        return handleCORS(NextResponse.json(
-          { error: "client_name is required" }, 
-          { status: 400 }
-        ))
-      }
-
-      const statusObj = {
-        id: uuidv4(),
-        client_name: body.client_name,
-        timestamp: new Date()
-      }
-
-      await db.collection('status_checks').insertOne(statusObj)
-      return handleCORS(NextResponse.json(statusObj))
-    }
-
-    // Status endpoints - GET /api/status
-    if (route === '/status' && method === 'GET') {
-      const statusChecks = await db.collection('status_checks')
-        .find({})
-        .limit(1000)
-        .toArray()
-
-      // Remove MongoDB's _id field from response
-      const cleanedStatusChecks = statusChecks.map(({ _id, ...rest }) => rest)
+      const { secteur, region, telephone, courriel, siteWeb } = body
       
-      return handleCORS(NextResponse.json(cleanedStatusChecks))
+      // Validation des champs requis
+      if (!secteur || !region || !telephone) {
+        return NextResponse.json(
+          { error: 'Champs requis manquants: secteur, région et téléphone sont obligatoires' },
+          { status: 400 }
+        )
+      }
+      
+      // Validation du format téléphone
+      const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/
+      if (!phoneRegex.test(telephone.replace(/\s/g, ''))) {
+        return NextResponse.json(
+          { error: 'Format de téléphone invalide' },
+          { status: 400 }
+        )
+      }
+      
+      // Créer le lead avec un UUID
+      const lead = {
+        id: uuidv4(),
+        secteur,
+        region,
+        telephone,
+        courriel: courriel || null,
+        siteWeb: siteWeb || null,
+        createdAt: new Date().toISOString(),
+        status: 'nouveau'
+      }
+      
+      // Log le lead (en production, sauvegarder en DB ou envoyer par email)
+      console.log('=== NOUVEAU LEAD BUREAUWEB ===')
+      console.log(JSON.stringify(lead, null, 2))
+      console.log('==============================')
+      
+      // Ici vous pourriez:
+      // 1. Sauvegarder dans MongoDB
+      // 2. Envoyer un email via SendGrid/Resend
+      // 3. Envoyer à un webhook (Zapier, Make, etc.)
+      // 4. Intégrer avec un CRM
+      
+      return NextResponse.json({
+        success: true,
+        message: 'Votre demande a été reçue. Nous vous contacterons sous 24h ouvrables.',
+        leadId: lead.id
+      }, { status: 201 })
+      
+    } catch (error) {
+      console.error('Erreur lors du traitement du lead:', error)
+      return NextResponse.json(
+        { error: 'Erreur lors du traitement de votre demande' },
+        { status: 500 }
+      )
     }
-
-    // Route not found
-    return handleCORS(NextResponse.json(
-      { error: `Route ${route} not found` }, 
-      { status: 404 }
-    ))
-
-  } catch (error) {
-    console.error('API Error:', error)
-    return handleCORS(NextResponse.json(
-      { error: "Internal server error" }, 
-      { status: 500 }
-    ))
   }
+  
+  // Route par défaut
+  return NextResponse.json({ 
+    message: 'BureauWeb API',
+    path: path
+  })
 }
-
-// Export all HTTP methods
-export const GET = handleRoute
-export const POST = handleRoute
-export const PUT = handleRoute
-export const DELETE = handleRoute
-export const PATCH = handleRoute
