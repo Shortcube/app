@@ -1,7 +1,17 @@
 'use client'
 
 import { Header, Footer } from '@/components/layout'
-import { Hero, TrustBar, Problem, Solution, NotIncluded, Process } from '@/components/sections'
+import { 
+  Hero, 
+  TrustBar, 
+  Problem, 
+  Solution, 
+  NotIncluded, 
+  Process,
+  Pricing,
+  Reviews,
+  Compliance
+} from '@/components/sections'
 
 export default function Home() {
   return (
@@ -27,32 +37,20 @@ export default function Home() {
       {/* Process / How it Works */}
       <Process />
       
-      {/* Placeholder sections for Phase 4+ */}
-      <section id="forfaits" className="py-24 bg-concrete-50 scroll-mt-header">
-        <div className="section-container text-center">
-          <h2 className="text-navy mb-4">Forfaits et Prix</h2>
-          <p className="text-concrete-500">[Section à développer en Phase 4]</p>
-        </div>
-      </section>
+      {/* Pricing */}
+      <Pricing />
       
-      <section id="avis" className="py-24 scroll-mt-header">
-        <div className="section-container text-center">
-          <h2 className="text-navy mb-4">Système d'avis Google</h2>
-          <p className="text-concrete-500">[Section à développer en Phase 4]</p>
-        </div>
-      </section>
+      {/* Google Reviews System */}
+      <Reviews />
       
-      <section id="conformite" className="py-24 bg-concrete-50 scroll-mt-header">
-        <div className="section-container text-center">
-          <h2 className="text-navy mb-4">Conformité Loi 25</h2>
-          <p className="text-concrete-500">[Section à développer en Phase 4]</p>
-        </div>
-      </section>
+      {/* Compliance / Loi 25 */}
+      <Compliance />
       
-      <section id="contact" className="py-24 scroll-mt-header">
+      {/* Contact Form - Placeholder for Phase 5 */}
+      <section id="contact" className="py-24 bg-white scroll-mt-header">
         <div className="section-container text-center">
           <h2 className="text-navy mb-4">Formulaire de contact</h2>
-          <p className="text-concrete-500">[Section à développer en Phase 4]</p>
+          <p className="text-concrete-500">[Section à développer en Phase 5]</p>
         </div>
       </section>
       
