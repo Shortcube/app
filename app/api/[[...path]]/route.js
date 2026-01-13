@@ -70,8 +70,8 @@ export async function POST(request, { params }) {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              from: 'leads@bureauweb.ca',
-              to: 'info@bureauweb.ca',
+              from: 'notifications@send.bureauweb.ca',  // ← Plus clair
+              to: 'bureauwebcontact@gmail.com',
               subject: `🎯 Nouveau Lead - ${lead.secteur} (${lead.region})`,
               html: `
                 <!DOCTYPE html>
