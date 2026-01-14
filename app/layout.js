@@ -11,7 +11,7 @@ const inter = Inter({
 
 export const metadata = {
   title: 'BureauWeb.ca | Infrastructure web pour entrepreneurs québécois',
-  description: "Votre département web externe. Nous bâtissons, hébergeons et maintenons votre infrastructure numérique. Site performant + Optimisation Google + Système d'avis. Un forfait mensuel fixe, sans surprises.",
+  description: "Infrastructure web complète pour entrepreneurs québécois: site performant, optimisation Google, système d'avis. Forfait mensuel fixe dès 399$/mois.",
   keywords: 'site web entrepreneur, infrastructure web québec, google business profile, site plombier, site couvreur, site paysagiste, site entrepreneur construction, rive-sud, montréal',
   authors: [{ name: 'BureauWeb' }],
   creator: 'BureauWeb',
@@ -30,7 +30,7 @@ export const metadata = {
   },
   openGraph: {
     title: 'BureauWeb.ca | Infrastructure web pour entrepreneurs québécois',
-    description: "L'infrastructure web complète pour entrepreneurs québécois. Site performant + Optimisation Google + Système d'avis. Un forfait mensuel fixe, sans surprises.",
+    description: "Infrastructure web complète pour entrepreneurs québécois: site performant, optimisation Google, système d'avis. Forfait mensuel fixe dès 399$/mois.",
     url: 'https://bureauweb.ca',
     siteName: 'BureauWeb.ca',
     locale: 'fr_CA',
@@ -47,7 +47,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'BureauWeb.ca | Infrastructure web pour entrepreneurs québécois',
-    description: "L'infrastructure web complète pour entrepreneurs québécois. Site performant + Optimisation Google + Système d'avis.",
+    description: "Infrastructure web complète pour entrepreneurs québécois: site performant, optimisation Google, système d'avis. Forfait mensuel fixe dès 399$/mois.",
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -80,14 +80,15 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   // Structured Data pour le SEO
+  // 📌 RAPPEL: Mettre à jour telephone et email avec vraies données quand disponibles
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "BureauWeb",
     "description": "Infrastructure web complète pour entrepreneurs québécois",
     "url": "https://bureauweb.ca",
-    "telephone": "+1-514-XXX-XXXX",
-    "email": "info@bureauweb.ca",
+    "telephone": "+1-514-XXX-XXXX", // 📌 TODO: Remplacer par vrai numéro
+    "email": "info@bureauweb.ca", // 📌 TODO: Confirmer email
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Longueuil",

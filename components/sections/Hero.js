@@ -39,13 +39,15 @@ const Hero = () => {
               <Button 
                 className="btn-cta text-lg px-8 py-6 h-auto"
                 onClick={scrollToContact}
+                aria-label="Démarrer votre projet avec BureauWeb"
               >
                 Démarrer mon projet
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <ArrowRight className="w-5 h-5 ml-2" aria-hidden="true" />
               </Button>
               <button 
                 className="text-link text-lg py-3"
                 onClick={scrollToForfaits}
+                aria-label="Voir nos forfaits et tarifs"
               >
                 Voir les forfaits
               </button>
@@ -62,10 +64,20 @@ const Hero = () => {
           {/* Visual - Hero Image OPTIMISÉE */}
           <div className="relative order-first lg:order-last">
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl">
-              {/* Image optimisée avec Next.js Image */}
+              {/* 
+                📌 TODO: Télécharger l'image localement
+                1. Télécharger depuis: https://images.unsplash.com/photo-1503387762-592deb58ef4e
+                2. Placer dans: /public/images/hero-construction-workspace.jpg
+                3. Remplacer src par: "/images/hero-construction-workspace.jpg"
+                
+                AVANTAGES:
+                - Pas de dépendance externe
+                - Meilleure performance
+                - Contrôle total sur la disponibilité
+              */}
               <Image 
                 src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80"
-                alt="Plans de construction et outils professionnels sur un bureau de travail"
+                alt="Bureau de travail d'entrepreneur québécois en construction - Plans de chantier, outils professionnels et tablette avec site web BureauWeb"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -80,7 +92,7 @@ const Hero = () => {
             <div className="absolute -bottom-6 -left-6 bg-white rounded-lg shadow-xl p-4 border border-concrete-100">
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 bg-safety/10 rounded-full flex items-center justify-center">
-                  <svg className="w-6 h-6 text-safety" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-6 h-6 text-safety" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                   </svg>
                 </div>
@@ -95,7 +107,7 @@ const Hero = () => {
             <div className="absolute -top-4 -right-4 md:right-8 bg-navy text-white rounded-lg shadow-xl p-4">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
-                  <svg className="w-5 h-5 text-safety" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 text-safety" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
