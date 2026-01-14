@@ -319,7 +319,7 @@ const LeadForm = () => {
                         onChange={handleChange}
                         placeholder="ex : entrepriseabc.ca"
                         className="w-full pl-10 pr-4 py-3 border border-concrete-200 rounded-lg text-navy placeholder:text-concrete-400 focus:outline-none focus:ring-2 focus:ring-safety focus:border-transparent"
-                      />
+                      /> 
                     </div>
                   </div>  
                   
