@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
+import { logger } from '@/lib/logger'
 
 // Edge Runtime pour Cloudflare Pages
 export const runtime = 'edge'
 
-// Schema de validation Zod
+// Schema de validation Zod - VALIDATION SIMPLIFIÉE
 const leadSchema = z.object({
-  secteur: z.enum(['plomberie', 'toiture', 'renovation', 'paysagement', 'electricite', 'cvac', 'déneigement','autre'], {
+  secteur: z.enum(['plomberie', 'toiture', 'renovation', 'paysagement', 'electricite', 'cvac', 'deneigement','autre'], {
     errorMap: () => ({ message: "Secteur d'activité invalide" })
   }),
   region: z.enum(['montreal', 'rive-sud', 'rive-nord', 'laval', 'monteregie', 'autre'], {
@@ -14,9 +15,10 @@ const leadSchema = z.object({
   }),
   telephone: z.string()
     .min(10, "Le numéro de téléphone doit contenir au moins 10 chiffres")
-    .regex(/^\d{10}$|^\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$/, {
-      message: "Format de téléphone invalide (ex: 514-555-5555)"
-    }),
+    .refine(
+      (val) => val.replace(/\D/g, '').length >= 10,
+      { message: "Le numéro doit contenir au moins 10 chiffres" }
+    ),
   courriel: z.string().email("Adresse courriel invalide").optional().or(z.literal('')),
   siteWeb: z.string().trim().max(200).optional().or(z.literal(''))
 })
@@ -39,15 +41,18 @@ export async function POST(request, { params }) {
 if (path === '/lead') {
   try {
     const body = await request.json()
+    
+    // Nettoyer le téléphone AVANT validation (enlever tous les non-chiffres)
     if (body?.telephone) {
-  body.telephone = String(body.telephone).replace(/\D/g, '')
-}
+      body.telephone = String(body.telephone).replace(/\D/g, '')
+    }
 
-    console.log("BODY RAW:", body) // temporaire
+    logger.debug("Lead submission - Body après nettoyage:", body)
 
     // Validation avec Zod
     const validatedData = leadSchema.parse(body)
 
+    // Traiter le site web
     let siteWeb = validatedData.siteWeb?.trim() || null
     if (siteWeb) {
       const looksLikeDomain = siteWeb.includes('.') || siteWeb.toLowerCase().startsWith('www.')
@@ -68,9 +73,9 @@ if (path === '/lead') {
       status: 'nouveau'
     }
 
-    console.log('=== NOUVEAU LEAD BUREAUWEB ===')
-    console.log(JSON.stringify(lead, null, 2))
-    console.log('==============================')
+    logger.success('=== NOUVEAU LEAD BUREAUWEB ===')
+    logger.info(JSON.stringify(lead, null, 2))
+    logger.success('==============================')
 
     // Envoi email via Resend (si configuré)
     if (process.env.RESEND_API_KEY) {
@@ -155,10 +160,12 @@ if (path === '/lead') {
 
         if (!emailResponse.ok) {
           const errorData = await emailResponse.json()
-          console.error('Erreur Resend:', errorData)
+          logger.error('Erreur Resend:', errorData)
+        } else {
+          logger.success('Email envoyé avec succès via Resend')
         }
       } catch (emailError) {
-        console.error('Erreur envoi email:', emailError)
+        logger.error('Erreur envoi email:', emailError)
       }
     }
 
@@ -170,8 +177,9 @@ if (path === '/lead') {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(lead)
         })
+        logger.success('Webhook appelé avec succès')
       } catch (webhookError) {
-        console.error('Erreur webhook:', webhookError)
+        logger.error('Erreur webhook:', webhookError)
       }
     }
 
@@ -183,7 +191,7 @@ if (path === '/lead') {
 
   } catch (error) {
     if (error instanceof z.ZodError) {
-      console.log("ZOD ERRORS:", error.errors)
+      logger.warn("Validation Zod échouée:", error.errors)
       return NextResponse.json({
         error: 'Données invalides',
         details: error.errors.map(e => ({
@@ -193,7 +201,7 @@ if (path === '/lead') {
       }, { status: 400 })
     }
 
-    console.error('Erreur lors du traitement du lead:', error)
+    logger.error('Erreur lors du traitement du lead:', error)
     return NextResponse.json({
       error: 'Erreur lors du traitement de votre demande',
       message: 'Veuillez réessayer ou nous contacter directement.'
