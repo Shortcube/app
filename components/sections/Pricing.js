@@ -150,7 +150,7 @@ const Pricing = () => {
                 <p className="text-2xl font-bold text-navy">6 mois</p>
                 <p className="text-concrete-600 text-sm mt-1">Engagement initial</p>
                 <p className="text-concrete-500 text-xs mt-2">
-                  Nécessaire pour établir votre présence Google et générer des données exploitables
+                  Nécessaire pour établir votre présence sur Google et générer des données exploitables
                 </p>
               </div>
               <div className="text-center p-4 bg-concrete-50 rounded-lg">
@@ -174,7 +174,7 @@ const Pricing = () => {
                 Délai standard de livraison :
               </p>
               <p>
-                Site en ligne dans les 21 jours ouvrables suivant la réception de TOUS les éléments requis (voir Checklist d'Activation).
+                Site en ligne dans les 21 jours ouvrables suivant la réception de tous les éléments requis (voir checklist d’activation).
               </p>
             </div>
           </div>
@@ -187,11 +187,11 @@ const Pricing = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-amber-800 mb-2">
-                  IMPORTANT — Gestion des Attentes
+                  Important : gestion des attentes
                 </h4>
                 <p className="text-amber-800 leading-relaxed">
-                  BureauWeb fournit l'infrastructure technique et l'optimisation de votre présence en ligne. 
-                  La génération de demandes de soumission dépend également de :
+                  BureauWeb s’occupe de l’infrastructure technique et de l’optimisation de votre présence en ligne. 
+                  La génération de demandes de soumission dépend aussi de :
                 </p>
                 <ul className="mt-3 space-y-2 text-amber-800">
                   <li className="flex items-start gap-2">
@@ -208,7 +208,7 @@ const Pricing = () => {
                   </li>
                 </ul>
                 <p className="mt-4 font-semibold text-amber-900">
-                  Nous ne garantissons pas un nombre spécifique de clients ou d'appels.
+                  Nous ne pouvons pas garantir un nombre précis de clients ou d’appels.
                 </p>
               </div>
             </div>

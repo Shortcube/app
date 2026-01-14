@@ -34,10 +34,10 @@ const Compliance = () => {
             <span className="text-sm font-medium">Protection des données</span>
           </div>
           <h2 className="text-navy mb-6">
-            Conformité et Protection des Données
+            Conformité et protection des données
           </h2>
           <p className="text-xl text-concrete-600 max-w-2xl mx-auto">
-            Loi 25 — Outils de Base Inclus
+            Loi 25 : outils de base inclus
           </p>
         </div>
 

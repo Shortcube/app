@@ -72,7 +72,7 @@ const NotIncluded = () => {
               Besoin d'un de ces services?
             </p>
             <p className="text-concrete-300">
-              Parlons-en — plusieurs sont disponibles comme services additionnels.
+              Parlons-en : on peut l’ajouter à la carte, selon vos besoins.
             </p>
           </div>
         </div>

@@ -81,17 +81,17 @@ const Solution = () => {
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="bg-white/10 rounded-lg p-4">
                       <p className="text-concrete-300 text-xs mb-1">Visiteurs ce mois</p>
-                      <p className="text-white text-2xl font-bold">—</p>
+                      <p className="text-white text-2xl font-bold">N/D</p>
                       <p className="text-concrete-300 text-xs">Aperçu sur demande</p>
                     </div>
                     <div className="bg-white/10 rounded-lg p-4">
                       <p className="text-concrete-300 text-xs mb-1">Demandes de soumission</p>
-                      <p className="text-white text-2xl font-bold">—</p>
-                      <p className="text-concrete-300 text-xs">Selon ton secteur</p>
+                      <p className="text-white text-2xl font-bold">N/D</p>
+                      <p className="text-concrete-300 text-xs">Selon votre secteur</p>
                     </div>
                     <div className="bg-white/10 rounded-lg p-4">
                       <p className="text-concrete-300 text-xs mb-1">Nouveaux avis Google</p>
-                      <p className="text-white text-2xl font-bold">—</p>
+                      <p className="text-white text-2xl font-bold">N/D</p>
                       <p className="text-concrete-300 text-xs">On met le système en place</p>
                     </div>
                     <div className="bg-white/10 rounded-lg p-4">

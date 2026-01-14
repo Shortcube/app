@@ -6,7 +6,7 @@ const Process = () => {
       number: '01',
       icon: Phone,
       title: 'Qualification',
-      duration: '15 min — Appel ou Visio',
+      duration: '15 min : appel ou visio',
       color: 'bg-blue-500',
       content: [
         {
@@ -54,7 +54,7 @@ const Process = () => {
         },
         {
           type: 'text',
-          value: 'Vous recevez vos accès (lecture seule — nous gérons toute la technique).',
+          value: 'Vous recevez vos accès (lecture seule) et nous gérons toute la technique.',
         },
       ],
     },
@@ -72,7 +72,7 @@ const Process = () => {
         },
         {
           type: 'highlight',
-          value: 'Vous recevez : Rapport mensuel simple (PDF + email) — Visiteurs, Demandes de soumission reçues, Nouveaux avis Google.',
+          value: 'Vous recevez : Rapport mensuel simple (PDF + email) : Visiteurs, Demandes de soumission reçues, Nouveaux avis Google.',
         },
       ],
     },

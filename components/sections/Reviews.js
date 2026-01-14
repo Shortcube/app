@@ -4,34 +4,34 @@ const Reviews = () => {
   const included = [
     {
       icon: MessageSquare,
-      text: "Configuration du système d'envoi (templates SMS et courriel prêts à l'emploi)",
+      text: "Configuration du système d’envoi (modèles SMS et courriels prêts à l’emploi)",
     },
     {
       icon: Link,
-      text: "Instructions d'intégration à votre logiciel de facturation ou CRM",
+      text: "Instructions pour l’intégration à votre logiciel de facturation ou à votre CRM",
     },
     {
       icon: FileText,
-      text: "Page dédiée sur votre site pour faciliter le dépôt d'avis",
+      text: "Page dédiée sur votre site pour faciliter le dépôt d’avis",
     },
     {
       icon: BookOpen,
-      text: 'Guide PDF : "Comment demander des avis à vos clients sans être insistant"',
+      text: 'Guide PDF : « Comment demander des avis à vos clients sans être insistant »',
     },
   ]
 
   const notIncluded = [
     {
       icon: Send,
-      text: "Envoi automatique depuis nos systèmes (vous déclenchez l'envoi via votre outil ou manuellement)",
+      text: "Envoi automatique depuis nos systèmes (vous déclenchez l’envoi depuis votre outil, ou manuellement)",
     },
     {
       icon: Reply,
-      text: "Réponses illimitées aux avis (négatifs ou positifs) — nous vous formons à le faire, ou service à la carte : 75$/réponse rédigée",
+      text: "Réponses illimitées aux avis (positifs ou négatifs). On peut vous montrer quoi répondre, ou le faire à la carte : 75 $/réponse.",
     },
     {
       icon: AlertTriangle,
-      text: "Gestion de crise réputationnelle (client très insatisfait, faux avis) — service additionnel sur demande",
+      text: "Gestion de crise réputationnelle (client très insatisfait, faux avis) : service additionnel sur demande.",
     },
   ]
 
@@ -45,10 +45,10 @@ const Reviews = () => {
             <span className="text-sm font-medium">Réputation en ligne</span>
           </div>
           <h2 className="text-navy mb-6">
-            Système d'Avis Google
+            Système d’avis Google
           </h2>
           <p className="text-xl text-concrete-600 max-w-2xl mx-auto">
-            Qu'est-ce qui est inclus exactement dans votre forfait?
+            Qu’est-ce qui est inclus, exactement, dans votre forfait ?
           </p>
         </div>
 
@@ -61,7 +61,7 @@ const Reviews = () => {
                 <Check className="w-5 h-5 text-green-600" />
               </div>
               <h3 className="text-xl font-semibold text-green-800">
-                Système d'Avis Inclus
+                Système d’avis inclus
               </h3>
             </div>
             
@@ -86,7 +86,7 @@ const Reviews = () => {
                 <X className="w-5 h-5 text-concrete-600" />
               </div>
               <h3 className="text-xl font-semibold text-concrete-700">
-                Ce qui N'est PAS inclus
+                Ce qui n’est pas inclus
               </h3>
             </div>
             
