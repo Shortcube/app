@@ -2,6 +2,9 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Send, CheckCircle2, Phone, Mail, Globe, Building2, MapPin, Loader2 } from 'lucide-react'
 
 const LeadForm = () => {
@@ -17,8 +20,7 @@ const LeadForm = () => {
   const [errors, setErrors] = useState({})
 
   const secteurs = [
-    { value: '', label: 'Sélectionnez votre secteur' },
-    { value: 'déneigement', label: 'Déneigement' },
+    { value: 'deneigement', label: 'Déneigement' },
     { value: 'plomberie', label: 'Plomberie' },
     { value: 'toiture', label: 'Toiture' },
     { value: 'renovation', label: 'Rénovation' },
@@ -29,7 +31,6 @@ const LeadForm = () => {
   ]
 
   const regions = [
-    { value: '', label: 'Sélectionnez votre région' },
     { value: 'montreal', label: 'Montréal' },
     { value: 'rive-sud', label: 'Rive-Sud' },
     { value: 'rive-nord', label: 'Rive-Nord' },
@@ -39,15 +40,23 @@ const LeadForm = () => {
   ]
 
   const validatePhone = (phone) => {
-    // Format québécois : 514-555-5555 ou (514) 555-5555 ou 5145555555
-    const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4}$/
-    return phoneRegex.test(phone.replace(/\s/g, ''))
+    // Validation simplifiée: minimum 10 caractères (chiffres seulement)
+    const digitsOnly = phone.replace(/\D/g, '')
+    return digitsOnly.length >= 10
   }
 
   const validateEmail = (email) => {
     if (!email) return true // Optionnel
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return emailRegex.test(email)
+  }
+
+  const handleSelectChange = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }))
+    // Clear error when user selects
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: '' }))
+    }
   }
 
   const handleChange = (e) => {
@@ -76,7 +85,7 @@ const LeadForm = () => {
     if (!formData.telephone) {
       newErrors.telephone = 'Le numéro de téléphone est requis'
     } else if (!validatePhone(formData.telephone)) {
-      newErrors.telephone = 'Veuillez entrer un numéro de téléphone valide'
+      newErrors.telephone = 'Le numéro doit contenir au moins 10 chiffres'
     }
     
     if (formData.courriel && !validateEmail(formData.courriel)) {
@@ -169,24 +178,26 @@ const LeadForm = () => {
                 <a 
                   href="tel:514-XXX-XXXX" 
                   className="flex items-center space-x-3 text-white hover:text-safety transition-colors"
+                  aria-label="Appelez-nous au 514-XXX-XXXX"
                 >
                   <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
-                    <Phone className="w-5 h-5" />
+                    <Phone className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <span className="font-medium">514-XXX-XXXX</span>
                 </a>
                 <a 
                   href="mailto:info@bureauweb.ca" 
                   className="flex items-center space-x-3 text-white hover:text-safety transition-colors"
+                  aria-label="Envoyez-nous un courriel à info@bureauweb.ca"
                 >
                   <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
-                    <Mail className="w-5 h-5" />
+                    <Mail className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <span className="font-medium">info@bureauweb.ca</span>
                 </a>
                 <div className="flex items-center space-x-3 text-concrete-300">
                   <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-5 h-5" />
+                    <MapPin className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <span>Longueuil, QC</span>
                 </div>
@@ -199,127 +210,120 @@ const LeadForm = () => {
                 <div className="space-y-5">
                   {/* Secteur d'activité */}
                   <div>
-                    <label htmlFor="secteur" className="block text-sm font-medium text-navy mb-2">
+                    <Label htmlFor="secteur" className="block text-sm font-medium text-navy mb-2">
                       Secteur d'activité <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" />
-                      <select
+                    </Label>
+                    <Select value={formData.secteur} onValueChange={(value) => handleSelectChange('secteur', value)}>
+                      <SelectTrigger 
                         id="secteur"
-                        name="secteur"
-                        value={formData.secteur}
-                        onChange={handleChange}
-                        className={`w-full pl-10 pr-4 py-3 border rounded-lg bg-white text-navy focus:outline-none focus:ring-2 focus:ring-safety focus:border-transparent ${
-                          errors.secteur ? 'border-red-500' : 'border-concrete-200'
-                        }`}
-                        required
+                        className={`w-full ${errors.secteur ? 'border-red-500' : ''}`}
+                        aria-label="Sélectionnez votre secteur d'activité"
                       >
+                        <SelectValue placeholder="Sélectionnez votre secteur" />
+                      </SelectTrigger>
+                      <SelectContent>
                         {secteurs.map(option => (
-                          <option key={option.value} value={option.value}>
+                          <SelectItem key={option.value} value={option.value}>
                             {option.label}
-                          </option>
+                          </SelectItem>
                         ))}
-                      </select>
-                    </div>
+                      </SelectContent>
+                    </Select>
                     {errors.secteur && (
-                      <p className="mt-1 text-sm text-red-500">{errors.secteur}</p>
+                      <p className="mt-1 text-sm text-red-500" role="alert">{errors.secteur}</p>
                     )}
                   </div>
                   
                   {/* Région desservie */}
                   <div>
-                    <label htmlFor="region" className="block text-sm font-medium text-navy mb-2">
+                    <Label htmlFor="region" className="block text-sm font-medium text-navy mb-2">
                       Région desservie <span className="text-red-500">*</span>
-                    </label>
-                    <div className="relative">
-                      <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" />
-                      <select
+                    </Label>
+                    <Select value={formData.region} onValueChange={(value) => handleSelectChange('region', value)}>
+                      <SelectTrigger 
                         id="region"
-                        name="region"
-                        value={formData.region}
-                        onChange={handleChange}
-                        className={`w-full pl-10 pr-4 py-3 border rounded-lg bg-white text-navy focus:outline-none focus:ring-2 focus:ring-safety focus:border-transparent ${
-                          errors.region ? 'border-red-500' : 'border-concrete-200'
-                        }`}
-                        required
+                        className={`w-full ${errors.region ? 'border-red-500' : ''}`}
+                        aria-label="Sélectionnez votre région desservie"
                       >
+                        <SelectValue placeholder="Sélectionnez votre région" />
+                      </SelectTrigger>
+                      <SelectContent>
                         {regions.map(option => (
-                          <option key={option.value} value={option.value}>
+                          <SelectItem key={option.value} value={option.value}>
                             {option.label}
-                          </option>
+                          </SelectItem>
                         ))}
-                      </select>
-                    </div>
+                      </SelectContent>
+                    </Select>
                     {errors.region && (
-                      <p className="mt-1 text-sm text-red-500">{errors.region}</p>
+                      <p className="mt-1 text-sm text-red-500" role="alert">{errors.region}</p>
                     )}
                   </div>
                   
                   {/* Téléphone */}
                   <div>
-                    <label htmlFor="telephone" className="block text-sm font-medium text-navy mb-2">
+                    <Label htmlFor="telephone" className="block text-sm font-medium text-navy mb-2">
                       Téléphone <span className="text-red-500">*</span>
-                    </label>
+                    </Label>
                     <div className="relative">
-                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" />
-                      <input
+                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" aria-hidden="true" />
+                      <Input
                         type="tel"
                         id="telephone"
                         name="telephone"
                         value={formData.telephone}
                         onChange={handleChange}
                         placeholder="514-555-5555"
-                        className={`w-full pl-10 pr-4 py-3 border rounded-lg text-navy placeholder:text-concrete-400 focus:outline-none focus:ring-2 focus:ring-safety focus:border-transparent ${
-                          errors.telephone ? 'border-red-500' : 'border-concrete-200'
-                        }`}
-                        required
+                        className={`pl-10 ${errors.telephone ? 'border-red-500' : ''}`}
+                        aria-describedby={errors.telephone ? 'telephone-error' : undefined}
+                        aria-invalid={!!errors.telephone}
                       />
                     </div>
                     {errors.telephone && (
-                      <p className="mt-1 text-sm text-red-500">{errors.telephone}</p>
+                      <p id="telephone-error" className="mt-1 text-sm text-red-500" role="alert">{errors.telephone}</p>
                     )}
                   </div>
                   
                   {/* Courriel (optionnel) */}
                   <div>
-                    <label htmlFor="courriel" className="block text-sm font-medium text-navy mb-2">
+                    <Label htmlFor="courriel" className="block text-sm font-medium text-navy mb-2">
                       Courriel <span className="text-concrete-400 text-xs">(optionnel)</span>
-                    </label>
+                    </Label>
                     <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" />
-                      <input
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" aria-hidden="true" />
+                      <Input
                         type="email"
                         id="courriel"
                         name="courriel"
                         value={formData.courriel}
                         onChange={handleChange}
                         placeholder="votre@courriel.ca"
-                        className={`w-full pl-10 pr-4 py-3 border rounded-lg text-navy placeholder:text-concrete-400 focus:outline-none focus:ring-2 focus:ring-safety focus:border-transparent ${
-                          errors.courriel ? 'border-red-500' : 'border-concrete-200'
-                        }`}
+                        className={`pl-10 ${errors.courriel ? 'border-red-500' : ''}`}
+                        aria-describedby={errors.courriel ? 'courriel-error' : undefined}
+                        aria-invalid={!!errors.courriel}
                       />
                     </div>
                     {errors.courriel && (
-                      <p className="mt-1 text-sm text-red-500">{errors.courriel}</p>
+                      <p id="courriel-error" className="mt-1 text-sm text-red-500" role="alert">{errors.courriel}</p>
                     )}
                   </div>
                   
                   {/* Site web actuel (optionnel) */}
                   <div>
-                    <label htmlFor="siteWeb" className="block text-sm font-medium text-navy mb-2">
+                    <Label htmlFor="siteWeb" className="block text-sm font-medium text-navy mb-2">
                       Site web actuel <span className="text-concrete-400 text-xs">(optionnel)</span>
-                    </label>
+                    </Label>
                     <div className="relative">
-                      <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" />
-                      <input
+                      <Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" aria-hidden="true" />
+                      <Input
                         type="text"
                         id="siteWeb"
                         name="siteWeb"
                         value={formData.siteWeb}
                         onChange={handleChange}
                         placeholder="ex : entrepriseabc.ca"
-                        className="w-full pl-10 pr-4 py-3 border border-concrete-200 rounded-lg text-navy placeholder:text-concrete-400 focus:outline-none focus:ring-2 focus:ring-safety focus:border-transparent"
-                      /> 
+                        className="pl-10"
+                      />
                     </div>
                   </div>  
                   
