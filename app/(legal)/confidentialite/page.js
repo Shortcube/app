@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function ConfidentialitePage() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-4 py-12">
+    <>
       <header className="mb-10">
         <h1 className="text-3xl font-semibold tracking-tight">
           Politique de confidentialité
@@ -303,6 +303,6 @@ export default function ConfidentialitePage() {
           </p>
         </div>
       </section>
-    </main>
+    <>
   )
 }
