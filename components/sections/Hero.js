@@ -56,7 +56,7 @@ const Hero = () => {
             {/* Social proof hint */}
             <div className="pt-6 border-t border-concrete-200">
               <p className="text-concrete-500 text-sm">
-                Basé au Québec • Support surtout par écrit • Livraison typique : 21 jours ouvrables
+                Basé au Québec • Support par écrit • Livraison typique : 21 jours ouvrables
               </p>
             </div>
           </div>
