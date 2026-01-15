@@ -11,13 +11,13 @@ const Footer = () => {
     <footer className="bg-navy-950 text-white">
       <div className="section-container py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Brand */}
+          {/* Marque */}
           <div className="space-y-4">
             <span className="text-2xl font-bold">
               Bureau<span className="text-safety">Web</span>
             </span>
             <p className="text-concrete-400 text-sm leading-relaxed">
-              Votre département web externe. Infrastructure complète pour entrepreneurs québécois.
+              Votre département web externe. On s'occupe de votre site et de votre fiche Google pour que vous puissiez vous concentrer sur vos chantiers.
             </p>
           </div>
 
@@ -43,7 +43,7 @@ const Footer = () => {
                 <a 
                   href={`mailto:${siteConfig.email}`}
                   className="flex items-center space-x-3 text-concrete-300 hover:text-safety transition-colors group"
-                  aria-label={`Envoyez-nous un courriel à ${siteConfig.email}`}
+                  aria-label={`Écrivez-nous à ${siteConfig.email}`}
                 >
                   <div className="w-8 h-8 bg-white/5 rounded-lg flex items-center justify-center group-hover:bg-safety/20 transition-colors">
                     <Mail className="w-4 h-4" />
@@ -79,7 +79,7 @@ const Footer = () => {
                   href="/conditions"
                   className="text-concrete-300 hover:text-safety transition-colors"
                 >
-                  Conditions d’utilisation
+                  Conditions d'utilisation
                 </a>
               </li>
               <li>
@@ -87,16 +87,16 @@ const Footer = () => {
                   href="/gestion-renseignements"
                   className="text-concrete-300 hover:text-safety transition-colors"
                 >
-                  Gestion des renseignements personnels
+                  Gestion des renseignements
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Secteurs servis (sans claim de partenariat) */}
+          {/* Secteurs */}
           <div className="space-y-4">
             <h4 className="font-semibold text-lg">Secteurs servis</h4>
-            <p className="text-concrete-400 text-sm">On travaille avec des entrepreneurs de services au Québec.</p>
+            <p className="text-concrete-400 text-sm">On travaille avec des entrepreneurs de services partout au Québec.</p>
             <div className="flex flex-wrap gap-2">
               {siteConfig.sectors.map((sector) => (
                 <span
@@ -110,16 +110,13 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Barre du bas */}
         <div className="border-t border-white/10 mt-10 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
             <div className="text-concrete-500 text-sm text-center lg:text-left">
               <p className="flex items-center justify-center lg:justify-start gap-2">
                 <Briefcase className="w-4 h-4" aria-hidden="true" />
-                <span>Entreprise enregistrée au Québec. Support principalement par écrit (courriel).</span>
-              </p>
-              <p className="mt-1">
-                Facturation, taxes et numéros d’enregistrement : indiqués sur vos factures au besoin.
+                <span>Entreprise enregistrée au Québec. Support par courriel.</span>
               </p>
             </div>
             <p className="text-concrete-500 text-sm">
@@ -128,7 +125,7 @@ const Footer = () => {
           </div>
           <p className="text-concrete-600 text-xs mt-6 text-center">
             Pas de tracking publicitaire. 
-            Hébergement avec préférence pour les régions canadiennes lorsque disponible.
+            Hébergement avec préférence pour les serveurs canadiens.
           </p>
         </div>
       </div>

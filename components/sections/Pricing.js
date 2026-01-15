@@ -10,31 +10,31 @@ const Pricing = () => {
 
   const plans = [
     {
-      name: 'Forfait Essentiel',
+      name: 'Forfait essentiel',
       price: '399',
       activation: '799',
       popular: false,
       features: [
-        { text: 'Site web performant (optimisé mobile, temps de chargement <2 sec)', included: true },
-        { text: 'Hébergement sécurisé avec préférence pour les régions canadiennes (incluant certificat SSL)', included: true },
-        { text: 'Optimisation Profil d\'entreprise Google (vérification, catégories, description)', included: true },
-        { text: 'Système d\'avis : Configuration initiale + templates SMS/courriel + instructions d\'intégration', included: true },
-        { text: '2 mises à jour mineures incluses par mois', included: true },
-        { text: 'Support par courriel : Réponse sous 48h ouvrables', included: true },
+        { text: 'Site web rapide et optimisé mobile (chargement en moins de 2 secondes)', included: true },
+        { text: 'Hébergement sécurisé au Canada avec certificat SSL inclus', included: true },
+        { text: 'Optimisation de votre fiche Google (catégories, description, vérification)', included: true },
+        { text: 'Système d\'avis : configuration + modèles SMS/courriel + guide d\'utilisation', included: true },
+        { text: '2 petites modifications incluses par mois', included: true },
+        { text: 'Support par courriel (réponse en 48h ouvrables)', included: true },
       ],
-      extra: 'Modifications majeures (refonte de section, nouvelle page de service) : 150$/heure, facturation par bloc de 30 min.',
+      extra: 'Modifications majeures (nouvelle page, refonte de section) : 150$/heure, facturées par bloc de 30 minutes.',
     },
     {
-      name: 'Forfait Croissance',
+      name: 'Forfait croissance',
       price: '599',
       activation: '999',
       popular: true,
       features: [
-        { text: 'Tout du Forfait Essentiel', included: true, highlight: true },
+        { text: 'Tout ce qui est inclus dans le forfait essentiel', included: true, highlight: true },
         { text: '1 article de blogue optimisé SEO par mois (500-800 mots)', included: true },
-        { text: '1 page de service additionnelle (ex: page dédiée à un nouveau service)', included: true },
-        { text: 'Support prioritaire : Réponse sous 24h ouvrables', included: true },
-        { text: '4 mises à jour mineures incluses par mois', included: true },
+        { text: '1 page de service additionnelle (pour un nouveau service par exemple)', included: true },
+        { text: 'Support prioritaire (réponse en 24h ouvrables)', included: true },
+        { text: '4 petites modifications incluses par mois', included: true },
       ],
       extra: null,
     },
@@ -43,21 +43,21 @@ const Pricing = () => {
   return (
     <section id="forfaits" className="py-20 md:py-28 bg-concrete-50 scroll-mt-header">
       <div className="section-container">
-        {/* Section Header */}
+        {/* En-tête */}
         <div className="text-center mb-12 md:mb-16">
           <div className="inline-flex items-center space-x-2 bg-safety/10 text-safety-700 px-4 py-2 rounded-full mb-6">
             <FileText className="w-4 h-4" />
-            <span className="text-sm font-medium">Tarification transparente</span>
+            <span className="text-sm font-medium">Tarification simple</span>
           </div>
           <h2 className="text-navy mb-6">
-            Forfaits et Prix
+            Forfaits et prix
           </h2>
           <p className="text-xl text-concrete-600 max-w-2xl mx-auto">
-            Des forfaits clairs, sans frais cachés. Choisissez celui qui correspond à vos besoins.
+            Pas de frais cachés, pas de surprises. Vous savez exactement ce que vous payez.
           </p>
         </div>
 
-        {/* Pricing Cards */}
+        {/* Cartes de prix */}
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
           {plans.map((plan, index) => (
             <div 
@@ -68,7 +68,7 @@ const Pricing = () => {
                   : 'border-concrete-200 hover:border-concrete-300'
               }`}
             >
-              {/* Popular Badge */}
+              {/* Badge recommandé */}
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                   <div className="bg-safety text-white px-4 py-1 rounded-full text-sm font-semibold">
@@ -78,7 +78,7 @@ const Pricing = () => {
               )}
               
               <div className="p-8">
-                {/* Plan Header */}
+                {/* En-tête du forfait */}
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold text-navy mb-4">{plan.name}</h3>
                   <div className="flex items-baseline justify-center gap-1">
@@ -86,13 +86,13 @@ const Pricing = () => {
                     <span className="text-xl text-concrete-500">$/mois</span>
                   </div>
                   <p className="text-concrete-500 mt-2">
-                    + Frais d'activation unique : <span className="font-semibold text-navy">{plan.activation}$</span>
+                    + frais d'activation : <span className="font-semibold text-navy">{plan.activation}$</span>
                   </p>
                 </div>
                 
-                {/* Features */}
+                {/* Fonctionnalités */}
                 <div className="space-y-4 mb-8">
-                  <p className="text-sm font-semibold text-concrete-500 uppercase tracking-wide">Inclus :</p>
+                  <p className="text-sm font-semibold text-concrete-500 uppercase tracking-wide">Ce qui est inclus :</p>
                   {plan.features.map((feature, featureIndex) => (
                     <div 
                       key={featureIndex} 
@@ -114,14 +114,14 @@ const Pricing = () => {
                   ))}
                 </div>
                 
-                {/* Extra Info */}
+                {/* Info supplémentaire */}
                 {plan.extra && (
                   <div className="bg-concrete-50 rounded-lg p-4 mb-8 text-sm text-concrete-600">
                     {plan.extra}
                   </div>
                 )}
                 
-                {/* CTA */}
+                {/* Bouton */}
                 <Button 
                   className={`w-full py-6 text-lg font-semibold ${
                     plan.popular 
@@ -142,7 +142,7 @@ const Pricing = () => {
           <div className="bg-white rounded-xl border border-concrete-200 p-6 md:p-8">
             <h4 className="text-xl font-semibold text-navy mb-6 flex items-center gap-2">
               <Clock className="w-5 h-5 text-safety" />
-              Modalités claires
+              Comment ça fonctionne
             </h4>
             
             <div className="grid md:grid-cols-3 gap-6 mb-8">
@@ -150,36 +150,36 @@ const Pricing = () => {
                 <p className="text-2xl font-bold text-navy">6 mois</p>
                 <p className="text-concrete-600 text-sm mt-1">Engagement initial</p>
                 <p className="text-concrete-500 text-xs mt-2">
-                  Nécessaire pour établir votre présence sur Google et générer des données exploitables
+                  Le temps que Google indexe votre site et que les résultats commencent à rentrer
                 </p>
               </div>
               <div className="text-center p-4 bg-concrete-50 rounded-lg">
                 <p className="text-2xl font-bold text-navy">Mensuel</p>
                 <p className="text-concrete-600 text-sm mt-1">Après 6 mois</p>
                 <p className="text-concrete-500 text-xs mt-2">
-                  Reconduction mensuelle automatique
+                  Renouvellement automatique chaque mois
                 </p>
               </div>
               <div className="text-center p-4 bg-concrete-50 rounded-lg">
                 <p className="text-2xl font-bold text-navy">30 jours</p>
-                <p className="text-concrete-600 text-sm mt-1">Préavis de résiliation</p>
+                <p className="text-concrete-600 text-sm mt-1">Pour annuler</p>
                 <p className="text-concrete-500 text-xs mt-2">
-                  Résiliable avec préavis écrit
+                  Préavis écrit de 30 jours pour mettre fin au service
                 </p>
               </div>
             </div>
             
             <div className="bg-concrete-50 rounded-lg p-4 text-sm text-concrete-600">
               <p className="font-medium text-navy mb-1">
-                Délai standard de livraison :
+                Délai de livraison :
               </p>
               <p>
-                Site en ligne dans les 21 jours ouvrables suivant la réception de tous les éléments requis (voir checklist d’activation).
+                Votre site sera en ligne dans les 21 jours ouvrables suivant la réception de tous vos documents (textes, photos, accès Google).
               </p>
             </div>
           </div>
           
-          {/* Important Disclaimer */}
+          {/* Avertissement important */}
           <div className="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-6 md:p-8">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -187,11 +187,11 @@ const Pricing = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-amber-800 mb-2">
-                  Important : gestion des attentes
+                  Soyons clairs sur les résultats
                 </h4>
                 <p className="text-amber-800 leading-relaxed">
-                  BureauWeb s’occupe de l’infrastructure technique et de l’optimisation de votre présence en ligne. 
-                  La génération de demandes de soumission dépend aussi de :
+                  On s'occupe de la technique et de l'optimisation de votre présence en ligne. 
+                  Mais le nombre de clients que vous allez recevoir dépend aussi de :
                 </p>
                 <ul className="mt-3 space-y-2 text-amber-800">
                   <li className="flex items-start gap-2">
@@ -200,15 +200,15 @@ const Pricing = () => {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-amber-500 mt-1">•</span>
-                    Votre secteur d'activité et la concurrence dans votre zone
+                    La concurrence dans votre secteur et votre coin
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-amber-500 mt-1">•</span>
-                    La qualité de votre service client (qui génère les avis positifs)
+                    La qualité de votre service (ce qui génère les bons avis)
                   </li>
                 </ul>
                 <p className="mt-4 font-semibold text-amber-900">
-                  Nous ne pouvons pas garantir un nombre précis de clients ou d’appels.
+                  On ne peut pas vous garantir un nombre précis de clients ou d'appels.
                 </p>
               </div>
             </div>

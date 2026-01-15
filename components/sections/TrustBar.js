@@ -4,19 +4,19 @@ const TrustBar = () => {
   const trustItems = [
     {
       icon: Shield,
-      label: 'Outils de conformité (Loi 25)',
+      label: 'Conformité Loi 25 incluse',
     },
     {
       icon: MapPin,
-      label: 'Optimisation du profil Google',
+      label: 'Fiche Google optimisée',
     },
     {
       icon: Database,
-      label: 'Collecte de données minimisée',
+      label: 'Données minimisées',
     },
     {
       icon: HeadphonesIcon,
-      label: 'Support Local (Lun-Ven)',
+      label: 'Support local (lun-ven)',
     },
   ]
 

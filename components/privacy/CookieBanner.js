@@ -6,12 +6,6 @@ import { Button } from '@/components/ui/button'
 
 const STORAGE_KEY = 'bw_cookie_notice_v1'
 
-/**
- * Bannière légère (sans tracking) :
- * - Affiche un avis "cookies / vie privée"
- * - Aucun cookie marketing
- * - Se ferme via localStorage
- */
 export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false)
 
@@ -20,7 +14,6 @@ export default function CookieBanner() {
       const saved = window.localStorage.getItem(STORAGE_KEY)
       if (!saved) setIsVisible(true)
     } catch {
-      // Si localStorage est bloqué, on affiche quand même.
       setIsVisible(true)
     }
   }, [])
@@ -43,16 +36,13 @@ export default function CookieBanner() {
           <div className="text-sm text-concrete-700 leading-relaxed">
             <p className="font-semibold text-navy">Vie privée</p>
             <p>
-              On utilise seulement des cookies essentiels (et/ou du stockage local) pour améliorer
-              l’expérience. Pas de tracking publicitaire.
-              <span className="ml-1">
-                <Link href="/confidentialite" className="text-safety hover:underline">En savoir plus</Link>.
-              </span>
+              On utilise seulement des cookies essentiels pour faire fonctionner le site. Pas de tracking publicitaire.{' '}
+              <Link href="/confidentialite" className="text-safety hover:underline">En savoir plus</Link>.
             </p>
           </div>
           <div className="flex items-center gap-3">
             <Button onClick={accept} className="btn-cta px-5">
-              OK
+              Compris
             </Button>
           </div>
         </div>

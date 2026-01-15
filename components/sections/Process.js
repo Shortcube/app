@@ -5,74 +5,74 @@ const Process = () => {
     {
       number: '01',
       icon: Phone,
-      title: 'Qualification',
-      duration: '15 min : appel ou visio',
+      title: 'On jase ensemble',
+      duration: '15 minutes par téléphone ou vidéo',
       color: 'bg-blue-500',
       content: [
         {
           type: 'text',
-          value: 'Nous validons que votre secteur et votre zone géographique correspondent à notre modèle.',
+          value: 'On vérifie si votre métier et votre coin correspondent à ce qu\'on fait. Pas de perte de temps des deux côtés.',
         },
         {
           type: 'highlight',
-          value: "Vous recevez la Checklist d'Activation : liste précise des éléments requis (photos, textes, accès Google Business).",
+          value: 'Vous recevez une liste claire de ce qu\'on a besoin : photos, textes, accès à votre fiche Google.',
         },
       ],
     },
     {
       number: '02',
       icon: FileCheck,
-      title: 'Vous Fournissez, Nous Construisons',
-      duration: 'Délai standard : 21 jours ouvrables',
+      title: 'Vous envoyez, on construit',
+      duration: 'Délai : 21 jours ouvrables',
       color: 'bg-safety',
       content: [
         {
           type: 'split',
-          vous: 'Envoyez les éléments de la checklist dans les 7 jours suivant la signature.',
-          nous: "Auditons votre présence Google, configurons l'hébergement sécurisé, construisons le site.",
+          vous: 'Vous nous envoyez vos documents dans les 7 jours suivant la signature.',
+          nous: 'On audite votre présence Google, on configure l\'hébergement, on construit le site.',
         },
         {
           type: 'note',
-          value: 'Les retards causés par des demandes de modifications majeures après validation du design initial peuvent prolonger ce délai.',
+          value: 'Si vous demandez des changements majeurs après qu\'on a validé le design ensemble, ça peut prendre plus de temps.',
         },
         {
           type: 'warning',
-          value: "Si les éléments ne sont pas fournis dans les 14 jours, le projet est suspendu jusqu'à réception.",
+          value: 'Si on n\'a pas vos documents après 14 jours, le projet est mis sur pause jusqu\'à réception.',
         },
       ],
     },
     {
       number: '03',
       icon: Rocket,
-      title: 'Lancement & Formation',
-      duration: '1h en visioconférence',
+      title: 'Lancement et formation',
+      duration: '1 heure en vidéo',
       color: 'bg-green-500',
       content: [
         {
           type: 'text',
-          value: "Nous vous montrons comment fonctionne le système d'avis client.",
+          value: 'On vous montre comment fonctionne le système pour demander des avis à vos clients.',
         },
         {
           type: 'text',
-          value: 'Vous recevez vos accès (lecture seule) et nous gérons toute la technique.',
+          value: 'Vous recevez vos accès (en lecture) et on s\'occupe de toute la technique.',
         },
       ],
     },
     {
       number: '04',
       icon: Ship,
-      title: 'Croisière',
-      duration: 'Opération Continue',
+      title: 'On roule',
+      duration: 'Service continu',
       color: 'bg-navy',
       content: [
         {
           type: 'split',
-          vous: 'Nous signalez 2 fois/mois les changements requis (nouveaux services, photos de chantiers récents).',
-          nous: 'Gérons les sauvegardes, la sécurité, les mises à jour techniques.',
+          vous: 'Vous nous signalez les changements à faire (nouveaux services, photos de chantiers récents).',
+          nous: 'On gère les sauvegardes, la sécurité, les mises à jour techniques.',
         },
         {
           type: 'highlight',
-          value: 'Vous recevez : Rapport mensuel simple (PDF + email) : Visiteurs, Demandes de soumission reçues, Nouveaux avis Google.',
+          value: 'Chaque mois, vous recevez un rapport simple par courriel : visiteurs, demandes reçues, nouveaux avis.',
         },
       ],
     },
@@ -81,35 +81,35 @@ const Process = () => {
   return (
     <section id="processus" className="py-20 md:py-28 bg-white scroll-mt-header">
       <div className="section-container">
-        {/* Section Header */}
+        {/* En-tête */}
         <div className="text-center mb-12 md:mb-16">
           <div className="inline-flex items-center space-x-2 bg-safety/10 text-safety-700 px-4 py-2 rounded-full mb-6">
             <Clock className="w-4 h-4" />
-            <span className="text-sm font-medium">Processus réaliste</span>
+            <span className="text-sm font-medium">Processus clair</span>
           </div>
           <h2 className="text-navy mb-6">
-            Comment ça fonctionne
+            Comment ça se passe
           </h2>
           <p className="text-xl text-concrete-600 max-w-2xl mx-auto">
-            Un processus transparent avec des délais réalistes. Pas de promesses vides.
+            Un processus simple avec des délais réalistes. Pas de promesses en l'air.
           </p>
         </div>
 
         {/* Timeline */}
         <div className="max-w-4xl mx-auto">
           <div className="relative">
-            {/* Vertical line for desktop */}
+            {/* Ligne verticale pour desktop */}
             <div className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-concrete-200" />
             
-            {/* Steps */}
+            {/* Étapes */}
             <div className="space-y-8 md:space-y-12">
               {steps.map((step, index) => (
                 <div key={index} className="relative">
-                  {/* Step Card */}
+                  {/* Carte de l'étape */}
                   <div className="md:ml-20 bg-white rounded-xl border border-concrete-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                     {/* Header */}
                     <div className="flex flex-col md:flex-row md:items-center gap-4 p-6 border-b border-concrete-100">
-                      {/* Number badge - Mobile */}
+                      {/* Badge numéro - Mobile */}
                       <div className="md:hidden flex items-center gap-4">
                         <div className={`w-12 h-12 ${step.color} rounded-xl flex items-center justify-center`}>
                           <step.icon className="w-6 h-6 text-white" />
@@ -120,19 +120,19 @@ const Process = () => {
                         </div>
                       </div>
                       
-                      {/* Desktop title */}
+                      {/* Titre desktop */}
                       <div className="hidden md:block flex-1">
                         <span className="text-xs font-bold text-concrete-400">ÉTAPE {step.number}</span>
                         <h3 className="text-xl font-semibold text-navy">{step.title}</h3>
                       </div>
                       
-                      {/* Duration badge */}
+                      {/* Badge durée */}
                       <div className="bg-concrete-100 text-concrete-700 px-4 py-2 rounded-lg text-sm font-medium">
                         {step.duration}
                       </div>
                     </div>
                     
-                    {/* Content */}
+                    {/* Contenu */}
                     <div className="p-6 space-y-4">
                       {step.content.map((item, itemIndex) => {
                         if (item.type === 'text') {
@@ -170,7 +170,7 @@ const Process = () => {
                         if (item.type === 'note') {
                           return (
                             <div key={itemIndex} className="flex items-start gap-3 text-sm text-concrete-500 italic">
-                              <span className="text-concrete-400">Note:</span>
+                              <span className="text-concrete-400">Note :</span>
                               <p>{item.value}</p>
                             </div>
                           )
@@ -190,7 +190,7 @@ const Process = () => {
                     </div>
                   </div>
                   
-                  {/* Timeline dot - Desktop */}
+                  {/* Point timeline - Desktop */}
                   <div className="hidden md:flex absolute left-0 top-6 items-center justify-center">
                     <div className={`w-16 h-16 ${step.color} rounded-xl flex items-center justify-center shadow-lg`}>
                       <step.icon className="w-8 h-8 text-white" />

@@ -4,23 +4,23 @@ const NotIncluded = () => {
   const exclusions = [
     {
       icon: Megaphone,
-      title: 'Pas de gestion publicitaire',
-      description: 'Nous ne gérons pas les campagnes Google Ads ou Facebook (disponible à la carte sur demande).',
+      title: 'Pas de publicité payante',
+      description: 'On ne gère pas vos campagnes Google Ads ou Facebook. Si ça vous intéresse, on peut en discuter à part.',
     },
     {
       icon: Palette,
       title: 'Pas de création de logo',
-      description: "Nous intégrons votre identité existante (si vous n'en avez pas, nous pouvons vous référer un designer).",
+      description: 'On intègre votre identité visuelle existante. Si vous n\'en avez pas, on peut vous référer quelqu\'un de bon.',
     },
     {
       icon: Clock,
       title: 'Pas de support 24/7',
-      description: 'Nos heures sont Lun-Ven 9h-17h. Urgences (site complètement hors ligne) : réponse sous 4h ouvrables.',
+      description: 'On répond du lundi au vendredi, 9h à 17h. Urgence (site complètement planté) : réponse en 4 heures ouvrables.',
     },
     {
       icon: Edit3,
       title: 'Pas de modifications illimitées',
-      description: 'Voir les limites par forfait ci-dessous.',
+      description: 'Les limites sont claires dans chaque forfait. Au-delà, c\'est facturé à l\'heure.',
     },
   ]
 
@@ -28,18 +28,18 @@ const NotIncluded = () => {
     <section id="non-inclus" className="py-20 md:py-28 bg-concrete-50 scroll-mt-header">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
-          {/* Section Header */}
+          {/* En-tête */}
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center space-x-2 bg-concrete-200 text-concrete-700 px-4 py-2 rounded-full mb-6">
               <XCircle className="w-4 h-4" />
-              <span className="text-sm font-medium">Gestion des attentes</span>
+              <span className="text-sm font-medium">Pour être clair</span>
             </div>
             <h2 className="text-navy mb-6">
-              Ce qui n'est PAS inclus dans nos forfaits
+              Ce qui n'est pas inclus
             </h2>
           </div>
 
-          {/* Exclusions - Clean paragraphs with icons */}
+          {/* Liste des exclusions */}
           <div className="space-y-6 mb-12">
             {exclusions.map((item, index) => (
               <div 
@@ -61,7 +61,7 @@ const NotIncluded = () => {
             ))}
           </div>
 
-          {/* CTA Message */}
+          {/* Message CTA */}
           <div className="bg-navy rounded-xl p-6 md:p-8 text-center">
             <div className="flex justify-center mb-4">
               <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
@@ -69,10 +69,10 @@ const NotIncluded = () => {
               </div>
             </div>
             <p className="text-white text-lg md:text-xl font-medium mb-2">
-              Besoin d'un de ces services?
+              Besoin d'un de ces services ?
             </p>
             <p className="text-concrete-300">
-              Parlons-en : on peut l’ajouter à la carte, selon vos besoins.
+              On peut en discuter. Certains sont disponibles en extra selon vos besoins.
             </p>
           </div>
         </div>

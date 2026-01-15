@@ -4,19 +4,19 @@ const Solution = () => {
   const benefits = [
     {
       icon: Shield,
-      text: 'Hébergement sécurisé et mises à jour automatiques',
+      text: 'Hébergement sécurisé et mises à jour faites pour vous',
     },
     {
       icon: BarChart3,
-      text: 'Optimisation Google Business Profile',
+      text: 'Votre fiche Google optimisée pour être trouvé localement',
     },
     {
       icon: RefreshCw,
-      text: 'Maintenance continue sans tracas',
+      text: 'Maintenance continue sans que vous ayez à y penser',
     },
     {
       icon: FileText,
-      text: 'Rapport mensuel simple : visiteurs, soumissions, avis',
+      text: 'Rapport mensuel simple : visiteurs, demandes, avis',
     },
   ]
 
@@ -24,7 +24,7 @@ const Solution = () => {
     <section className="py-20 md:py-28 bg-white">
       <div className="section-container">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Content */}
+          {/* Contenu */}
           <div className="space-y-8">
             <div>
               <div className="inline-flex items-center space-x-2 bg-green-50 text-green-700 px-4 py-2 rounded-full mb-6">
@@ -32,15 +32,16 @@ const Solution = () => {
                 <span className="text-sm font-medium">La solution</span>
               </div>
               <h2 className="text-navy mb-6">
-                Votre département web externe
+                Votre département web, sans les frais d'un employé
               </h2>
               <p className="text-xl text-concrete-600 leading-relaxed">
-                BureauWeb est un partenaire technique à long terme. Nous gérons 
-                l'hébergement, la sécurité, les mises à jour et l'optimisation Google.
+                BureauWeb, c'est comme avoir un gars de web dans votre équipe. 
+                On gère l'hébergement, la sécurité, les mises à jour et l'optimisation Google. 
+                Vous, vous faites votre métier.
               </p>
             </div>
 
-            {/* Benefits List */}
+            {/* Liste des avantages */}
             <div className="space-y-4">
               {benefits.map((benefit, index) => (
                 <div 
@@ -58,16 +59,16 @@ const Solution = () => {
             </div>
           </div>
 
-          {/* Visual */}
+          {/* Visuel - Tableau de bord */}
           <div className="relative">
             <div className="relative aspect-square max-w-md mx-auto">
-              {/* Main visual - Dashboard mockup */}
+              {/* Mockup du dashboard */}
               <div className="absolute inset-0 bg-navy rounded-2xl shadow-2xl overflow-hidden">
                 <div className="p-6 h-full flex flex-col">
                   {/* Header */}
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
-                      <span className="text-white font-semibold">Tableau de bord</span>
+                      <span className="text-white font-semibold">Votre tableau de bord</span>
                       <span className="text-xs bg-white/10 text-concrete-200 px-2 py-1 rounded-full">Exemple</span>
                     </div>
                     <div className="flex space-x-2">
@@ -77,31 +78,31 @@ const Solution = () => {
                     </div>
                   </div>
                   
-                  {/* Stats Grid */}
+                  {/* Stats */}
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="bg-white/10 rounded-lg p-4">
                       <p className="text-concrete-300 text-xs mb-1">Visiteurs ce mois</p>
-                      <p className="text-white text-2xl font-bold">N/D</p>
-                      <p className="text-concrete-300 text-xs">Aperçu sur demande</p>
+                      <p className="text-white text-2xl font-bold">247</p>
+                      <p className="text-green-400 text-xs">+12% vs mois dernier</p>
                     </div>
                     <div className="bg-white/10 rounded-lg p-4">
-                      <p className="text-concrete-300 text-xs mb-1">Demandes de soumission</p>
-                      <p className="text-white text-2xl font-bold">N/D</p>
-                      <p className="text-concrete-300 text-xs">Selon votre secteur</p>
+                      <p className="text-concrete-300 text-xs mb-1">Demandes reçues</p>
+                      <p className="text-white text-2xl font-bold">8</p>
+                      <p className="text-concrete-300 text-xs">Via le formulaire</p>
                     </div>
                     <div className="bg-white/10 rounded-lg p-4">
-                      <p className="text-concrete-300 text-xs mb-1">Nouveaux avis Google</p>
-                      <p className="text-white text-2xl font-bold">N/D</p>
-                      <p className="text-concrete-300 text-xs">On met le système en place</p>
+                      <p className="text-concrete-300 text-xs mb-1">Nouveaux avis</p>
+                      <p className="text-white text-2xl font-bold">3</p>
+                      <p className="text-yellow-400 text-xs">★ 4.8 moyenne</p>
                     </div>
                     <div className="bg-white/10 rounded-lg p-4">
                       <p className="text-concrete-300 text-xs mb-1">Temps de chargement</p>
-                      <p className="text-white text-2xl font-bold">&lt; 2s</p>
-                      <p className="text-concrete-300 text-xs">Objectif de performance</p>
+                      <p className="text-white text-2xl font-bold">1.4s</p>
+                      <p className="text-green-400 text-xs">Excellent</p>
                     </div>
                   </div>
                   
-                  {/* Chart placeholder */}
+                  {/* Graphique */}
                   <div className="flex-1 bg-white/5 rounded-lg p-4">
                     <p className="text-concrete-300 text-xs mb-3">Visiteurs (30 derniers jours)</p>
                     <div className="flex items-end justify-between h-20 space-x-1">
@@ -117,7 +118,7 @@ const Solution = () => {
                 </div>
               </div>
               
-              {/* Decorative elements */}
+              {/* Éléments décoratifs */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-safety/20 rounded-full blur-2xl" />
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-navy/30 rounded-full blur-2xl" />
             </div>

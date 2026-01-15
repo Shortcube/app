@@ -4,45 +4,45 @@ const Compliance = () => {
   const features = [
     {
       icon: Cookie,
-      title: 'Bannière de consentement aux cookies',
-      description: 'Conforme aux meilleures pratiques',
+      title: 'Bannière de cookies',
+      description: 'Conforme aux bonnes pratiques',
     },
     {
       icon: FileText,
-      title: 'Page de Politique de Confidentialité',
-      description: 'Modèle type adapté',
+      title: 'Politique de confidentialité',
+      description: 'Modèle adapté à votre entreprise',
     },
     {
       icon: Globe,
-      title: 'Hébergement canadien',
-      description: 'Préférence pour les régions canadiennes lorsque disponible',
+      title: 'Hébergement au Canada',
+      description: 'On privilégie les serveurs canadiens quand c\'est possible',
     },
     {
       icon: Database,
-      title: 'Minimisation des données',
-      description: 'Collecte de données personnelles réduite au minimum',
+      title: 'Données minimisées',
+      description: 'On collecte seulement ce qui est nécessaire',
     },
   ]
 
   return (
     <section id="conformite" className="py-20 md:py-28 bg-concrete-50 scroll-mt-header">
       <div className="section-container">
-        {/* Section Header */}
+        {/* En-tête */}
         <div className="text-center mb-12 md:mb-16">
           <div className="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full mb-6">
             <Shield className="w-4 h-4" />
             <span className="text-sm font-medium">Protection des données</span>
           </div>
           <h2 className="text-navy mb-6">
-            Conformité et protection des données
+            Conformité et vie privée
           </h2>
           <p className="text-xl text-concrete-600 max-w-2xl mx-auto">
-            Loi 25 : outils de base inclus
+            Loi 25 : les outils de base sont inclus
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
-          {/* Main Content */}
+          {/* Contenu principal */}
           <div className="bg-white rounded-2xl border border-concrete-200 overflow-hidden mb-8">
             {/* Header */}
             <div className="bg-navy p-6 md:p-8">
@@ -55,13 +55,13 @@ const Compliance = () => {
                     Loi 25 du Québec
                   </h3>
                   <p className="text-concrete-300">
-                    BureauWeb configure les éléments techniques essentiels pour faciliter votre conformité
+                    On configure les éléments techniques de base pour vous faciliter la vie
                   </p>
                 </div>
               </div>
             </div>
             
-            {/* Features Grid */}
+            {/* Grille de fonctionnalités */}
             <div className="p-6 md:p-8">
               <div className="grid sm:grid-cols-2 gap-6">
                 {features.map((feature, index) => (
@@ -83,7 +83,7 @@ const Compliance = () => {
             </div>
           </div>
 
-          {/* Important Disclaimer */}
+          {/* Avertissement important */}
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 md:p-8 mb-8">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -91,21 +91,20 @@ const Compliance = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-blue-800 mb-2">
-                  Important
+                  Important à savoir
                 </h4>
                 <p className="text-blue-800 leading-relaxed">
-                  Chaque entreprise doit adapter sa politique selon ses pratiques réelles de collecte 
-                  et d'utilisation de données. BureauWeb fournit l'infrastructure technique de base, 
-                  mais ne remplace pas un avis juridique.
+                  Chaque entreprise doit adapter sa politique selon comment elle collecte et utilise les données. 
+                  On vous fournit l'infrastructure technique de base, mais ça ne remplace pas un avis juridique.
                 </p>
                 <p className="mt-3 font-medium text-blue-900">
-                  Pour une conformité légale complète, consultez un avocat spécialisé en protection des données.
+                  Pour une conformité légale complète, consultez un avocat spécialisé.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* NAP Note */}
+          {/* Note NAP */}
           <div className="bg-white rounded-xl border border-concrete-200 p-6">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center flex-shrink-0">
@@ -113,11 +112,11 @@ const Compliance = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-navy mb-2">
-                  Pour vos sites clients
+                  Pour le référencement local
                 </h4>
                 <p className="text-concrete-600 leading-relaxed">
-                  Nous utilisons vos coordonnées NAP officielles (Nom, Adresse, Téléphone) 
-                  pour préserver votre référencement local Google.
+                  On utilise vos coordonnées officielles (nom, adresse, téléphone) 
+                  pour préserver votre positionnement sur Google.
                 </p>
               </div>
             </div>

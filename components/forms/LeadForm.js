@@ -15,7 +15,6 @@ const LeadForm = () => {
     telephone: '',
     courriel: '',
     siteWeb: '',
-    // anti-spam (champ invisible)
     hp: '',
   })
   const phoneDigits = siteConfig.phoneDigits
@@ -42,24 +41,22 @@ const LeadForm = () => {
     { value: 'rive-nord', label: 'Rive-Nord' },
     { value: 'laval', label: 'Laval' },
     { value: 'monteregie', label: 'Montérégie' },
-    { value: 'autre', label: 'Autre' },
+    { value: 'autre', label: 'Autre région' },
   ]
 
   const validatePhone = (phone) => {
-    // Validation simplifiée: minimum 10 caractères (chiffres seulement)
     const digitsOnly = phone.replace(/\D/g, '')
     return digitsOnly.length >= 10
   }
 
   const validateEmail = (email) => {
-    if (!email) return true // Optionnel
+    if (!email) return true
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return emailRegex.test(email)
   }
 
   const handleSelectChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }))
-    // Clear error when user selects
     if (errors[field]) {
       setErrors(prev => ({ ...prev, [field]: '' }))
     }
@@ -68,7 +65,6 @@ const LeadForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }))
     }
@@ -77,25 +73,24 @@ const LeadForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     
-    // Validation
     const newErrors = {}
     
     if (!formData.secteur) {
-      newErrors.secteur = 'Veuillez sélectionner votre secteur d\'activité'
+      newErrors.secteur = 'Choisissez votre secteur d\'activité'
     }
     
     if (!formData.region) {
-      newErrors.region = 'Veuillez sélectionner votre région'
+      newErrors.region = 'Choisissez votre région'
     }
     
     if (!formData.telephone) {
-      newErrors.telephone = 'Le numéro de téléphone est requis'
+      newErrors.telephone = 'Entrez votre numéro de téléphone'
     } else if (!validatePhone(formData.telephone)) {
-      newErrors.telephone = 'Le numéro doit contenir au moins 10 chiffres'
+      newErrors.telephone = 'Le numéro doit avoir au moins 10 chiffres'
     }
     
     if (formData.courriel && !validateEmail(formData.courriel)) {
-      newErrors.courriel = 'Veuillez entrer une adresse courriel valide'
+      newErrors.courriel = 'Entrez une adresse courriel valide'
     }
     
     if (Object.keys(newErrors).length > 0) {
@@ -106,7 +101,6 @@ const LeadForm = () => {
     setIsSubmitting(true)
     
     try {
-      // Envoyer au backend API
       const response = await fetch('/api/lead', {
         method: 'POST',
         headers: {
@@ -130,7 +124,6 @@ const LeadForm = () => {
       }
     } catch (error) {
       console.error('Erreur:', error)
-      // Même en cas d'erreur, on affiche succès pour l'UX (le lead est log)
       setIsSubmitted(true)
     } finally {
       setIsSubmitting(false)
@@ -147,16 +140,16 @@ const LeadForm = () => {
                 <CheckCircle2 className="w-10 h-10 text-green-600" />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
-                Parfait
+                Parfait, c'est reçu
               </h2>
               <p className="text-lg text-concrete-600 leading-relaxed">
-                On vous revient d’ici 24h ouvrables. Objectif : clarifier 2-3 infos et vous donner une estimation + la prochaine étape.
+                On vous revient d'ici 24 heures ouvrables. On va clarifier 2-3 trucs ensemble et vous donner une idée de ce qu'on peut faire pour vous.
               </p>
               <Button 
                 className="mt-8 btn-secondary"
                 onClick={() => setIsSubmitted(false)}
               >
-                Soumettre une autre demande
+                Envoyer une autre demande
               </Button>
             </div>
           </div>
@@ -170,18 +163,20 @@ const LeadForm = () => {
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-5 gap-12 items-start">
-            {/* Left Content */}
+            {/* Contenu gauche */}
             <div className="lg:col-span-2 text-white">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Obtenez votre plan (gratuit)
+                Parlons de votre projet
               </h2>
               <p className="text-concrete-300 text-lg mb-8 leading-relaxed">
-                Remplissez ça (2 minutes) et on vous revient sous 24h ouvrables avec :
-                <br />• une estimation claire
-                <br />• un mini plan d'action (quoi prioriser pour ranker sur Google)
+                Remplissez ça (2 minutes max) et on vous revient en 24 heures ouvrables avec :
               </p>
+              <ul className="text-concrete-300 text-lg mb-8 space-y-2">
+                <li>• Une estimation claire</li>
+                <li>• Un mini plan pour améliorer votre visibilité Google</li>
+              </ul>
               
-              {/* Contact Info */}
+              {/* Coordonnées */}
               <div className="space-y-4">
                 {hasPhone && (
                   <a 
@@ -198,7 +193,7 @@ const LeadForm = () => {
                 <a 
                   href={`mailto:${siteConfig.email}`}
                   className="flex items-center space-x-3 text-white hover:text-safety transition-colors"
-                  aria-label={`Envoyez-nous un courriel à ${siteConfig.email}`}
+                  aria-label={`Écrivez-nous à ${siteConfig.email}`}
                 >
                   <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
                     <Mail className="w-5 h-5" aria-hidden="true" />
@@ -214,10 +209,10 @@ const LeadForm = () => {
               </div>
             </div>
             
-            {/* Form */}
+            {/* Formulaire */}
             <div className="lg:col-span-3">
               <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 md:p-8 shadow-xl">
-                {/* Honeypot anti-spam (doit rester vide) */}
+                {/* Honeypot */}
                 <input
                   type="text"
                   name="hp"
@@ -229,18 +224,18 @@ const LeadForm = () => {
                   aria-hidden="true"
                 />
                 <div className="space-y-5">
-                  {/* Secteur d'activité */}
+                  {/* Secteur */}
                   <div>
                     <Label htmlFor="secteur" className="block text-sm font-medium text-navy mb-2">
-                      Secteur d'activité <span className="text-red-500">*</span>
+                      Votre secteur d'activité <span className="text-red-500">*</span>
                     </Label>
                     <Select value={formData.secteur} onValueChange={(value) => handleSelectChange('secteur', value)}>
                       <SelectTrigger 
                         id="secteur"
                         className={`w-full ${errors.secteur ? 'border-red-500' : ''}`}
-                        aria-label="Sélectionnez votre secteur d'activité"
+                        aria-label="Choisissez votre secteur d'activité"
                       >
-                        <SelectValue placeholder="Sélectionnez votre secteur" />
+                        <SelectValue placeholder="Choisissez votre secteur" />
                       </SelectTrigger>
                       <SelectContent>
                         {secteurs.map(option => (
@@ -255,18 +250,18 @@ const LeadForm = () => {
                     )}
                   </div>
                   
-                  {/* Région desservie */}
+                  {/* Région */}
                   <div>
                     <Label htmlFor="region" className="block text-sm font-medium text-navy mb-2">
-                      Région desservie <span className="text-red-500">*</span>
+                      Votre région <span className="text-red-500">*</span>
                     </Label>
                     <Select value={formData.region} onValueChange={(value) => handleSelectChange('region', value)}>
                       <SelectTrigger 
                         id="region"
                         className={`w-full ${errors.region ? 'border-red-500' : ''}`}
-                        aria-label="Sélectionnez votre région desservie"
+                        aria-label="Choisissez votre région"
                       >
-                        <SelectValue placeholder="Sélectionnez votre région" />
+                        <SelectValue placeholder="Choisissez votre région" />
                       </SelectTrigger>
                       <SelectContent>
                         {regions.map(option => (
@@ -305,7 +300,7 @@ const LeadForm = () => {
                     )}
                   </div>
                   
-                  {/* Courriel (optionnel) */}
+                  {/* Courriel */}
                   <div>
                     <Label htmlFor="courriel" className="block text-sm font-medium text-navy mb-2">
                       Courriel <span className="text-concrete-400 text-xs">(optionnel)</span>
@@ -329,7 +324,7 @@ const LeadForm = () => {
                     )}
                   </div>
                   
-                  {/* Site web actuel (optionnel) */}
+                  {/* Site web */}
                   <div>
                     <Label htmlFor="siteWeb" className="block text-sm font-medium text-navy mb-2">
                       Site web actuel <span className="text-concrete-400 text-xs">(optionnel)</span>
@@ -342,13 +337,13 @@ const LeadForm = () => {
                         name="siteWeb"
                         value={formData.siteWeb}
                         onChange={handleChange}
-                        placeholder="ex : entrepriseabc.ca"
+                        placeholder="ex : monentreprise.ca"
                         className="pl-10"
                       />
                     </div>
                   </div>  
                   
-                  {/* Submit Button */}
+                  {/* Bouton */}
                   <Button 
                     type="submit" 
                     className="w-full btn-cta py-6 text-lg mt-4"
@@ -361,16 +356,16 @@ const LeadForm = () => {
                       </>
                     ) : (
                       <>
-                        Recevoir mon plan
+                        Envoyer ma demande
                         <Send className="w-5 h-5 ml-2" />
                       </>
                     )}
                   </Button>
                   
                   <p className="text-xs text-concrete-500 text-center mt-4">
-                    En soumettant ce formulaire, vous acceptez d'être contacté par BureauWeb 
-                    concernant votre demande (1 suivi, pas de spam). Vos données sont traitées conformément à notre 
-                    <a href="/confidentialite" className="text-safety hover:underline"> Politique de Confidentialité</a>.
+                    En soumettant ce formulaire, vous acceptez qu'on vous contacte pour donner suite à votre demande. 
+                    Vos données sont traitées selon notre{' '}
+                    <a href="/confidentialite" className="text-safety hover:underline">politique de confidentialité</a>.
                   </p>
                 </div>
               </form>

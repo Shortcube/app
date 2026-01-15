@@ -4,18 +4,18 @@ const Problem = () => {
   const problems = [
     {
       icon: DollarSign,
-      title: 'Agences coûteuses',
-      description: '3,000$+ pour un site, puis ils disparaissent après le lancement.',
+      title: 'Les agences coûtent cher',
+      description: '3 000$ et plus pour un site, puis ils disparaissent après le lancement. Bonne chance pour avoir du support.',
     },
     {
       icon: UserX,
-      title: 'Freelances instables',
-      description: 'Ils ne répondent plus après 6 mois. Votre site devient obsolète.',
+      title: 'Les freelances sont instables',
+      description: 'Ils répondent plus après 6 mois. Votre site devient obsolète et personne pour vous aider.',
     },
     {
       icon: Clock,
-      title: 'Pas de suivi',
-      description: 'Mises à jour ignorées, sécurité négligée, problèmes non résolus.',
+      title: 'Personne pour faire le suivi',
+      description: 'Les mises à jour s\'accumulent, la sécurité est négligée, les problèmes traînent.',
     },
   ]
 
@@ -23,22 +23,23 @@ const Problem = () => {
     <section className="py-20 md:py-28 bg-concrete-50">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
-          {/* Section Header */}
+          {/* En-tête */}
           <div className="text-center mb-12 md:mb-16">
             <div className="inline-flex items-center space-x-2 bg-red-50 text-red-700 px-4 py-2 rounded-full mb-6">
               <AlertCircle className="w-4 h-4" />
               <span className="text-sm font-medium">Le problème</span>
             </div>
             <h2 className="text-navy mb-6">
-              Vous méritez une infrastructure stable
+              Vous méritez mieux que ça
             </h2>
             <p className="text-xl text-concrete-600 leading-relaxed max-w-2xl mx-auto">
-              Les agences traditionnelles coûtent 3,000$+ et disparaissent après le lancement. 
-              Les freelances ne répondent plus après 6 mois.
+              Les agences chargent une fortune puis disparaissent. 
+              Les freelances répondent plus après quelques mois. 
+              Vous méritez un partenaire stable.
             </p>
           </div>
 
-          {/* Problem Cards */}
+          {/* Cartes des problèmes */}
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {problems.map((problem, index) => (
               <div 
