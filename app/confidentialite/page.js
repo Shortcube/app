@@ -1,7 +1,7 @@
 <main style="max-width: 920px; margin: 0 auto; padding: 32px 16px; line-height: 1.65;">
   <header>
     <h1>Politique de confidentialité</h1>
-    <p><strong>BureauWeb.ca</strong> ([Nom légal / NEQ : ______])</p>
+    <p><strong>BureauWeb.ca</strong> ([Nom légal / NEQ : 2281685182])</p>
     <p><strong>Date d’entrée en vigueur :</strong> 14 janvier 2026</p>
     <p><strong>Dernière mise à jour :</strong> 14 janvier 2026</p>
   </header>
@@ -26,10 +26,8 @@
       Pour toute question liée à la confidentialité ou pour exercer vos droits, vous pouvez nous écrire :
     </p>
     <ul>
-      <li><strong>Responsable :</strong> [Prénom Nom] (BureauWeb.ca)</li>
-      <li><strong>Courriel :</strong> <a href="mailto:[courriel]">[courriel]</a></li>
-      <li><strong>Téléphone :</strong> [téléphone, optionnel]</li>
-      <li><strong>Adresse :</strong> [adresse]</li>
+      <li><strong>Responsable :</strong> Patrick Lanoue (BureauWeb.ca)</li>
+      <li><strong>Courriel :</strong> <a href="mailto:info@bureauweb.ca">[info@bureauweb.ca]</a></li>
     </ul>
     <p>
       Le guide de la CAI recommande d’indiquer clairement la personne et les coordonnées à contacter pour toute question
