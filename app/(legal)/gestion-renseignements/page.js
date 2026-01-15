@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function GestionRenseignementsPage() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-4 py-12">
+    <>
       <header className="mb-10">
         <h1 className="text-3xl font-semibold tracking-tight">
           Gestion des renseignements personnels
@@ -176,6 +176,6 @@ export default function GestionRenseignementsPage() {
           </p>
         </div>
       </section>
-    </main>
+    <>
   )
 }
