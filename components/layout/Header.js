@@ -85,8 +85,18 @@ const Header = () => {
                   router.push(`/metiers/${value}`)
                 }}
               >
-                <SelectTrigger className="h-10 bg-white" aria-label="Choisir un corps de métier">
-                  <SelectValue placeholder="Mon corps de métier est..." />
+                <SelectTrigger
+                  className="h-10 bg-white w-[260px] lg:w-[280px] whitespace-nowrap"
+                  aria-label="Choisir un corps de métier"
+                >
+                  <SelectValue
+                    placeholder={
+                      <>
+                        <span className="lg:hidden">Métier...</span>
+                        <span className="hidden lg:inline">Mon corps de métier est...</span>
+                      </>
+                    }
+                  />
                 </SelectTrigger>
                 <SelectContent>
                   {TRADE_PAGES.map((t) => (
