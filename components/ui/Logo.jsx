@@ -13,7 +13,7 @@ const Logo = ({
     role="img"
     aria-label={ariaLabel}
     focusable="false"
-    className={className}
+    className={['overflow-visible', className].filter(Boolean).join(' ')}
     {...props}
   >
     <title>{ariaLabel}</title>
