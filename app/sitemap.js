@@ -1,6 +1,6 @@
 // app/sitemap.js
 
-import { BLOG_POSTS, REGION_PAGES, TRADE_PAGES } from '@/lib/content'
+import { BLOG_POSTS, REGION_PAGES, SECTOR_PAGES, TRADE_PAGES } from '@/lib/content'
 
 export default function sitemap() {
   const baseUrl = 'https://bureauweb.ca'
@@ -15,6 +15,12 @@ export default function sitemap() {
     },
     {
       url: `${baseUrl}/metiers`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/secteurs`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.6,
@@ -54,6 +60,12 @@ export default function sitemap() {
   const dynamicUrls = [
     ...TRADE_PAGES.map((t) => ({
       url: `${baseUrl}/metiers/${t.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    })),
+    ...SECTOR_PAGES.map((s) => ({
+      url: `${baseUrl}/secteurs/${s.slug}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.5,

@@ -15,7 +15,15 @@ const escapeHtml = (value = '') => String(value)
 // Schema de validation Zod - VALIDATION SIMPLIFIÉE
 const leadSchema = z.object({
   entreprise: z.string().trim().min(2, "Nom d’entreprise requis").max(120, "Nom d’entreprise trop long"),
-  secteur: z.enum(['plomberie', 'toiture', 'renovation', 'paysagement', 'electricite', 'cvac', 'deneigement','autre'], {
+  secteur: z.enum([
+    'construction-renovation',
+    'services-techniques',
+    'amenagement-exterieur',
+    'services-residentiels',
+    'commercial-industriel',
+    'services-mobiles',
+    'autre-service-terrain'
+  ], {
     errorMap: () => ({ message: "Secteur d'activité invalide" })
   }),
   region: z.enum(['montreal', 'rive-sud', 'rive-nord', 'laval', 'monteregie', 'autre'], {

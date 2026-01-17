@@ -5,7 +5,7 @@ import { Phone, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
-import { TRADE_PAGES } from '@/lib/content'
+import { SECTOR_PAGES } from '@/lib/content'
 import { useRouter } from 'next/navigation'
 import Logo from '@/components/ui/Logo'
 
@@ -81,28 +81,21 @@ const Header = () => {
             <div className="min-w-[150px]">
               <Select
                 onValueChange={(value) => {
-                  if (value === 'contact') {
-                    router.push('/#contact')
-                    return
-                  }
-                  router.push(`/metiers/${value}`)
+                  router.push(`/secteurs/${value}`)
                 }}
               >
                 <SelectTrigger
                   className="bg-white w-[200px] lg:w-[220px] whitespace-normal h-auto py-2 text-left items-start text-sm"
-                  aria-label="Choisir un corps de métier"
+                  aria-label="Choisir un secteur d’activité"
                 >
-                  <SelectValue placeholder="Mon métier est..." />
+                  <SelectValue placeholder="Mon secteur d’activité est..." />
                 </SelectTrigger>
               <SelectContent>
-                {TRADE_PAGES.map((t) => (
-                  <SelectItem key={t.slug} value={t.slug}>
-                    {t.dropdownLabel ?? t.title.replace(/^Sites web pour /i, '').replace(/ au Québec$/i, '')}
+                {SECTOR_PAGES.map((sector) => (
+                  <SelectItem key={sector.slug} value={sector.slug}>
+                    {sector.title}
                   </SelectItem>
                 ))}
-                <SelectItem key="contact" value="contact">
-                  Autre - contactez-nous
-                </SelectItem>
               </SelectContent>
               </Select>
             </div>
@@ -162,28 +155,21 @@ const Header = () => {
                 <Select
                   onValueChange={(value) => {
                     setIsMobileMenuOpen(false)
-                    if (value === 'contact') {
-                      router.push('/#contact')
-                      return
-                    }
-                    router.push(`/metiers/${value}`)
+                    router.push(`/secteurs/${value}`)
                   }}
                 >
                   <SelectTrigger
                     className="whitespace-normal h-auto py-2 text-left items-start"
-                    aria-label="Choisir un corps de métier"
+                    aria-label="Choisir un secteur d’activité"
                   >
-                  <SelectValue placeholder="Mon métier est..." />
+                  <SelectValue placeholder="Mon secteur d’activité est..." />
                   </SelectTrigger>
                   <SelectContent>
-                    {TRADE_PAGES.map((t) => (
-                      <SelectItem key={t.slug} value={t.slug}>
-                        {t.dropdownLabel ?? t.title.replace(/^Sites web pour /i, '').replace(/ au Québec$/i, '')}
+                    {SECTOR_PAGES.map((sector) => (
+                      <SelectItem key={sector.slug} value={sector.slug}>
+                        {sector.title}
                       </SelectItem>
                     ))}
-                    <SelectItem key="contact" value="contact">
-                      Autre - contactez-nous
-                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
