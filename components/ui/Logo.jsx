@@ -10,6 +10,7 @@ const Logo = ({
     data-name="Calque 1"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1116.71 798.41"
+    preserveAspectRatio="xMinYMid meet"
     role="img"
     aria-label={ariaLabel}
     focusable="false"

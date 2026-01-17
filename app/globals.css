@@ -134,4 +134,7 @@
   .scroll-mt-header {
     scroll-margin-top: 5rem;
   }
+  .catchphrase-highlight {
+    @apply text-safety md:text-3xl;
+  }
 }

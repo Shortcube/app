@@ -14,7 +14,7 @@ const Hero = () => {
   }
 
   return (
-    <section className="relative min-h-[calc(100vh-5rem)] flex items-center bg-gradient-to-br from-white via-concrete-50 to-white pt-4 md:pt-5">
+    <section className="relative min-h-[50vh] flex items-center bg-gradient-to-br from-white via-concrete-50 to-white pt-6 md:pt-8 mt-8 pb-10">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 right-0 w-72 h-72 bg-safety/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-navy/5 rounded-full blur-3xl" />
@@ -25,10 +25,11 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-navy leading-tight text-3xl md:text-4xl font-semibold max-w-3xl">
-                Vous gérez vos chantiers. Nous, on gère votre présence en ligne : site rapide, fiche Google solide, demandes de soumission qui entrent.
+                Site rapide, fiche Google solide, demandes de soumission qui entrent.
               </h1>
               <p className="text-xl md:text-2xl text-concrete-600 leading-relaxed max-w-xl">
-                Site web, fiche Google, formulaires, suivi. Un système simple qui rend votre entreprise plus trouvable et plus facile à contacter.
+                Site web, fiche Google, formulaires, suivi...<br />
+                Un système simple qui rend votre entreprise plus trouvable et plus facile à contacter.
               </p>
             </div>
 
@@ -52,7 +53,7 @@ const Hero = () => {
 
             <div className="pt-6 border-t border-concrete-200">
               <p className="text-concrete-500 text-sm">
-                Retour sous 24 h ouvrables. 1 page. Actions prioritaires.
+                Retour sous 48 h ouvrables. 1 page. Actions prioritaires.
               </p>
             </div>
           </div>
@@ -79,7 +80,7 @@ const Hero = () => {
               </div>
               <div>
                 <p className="text-navy font-bold text-lg whitespace-nowrap">Diagnostic gratuit</p>
-                <p className="text-concrete-500 text-sm">1 page, zéro BS</p>
+                <p className="text-concrete-500 text-sm">1 page, zéro engagement</p>
               </div>
               </div>
             </div>

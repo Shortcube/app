@@ -17,10 +17,14 @@ const Compliance = dynamic(() => import('@/components/sections/Compliance'))
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen pt-32">
       {/* Navigation - Above the fold */}
       <Header />
-      
+      <div className="section-container flex justify-center">
+        <div className="bg-white/90 backdrop-blur-sm border border-concrete-200 rounded-full px-6 py-3 md:py-4 text-center text-xl md:text-3xl font-bold text-navy shadow-xl mt-4 md:mt-6 mb-8 md:mb-10">
+          On gère votre <span className="catchphrase-highlight">présence web</span> pendant que vous gérez <span className="catchphrase-highlight">vos chantiers.</span>
+        </div>
+      </div>
       {/* Hero Section - Above the fold */}
       <Hero />
       

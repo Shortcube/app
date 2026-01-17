@@ -51,7 +51,7 @@ const Header = () => {
       }`}
     >
       <div className="section-container">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between py-2 md:py-3">
           {/* Logo */}
           <a 
             href="#" 
@@ -66,7 +66,7 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-6" aria-label="Navigation principale">
+          <nav className="hidden lg:flex items-center space-x-4" aria-label="Navigation principale">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -78,7 +78,7 @@ const Header = () => {
               </a>
             ))}
 
-            <div className="min-w-[180px]">
+            <div className="min-w-[150px]">
               <Select
                 onValueChange={(value) => {
                   if (value === 'contact') {
