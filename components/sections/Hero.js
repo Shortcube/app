@@ -84,7 +84,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="absolute -top-4 -right-4 md:right-8 bg-navy text-white rounded-lg shadow-xl p-4">
+            <div className="absolute top-4 right-4 md:-top-4 md:right-8 bg-navy text-white rounded-lg shadow-xl p-4 z-10">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
                   <svg className="w-5 h-5 text-safety" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
