@@ -73,6 +73,14 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
               <Link
+                href="/secteurs"
+                className="text-concrete-300 hover:text-safety transition-colors"
+              >
+                Secteurs d’activité
+              </Link>
+              </li>
+              <li>
+              <Link
                 href="/metiers"
                 className="text-concrete-300 hover:text-safety transition-colors"
               >
