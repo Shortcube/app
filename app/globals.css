@@ -140,4 +140,8 @@
     line-height: inherit;
     font-weight: inherit;
   }
+  .process-section,
+  .process-section > .section-container {
+    margin-bottom: 0;
+  }
 }

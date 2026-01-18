@@ -95,16 +95,16 @@ const Process = () => {
   ]
 
   return (
-    <section id="processus" className="process-section py-10 md:py-12 bg-white scroll-mt-header">
-      <div className="section-container">
+    <section id="processus" className="process-section py-8 md:py-10 bg-white scroll-mt-header">
+      <div className="section-container space-y-6 md:space-y-8">
         {/* En-tête */}
-        <div className="text-center mb-8 md:mb-10">
-          <div className="inline-flex items-center space-x-2 bg-safety/10 text-safety-700 px-4 py-2 rounded-full mb-4">
+        <div className="text-center space-y-2 md:space-y-3">
+          <div className="inline-flex items-center space-x-2 bg-safety/10 text-safety-700 px-3 py-1.5 rounded-full">
             <Clock className="w-4 h-4" />
             <span className="text-sm font-medium">Processus clair</span>
           </div>
-          <h2 className="text-navy mb-4 md:mb-5 leading-tight">Comment ça se passe</h2>
-          <p className="text-base md:text-lg text-concrete-600 max-w-2xl mx-auto">
+          <h2 className="text-navy leading-tight text-2xl md:text-[2.25rem]">Comment ça se passe</h2>
+          <p className="text-sm md:text-base text-concrete-600 max-w-2xl mx-auto leading-relaxed">
             Un processus clair, sans téléphone obligatoire et sans promesse inventée.
           </p>
         </div>
@@ -116,10 +116,10 @@ const Process = () => {
             <div className="hidden md:block absolute left-6 top-2 bottom-0 w-px bg-concrete-200" />
 
             {/* Étapes */}
-            <div className="space-y-4 md:space-y-5">
+            <div className="space-y-3 md:space-y-4">
               {steps.map((step, index) => {
                 const isCompact = compactSteps.has(step.number)
-                const marginClass = isCompact ? 'md:ml-10' : 'md:ml-12'
+                const marginClass = isCompact ? 'md:ml-8' : 'md:ml-10'
                 return (
                   <div key={index} className="relative">
                     {/* Carte de l'étape */}
@@ -127,13 +127,10 @@ const Process = () => {
                       className={`${marginClass} bg-white rounded-xl border border-concrete-200 overflow-hidden shadow-sm transition-shadow hover:shadow-md`}
                     >
                       {/* Header */}
-                      <div
-                        className={`flex items-center gap-3 ${isCompact ? 'p-3' : 'p-4'} ${
-                          isCompact ? '' : 'border-b border-concrete-100'
-                        }`}
-                      >
+                      <div className="flex items-center gap-3 border-b border-concrete-100 p-3">
                         <div
-                          className={`w-9 h-9 ${step.color} rounded-lg flex items-center justify-center`}
+                          className={`md:hidden flex items-center justify-center w-9 h-9 rounded-lg shadow-sm ${step.color}`}
+                          aria-hidden="true"
                         >
                           <step.icon className="w-4 h-4 text-white" />
                         </div>
@@ -146,13 +143,13 @@ const Process = () => {
                       </div>
 
                       {/* Contenu */}
-                      <div className={`px-4 ${isCompact ? 'py-3 space-y-1.5' : 'py-3 space-y-2'}`}>
+                      <div className={`px-3.5 py-2.5 ${isCompact ? 'space-y-1.5' : 'space-y-2'}`}>
                         {step.content.map((item, itemIndex) => {
                           if (item.type === 'text') {
                             return (
                               <p
                                 key={itemIndex}
-                                className={`text-concrete-600 leading-snug ${isCompact ? 'text-sm' : ''}`}
+                                className="text-concrete-600 leading-tight text-sm"
                               >
                                 {item.value}
                               </p>
@@ -163,7 +160,7 @@ const Process = () => {
                             return (
                               <p
                                 key={itemIndex}
-                                className="flex items-center gap-2 text-xs text-concrete-500"
+                                className="flex items-center gap-1.5 text-[0.65rem] text-concrete-500 leading-tight"
                               >
                                 <CheckCircle2 className="w-3.5 h-3.5 text-safety flex-shrink-0" />
                                 {item.value}
@@ -173,14 +170,18 @@ const Process = () => {
 
                           if (item.type === 'split') {
                             return (
-                              <div key={itemIndex} className="grid md:grid-cols-2 gap-4">
+                              <div key={itemIndex} className="grid md:grid-cols-2 gap-3">
                                 <div className="bg-concrete-50 rounded-lg p-3">
-                                  <span className="text-xs font-bold text-safety uppercase tracking-wide">Vous</span>
-                                  <p className="text-concrete-600 mt-2">{item.vous}</p>
+                                  <span className="text-[0.6rem] font-semibold text-safety uppercase tracking-wide">
+                                    Vous
+                                  </span>
+                                  <p className="text-concrete-600 mt-1 text-sm">{item.vous}</p>
                                 </div>
                                 <div className="bg-navy/5 rounded-lg p-3">
-                                  <span className="text-xs font-bold text-navy uppercase tracking-wide">Nous</span>
-                                  <p className="text-concrete-600 mt-2">{item.nous}</p>
+                                  <span className="text-[0.6rem] font-semibold text-navy uppercase tracking-wide">
+                                    Nous
+                                  </span>
+                                  <p className="text-concrete-600 mt-1 text-sm">{item.nous}</p>
                                 </div>
                               </div>
                             )
@@ -188,9 +189,9 @@ const Process = () => {
 
                           if (item.type === 'note') {
                             return (
-                              <div key={itemIndex} className="flex items-start gap-3 text-sm text-concrete-500 italic">
+                              <div key={itemIndex} className="flex items-start gap-2 text-xs text-concrete-500 italic">
                                 <span className="text-concrete-400">Note :</span>
-                                <p>{item.value}</p>
+                                <p className="text-xs leading-snug">{item.value}</p>
                               </div>
                             )
                           }
