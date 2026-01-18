@@ -1,7 +1,9 @@
 import { Button } from '@/components/ui/button'
 import { siteConfig } from '@/lib/site-config'
 
-const PORTAL_URL = 'https://billing.stripe.com/p/login/6oUeVe9WJ6wra7VeYJeEo00'
+const PORTAL_URL =
+  process.env.NEXT_PUBLIC_STRIPE_PORTAL_LOGIN_URL ||
+  'https://billing.stripe.com/p/login/6oUeVe9WJ6wra7VeYJeEo00'
 
 export default function ComptePage() {
   return (
@@ -14,7 +16,7 @@ export default function ComptePage() {
         </p>
         <div className="flex justify-center">
           <Button asChild size="lg">
-            <a href={PORTAL_URL} target="_blank" rel="noreferrer">Ouvrir le portail client</a>
+            <a href={PORTAL_URL} target="_blank" rel="noreferrer">Gérer mon abonnement</a>
           </Button>
         </div>
         <p className="text-sm text-concrete-500">

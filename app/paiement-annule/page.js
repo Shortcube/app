@@ -2,28 +2,43 @@ import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 import { siteConfig } from '@/lib/site-config'
+import { normalizePlan } from '@/lib/stripe-edge'
 
-export default function PaiementAnnulePage() {
+export const runtime = 'edge'
+
+export default function PaiementAnnulePage({ searchParams }) {
+  const planParam = String(searchParams?.plan || '')
+  let plan
+  try {
+    plan = normalizePlan(planParam)
+  } catch (error) {
+    plan = null
+  }
+
+  const retryHref = plan ? `/payer?plan=${plan}` : '/tarifs'
+
   return (
     <main className="section-container min-h-screen py-20">
-      <div className="max-w-3xl mx-auto space-y-8 text-center">
+      <div className="max-w-3xl mx-auto space-y-6 text-center">
         <h1 className="text-4xl font-semibold text-navy">Paiement annulé</h1>
         <p className="text-lg text-concrete-600 leading-relaxed">
-          Il semble que vous n’ayez pas finalisé la transaction Stripe. Aucun changement n’a été apporté à votre abonnement.
+          Le tunnel Stripe a été quitté prématurément. Aucun changement n’a été appliqué à votre abonnement.
         </p>
         <p className="text-base text-concrete-600">
-          Réessayez avec le lien reçu après le diagnostic ou contactez-nous, on vérifie que le lien Stripe est toujours valide.
+          {plan
+            ? `On peut réessayer le plan "${plan}" en cliquant sur le bouton ci-dessous.`
+            : "Choisissez d'abord un forfait valide pour relancer une session Stripe."}
         </p>
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-3">
           <Button asChild variant="default" size="lg">
-            <Link href="/payer">Retour au diagnostic / lien de paiement</Link>
+            <Link href={retryHref}>Réessayer</Link>
           </Button>
           <Button asChild variant="ghost" size="lg">
-            <Link href="/compte">Voir mon compte Stripe</Link>
+            <Link href="/">Retour à l'accueil</Link>
           </Button>
         </div>
         <p className="text-sm text-concrete-500">
-          Vous préférez qu’on vous renvoie un lien ? Écrivez-nous à <a className="text-safety hover:underline" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+          Besoin d'aide ? Écrivez-nous à <a className="text-safety hover:underline" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
         </p>
       </div>
     </main>

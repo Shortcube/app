@@ -1,77 +1,61 @@
 # Stripe Billing integration — BureauWeb.ca
 
-Ce document résume les choix d'architecture Stripe et les actions à effectuer pour garder la facturation simple, conforme et maintenable.
+Ce document résume la nouvelle architecture Stripe sur BureauWeb.ca (App Router + Cloudflare Pages).
 
 ## 1. Objectifs
-- Utiliser exclusivement Stripe Checkout / Payment Links et le portail client officiel.  
-- Garder Stripe comme source de vérité pour les abonnements, les factures, les annulations et les cartes.  
-- Traiter les webhooks essentiels (succès, échec, annulation) avec validation de signature.  
-- Ne pas réinventer les emails Stripe : confiance dans les notifications natives.  
-- Laisser la pile existante (formulaire de contact, Resend, lead capture) inchangée.
+- Stripe Checkout est la seule porte d’entrée vers les abonnements (mode `subscription`).  
+- L’activation (pro et croissance) est appliquée côté serveur via `subscription_data[add_invoice_items]`.  
+- Stripe reste la source de vérité : factures, annulations, cartes.  
+- Les webhooks sont gérés en Edge runtime sans SDK afin de garder le flux compatible Cloudflare/Next.  
+- Les notifications superflues sont évitées : Stripe envoie ses emails transactionnels, Resend ne déclenche qu’un simple signal interne si configuré.
 
-## 2. Pages publiques pour le flux de paiement
-- `/merci` : page cible du `success_url` de chaque Payment Link / Checkout Session. Elle rappelle qu’un reçu arrive par courriel et propose d’ouvrir `/compte`.  
-- `/paiement-annule` : page cible du `cancel_url` pour rassurer, renvoyer vers `/payer` ou `/compte`.  
-- `/compte` : bouton vers le portail client Stripe (https://billing.stripe.com/p/login/6oUeVe9WJ6wra7VeYJeEo00) documenté dans le pied de page et utilisé comme destination unique pour la gestion autonome.
+## 2. Pages et points d’entrée
+- `/payer` : page Edge light qui valide `plan` (`depart`, `pro`, `croissance`). Si le plan est valide, redirection 303 vers `/api/stripe/checkout?plan=<plan>`. Sinon, affiche la liste des plans attendus (pas de formulaire, pas de logiques de paiement côté client).  
+- `/merci` : page remerciment. Elle est décorée `robots: noindex,nofollow`, confirme que Stripe a traité la session, explique que le reçu arrive par courriel et renvoie vers `/compte` pour gérer l’abonnement.  
+- `/paiement-annule` : page qui affiche que le paiement a été annulé, propose de réessayer (avec `plan` si valide) ou de revenir à l’accueil.  
+- `/compte` : redirige vers `NEXT_PUBLIC_STRIPE_PORTAL_LOGIN_URL` (ou le lien par défaut). Bouton “Gérer mon abonnement”, rappel que le portail permet annulation/carte/facture.
 
-## 3. Payment Links / Checkout Sessions
-- Chaque forfait (départ, pro, croissance, activation) envoie vers Stripe pour la création d’un abonnement.  
-- Configurer `success_url` → `https://bureauweb.ca/merci` et `cancel_url` → `https://bureauweb.ca/paiement-annule`.  
-- Mentionner (dans le diagnostic ou dans la confirmation) que le lien arrive par courriel après validation.  
-- Ne pas implémenter de formulaire de paiement maison : garder un petit `app/payer` informatif.  
-- Les URLs sont stockées dans `lib/site-config` via les variables `STRIPE_PAYMENT_LINK_*`.
+## 3. Checkout Sessions Edge-safe (`lib/stripe-edge.js`)
+- `normalizePlan(input)` s’assure que `plan ∈ {depart, pro, croissance}`.  
+- `getOriginFromHeaders(headers)` construit `https://${host}` en utilisant `x-forwarded-proto`/`host`.  
+- `createCheckoutSessionUrl({ plan, origin })` assemble un `POST` `application/x-www-form-urlencoded` vers `https://api.stripe.com/v1/checkout/sessions`.  
+  - `mode=subscription`, `locale=fr-CA`, `customer_creation=always`, metadata plan+activation.  
+  - `subscription_data[items][0]` contient le prix du plan (depuis `STRIPE_PRICE_ID_*`).  
+  - Si `plan === 'pro' || plan === 'croissance'`, on ajoute `subscription_data[add_invoice_items][0]` avec l’ID d’activation correspondant (`STRIPE_PRICE_ID_ACTIVATION_*`).  
+  - `success_url` = `${origin}/merci?session_id={CHECKOUT_SESSION_ID}`, `cancel_url` = `${origin}/paiement-annule?plan=<plan>`.  
+  - La clé secrète Stripe (`STRIPE_SECRET_KEY`) est exigée et transmise dans l’en-tête `Authorization`.
 
-## 4. Portail client Stripe
-- Le bouton `/compte` redirige vers le portail Stripe existant (login link fourni).  
-- Activer dans Stripe :  
-  - Annulations en libre-service (fin de la période payée ou immédiate selon le choix).  
-  - Mise à jour sécurisée des cartes.  
-  - Mise à jour des infos de facturation.  
-  - [Optionnel] Activer la gestion des factures (téléchargement, envoyées).  
-- Documenter dans le site que c’est Stripe qui gère ces tâches (cf. page `/compte`).  
-- Les emails de Stripe (confirmation de paiement, facture émise, échec) restent activés ; ne pas envoyer de doublons via Resend pour ces cas.
+## 4. API routes Stripe
+- `/api/stripe/checkout`: Edge runtime. Lit `?plan=…`, normalise, calcule l’origin via `getOriginFromHeaders`, appelle `createCheckoutSessionUrl`, puis redirige (303) vers la session Stripe. Aucun secret côté client.  
+- `/api/stripe/webhook`: Edge runtime. Vérifie la signature Stripe manuellement (HMAC SHA-256 sur `${t}.${payload}` avec `STRIPE_WEBHOOK_SECRET`, tolérance 300 s). Parse l’événement après validation.
 
-## 5. Configuration de l’environnement
-- `.env` (ou Cloud) doit comporter :  
-  - `NEXT_PUBLIC_CONTACT_PHONE` (si demandé).  
-  - `STRIPE_PAYMENT_LINK_*` pour chaque lien.  
-  - `STRIPE_SECRET_KEY` (clée secrète) pour valider les webhooks.  
-  - `STRIPE_WEBHOOK_SECRET` (secret du webhook).  
-- Exemple de `.env.example` mis à jour avec ces clés.  
-- Stripe reste la source de vérité : aucune donnée de paiement ne doit être dupliquée dans MongoDB.
+## 5. Webhooks et notifications
+- Événements actifs :  
+  - `checkout.session.completed` : on réunit plan/activation (metadata), session/subscription IDs et l’email du client. Si `RESEND_API_KEY` est défini, un petit email interne est envoyé à `info@bureauweb.ca`. Si `LEADS_WEBHOOK_URL` est configuré, on poste un JSON de résumé (plan, session, email, timestamp).  
+  - `invoice.payment_failed` : `console.warn` pour déclencher un suivi manuel.  
+- Toutes les réponses renvoient `{received:true}` pour donner à Stripe un 2xx rapide. Les autres events sont ignorés mais peuvent être ajoutés plus tard après signature.
 
-## 6. Webhooks
-- Endpoint exposé : `POST /api/stripe/webhooks`.  
-- Runtime Node.js pour récupérer le texte brut (Next.js App Router).  
-- Validation via `stripe.webhooks.constructEvent(body, signature, STRIPE_WEBHOOK_SECRET)`.  
-- Événements traités :  
-  - `checkout.session.completed` → log / action future (par ex. déclencher un email manuel).  
-  - `invoice.payment_succeeded` → log.  
-  - `invoice.payment_failed` → log avec warning.  
-  - `customer.subscription.deleted` → log (possible pause).  
-- Le handler peut être étendu pour persister dans MongoDB si besoin en gardant Stripe comme source de vérité.  
-- Configurer la signature envoyée par Stripe et la coller dans l’admin (Webhook Settings → Add endpoint).  
+## 6. Configuration environnementale
+- `.env` / Cloudflare doit contenir les clés suivantes (liste présente dans `.env.example`) :  
+  - `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`  
+  - `STRIPE_PRICE_ID_DEPART`, `STRIPE_PRICE_ID_PRO`, `STRIPE_PRICE_ID_CROISSANCE`  
+  - `STRIPE_PRICE_ID_ACTIVATION_PRO`, `STRIPE_PRICE_ID_ACTIVATION_CROISSANCE`  
+  - `NEXT_PUBLIC_STRIPE_PORTAL_LOGIN_URL` (optionnel mais pratique).  
+  - `RESEND_API_KEY`, `LEADS_WEBHOOK_URL` (optionnels).  
+  - Les anciens `STRIPE_PAYMENT_LINK_*` sont conservés pour référence, mais la logique en production utilise maintenant les price IDs/microservices Stripe Checkout.  
 
 ## 7. Emails Stripe vs Resend
-- Stripe gère : confirmations de paiement, factures, échecs, relances (dunning). Ne pas dupliquer ces emails.  
-- Resend continue d’envoyer les communications internes (diagnostic, formulaires de contact, micro-livrable).  
-- Mentionner sur `/merci` et `/compte` que Stripe envoie les confirmations officielles.
+- Stripe reste responsable des emails transactionnels (confirmation de paiement, facture, échec).  
+- Resend est utilisé uniquement comme “petit ping interne” après `checkout.session.completed` si la clé est définie. Cela évite les doublons en parallèle des notifications Stripe.
 
-## 8. Points de vigilance / limites
-1. Stripe Customer Portal est central : aucun bouton `annuler` local, toute annulation passe par `/compte`.  
-2. Les webhooks sont minimalistes. Si on souhaite consigner dans MongoDB, ajouter un service métier en gardant Stripe comme source de vérité.  
-3. Le portail est un login unique. Si la session expire, Stripe envoie l’utilisateur vers la page de connexion standard (pas de `session_id` dynamiques).  
-4. Si un lien Stripe est expiré, il faut réémettre un Payment Link ; la page `/paiement-annule` oriente vers le contact.  
-5. Aucun onboarding de portails tiers (type `Billing Portal` custom) n’est prévu.
+## 8. Résumé des livrables
+- `/payer`, `/merci`, `/paiement-annule`, `/compte` (App Router + Edge).  
+- `/api/stripe/checkout` et `/api/stripe/webhook` (Edge).  
+- `lib/stripe-edge.js` pour encapsuler la création de sessions.  
+- `.env.example` complété avec les nouveaux prix, secrets et webhook/portal keys.  
+- Documentation qui explique le flux et les étapes de configuration.
 
-## 9. Vérification
-- `npm run lint` et `npm run build` validés après les changements.  
-- Tester les pages `/merci`, `/paiement-annule`, `/compte` en local.  
-- Configurer Stripe pour pointer vers `https://bureauweb.ca/api/stripe/webhooks` et envoyer une requête de test depuis le dashboard pour vérifier la signature.
-
-## 10. Résumé rapide des livrables
-- Pages `/merci`, `/paiement-annule`, `/compte` côté client.  
-- Footer mis à jour avec le lien `Compte client`.  
-- Webhook `app/api/stripe/webhooks` (stripe SDK + signature).  
-- Doc stratégique `docs/stripe-billing.md` + `.env.example` mis à jour.  
-- `Stripe` comme dépendance npm et `resend` inchangé.
+## 9. Étapes manuelles restantes sur Stripe
+1. Créer les produits/price IDs (départ/pro/croissance + activations) et copier les `STRIPE_PRICE_ID_*` dans le `.env` de production.  
+2. Dans Dashboard Stripe → Webhooks, ajouter `https://bureauweb.ca/api/stripe/webhook` avec le secret (`STRIPE_WEBHOOK_SECRET`). Activez au minimum `checkout.session.completed` et `invoice.payment_failed`.  
+3. Configurer le Customer Portal (annulations, cartes, facturation) et copier l’URL dans `NEXT_PUBLIC_STRIPE_PORTAL_LOGIN_URL` (sinon on utilise le login fourni).  
