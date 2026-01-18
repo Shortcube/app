@@ -135,6 +135,9 @@
     scroll-margin-top: 5rem;
   }
   .catchphrase-highlight {
-    @apply text-safety md:text-3xl;
+    @apply text-safety;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
   }
 }
