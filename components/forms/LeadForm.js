@@ -349,6 +349,9 @@ const LeadForm = () => {
                     <Label htmlFor="courriel" className="block text-sm font-medium text-navy mb-2">
                       Courriel <span className="text-red-500">*</span>
                     </Label>
+                    <p className="text-xs text-concrete-500 mb-1">
+                      Utilisé pour vous envoyer le diagnostic gratuit.
+                    </p>
                     <div className="relative">
                       <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" aria-hidden="true" />
                       <Input
@@ -357,7 +360,7 @@ const LeadForm = () => {
                         name="courriel"
                         value={formData.courriel}
                         onChange={handleChange}
-                        placeholder="votre@courriel.ca (pour recevoir le diagnostic gratuit)"
+                        placeholder="votre@courriel.com"
                         className={`pl-10 ${errors.courriel ? 'border-red-500' : ''}`}
                         aria-describedby={errors.courriel ? 'courriel-error' : undefined}
                         aria-invalid={!!errors.courriel}
@@ -444,8 +447,11 @@ const LeadForm = () => {
                       name="objectif"
                       value={formData.objectif}
                       onChange={handleChange}
-                      placeholder="Ex.: plus d’appels, plus de soumissions, mieux filtrer les demandes, être mieux trouvé sur Google"
+                      placeholder="Ex.: plus d’appels qualifiés ou plus de soumissions"
                     />
+                    <p className="mt-1 text-xs text-concrete-500">
+                      Objectifs fréquents : appels, soumissions, filtrage, visibilité Google...
+                    </p>
                   </div>
                   
                   {/* Bouton */}
