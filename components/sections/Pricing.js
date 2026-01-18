@@ -66,7 +66,7 @@ const Pricing = () => {
                   )}
                 </div>
 
-                <div className="space-y-4 mb-8 flex-1">
+                <div className="space-y-3 mb-6 flex-1">
                   <p className="text-sm font-semibold text-concrete-500 uppercase tracking-wide">Ce qui est inclus</p>
                   {plan.included.map((text, idx) => (
                     <div key={idx} className="flex items-start gap-3">
@@ -91,14 +91,14 @@ const Pricing = () => {
                   </div>
                 )}
 
-                <div className="mt-4 flex flex-col items-center gap-3 md:flex-row md:items-center md:justify-between">
+                <div className="mt-auto space-y-3 text-center">
                   <Button
-                    className={`w-full md:w-auto py-6 text-lg font-semibold ${plan.popular ? 'btn-cta' : 'bg-navy hover:bg-navy-800 text-white'}`}
+                    className={`w-full py-6 text-lg font-semibold ${plan.popular ? 'btn-cta' : 'bg-navy hover:bg-navy-800 text-white'}`}
                     onClick={scrollToContact}
                   >
                     Recevoir mon diagnostic gratuit
                   </Button>
-                  <p className="text-center text-sm text-concrete-500 md:text-right">
+                  <p className="text-sm text-concrete-500">
                     <a href="/limites" className="text-safety hover:underline">Voir les limites mensuelles</a>
                   </p>
                 </div>
