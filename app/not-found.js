@@ -36,18 +36,6 @@ export default function NotFound() {
             </div>
           </div>
 
-          <div className="hidden md:block">
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-              <p className="text-xs font-semibold text-slate-700">Panneau de chantier</p>
-              <p className="mt-2 text-sm text-slate-600">
-                Objectif: remettre le visiteur sur une trajectoire utile, sans friction.
-              </p>
-              <div className="mt-4 h-1 w-full rounded bg-slate-900" />
-              <p className="mt-3 text-xs text-slate-500">
-                Infrastructure web. Pas de detours inutiles.
-              </p>
-            </div>
-          </div>
         </div>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -99,12 +87,6 @@ export default function NotFound() {
           </div>
         </div>
 
-        <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-5">
-          <p className="text-sm text-slate-600">
-            Phrase cle: <span className="font-medium text-slate-900">on gere votre web pendant que vous gerez vos chantiers.</span>
-            <span className="text-slate-500"> Si vous etes perdu, l&apos;accueil est la meilleure rampe de retour.</span>
-          </p>
-        </div>
       </div>
     </main>
   )
