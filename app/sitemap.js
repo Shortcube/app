@@ -5,6 +5,7 @@ import { BLOG_POSTS, REGION_PAGES, SECTOR_PAGES, TRADE_PAGES } from '@/lib/conte
 export default function sitemap() {
   const baseUrl = 'https://bureauweb.ca'
   const now = new Date()
+  const blogEnabled = process.env.BLOG_ENABLED === 'true'
 
   const staticUrls = [
     {
@@ -31,11 +32,21 @@ export default function sitemap() {
       changeFrequency: 'monthly',
       priority: 0.6,
     },
+    ...(blogEnabled
+      ? [
+          {
+            url: `${baseUrl}/blog`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.6,
+          },
+        ]
+      : []),
     {
-      url: `${baseUrl}/blog`,
+      url: `${baseUrl}/limites`,
       lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6,
+      changeFrequency: 'yearly',
+      priority: 0.4,
     },
     {
       url: `${baseUrl}/confidentialite`,
@@ -76,12 +87,14 @@ export default function sitemap() {
       changeFrequency: 'monthly',
       priority: 0.5,
     })),
-    ...BLOG_POSTS.map((p) => ({
-      url: `${baseUrl}/blog/${p.slug}`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.4,
-    })),
+    ...(blogEnabled
+      ? BLOG_POSTS.map((p) => ({
+          url: `${baseUrl}/blog/${p.slug}`,
+          lastModified: now,
+          changeFrequency: 'yearly',
+          priority: 0.4,
+        }))
+      : []),
   ]
 
   return [...staticUrls, ...dynamicUrls]

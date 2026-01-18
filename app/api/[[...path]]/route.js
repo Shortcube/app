@@ -74,7 +74,7 @@ if (path === '/lead' || path === '/leads') {
       logger.warn('Lead rejeté (honeypot rempli).')
       return NextResponse.json({
         success: true,
-        message: 'Votre demande a été reçue. Nous vous contacterons sous 24h ouvrables.'
+        message: 'Votre demande a été reçue. Retour sous 24–48 h ouvrables.'
       }, { status: 201 })
     }
 
@@ -251,9 +251,10 @@ if (path === '/lead' || path === '/leads') {
     }
 
     // Webhook optionnel (Zapier/Make/etc.)
-    if (process.env.WEBHOOK_URL) {
+    const leadsWebhookUrl = process.env.LEADS_WEBHOOK_URL || process.env.WEBHOOK_URL
+    if (leadsWebhookUrl) {
       try {
-        await fetch(process.env.WEBHOOK_URL, {
+        await fetch(leadsWebhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(lead)
@@ -266,7 +267,7 @@ if (path === '/lead' || path === '/leads') {
 
     return NextResponse.json({
       success: true,
-      message: 'Votre demande a été reçue. Nous vous contacterons sous 24h ouvrables.',
+      message: 'Votre demande a été reçue. Retour sous 24–48 h ouvrables.',
       leadId: lead.id
     }, { status: 201 })
 

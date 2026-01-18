@@ -113,6 +113,14 @@ const Footer = () => {
               </li>
               <li>
                 <a
+                  href="/limites"
+                  className="text-concrete-300 hover:text-safety transition-colors"
+                >
+                  Limites mensuelles
+                </a>
+              </li>
+              <li>
+                <a
                   href="/conditions"
                   className="text-concrete-300 hover:text-safety transition-colors"
                 >

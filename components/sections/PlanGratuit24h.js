@@ -5,11 +5,11 @@ import { Button } from '@/components/ui/button'
 
 const PlanGratuit24h = () => {
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('diagnostic')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
-    <section id="diagnostic" className="py-20 md:py-28 bg-white scroll-mt-header">
+    <section id="diagnostic-info" className="py-20 md:py-28 bg-white scroll-mt-header">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
@@ -19,7 +19,7 @@ const PlanGratuit24h = () => {
             </div>
             <h2 className="text-navy mb-4">Un diagnostic écrit, 1 page max</h2>
             <p className="text-xl text-concrete-600">
-              Objectif: montrer exactement quoi faire et comment, sans rien inventer, pour décider rationnellement si on travaille ensemble.
+              Objectif: montrer quoi faire, sans rien inventer, pour décider rationnellement si on avance ensemble.
             </p>
           </div>
 
@@ -67,21 +67,21 @@ const PlanGratuit24h = () => {
                 <div className="w-8 h-8 rounded-full bg-safety/10 text-safety flex items-center justify-center font-bold">4</div>
                   <div>
                     <p className="font-semibold text-navy">Plan 21 jours (vue d’ensemble)</p>
-                  <p className="text-concrete-600">Semaine 1: fondations. Semaine 2: conversion + SEO local. Semaine 3: QA + lancement.</p>
+                  <p className="text-concrete-600">Vue d’ensemble non détaillée, sans promesse de délais.</p>
                 </div>
               </li>
               <li className="flex gap-3">
                 <div className="w-8 h-8 rounded-full bg-safety/10 text-safety flex items-center justify-center font-bold">5</div>
                 <div>
                   <p className="font-semibold text-navy">Ce qui serait inclus si on avance</p>
-                  <p className="text-concrete-600">Site DFY + maintenance, fiche Google, avis (selon forfait), support.</p>
+                  <p className="text-concrete-600">Infrastructure web, fiche Google, maintenance mensuelle (selon limites).</p>
                 </div>
               </li>
               <li className="flex gap-3">
                 <div className="w-8 h-8 rounded-full bg-safety/10 text-safety flex items-center justify-center font-bold">6</div>
                 <div>
                   <p className="font-semibold text-navy">Prochaines étapes</p>
-                  <p className="text-concrete-600">Paiement activation + abonnement, signature entente, onboarding, production, lancement.</p>
+                  <p className="text-concrete-600">Décision GO/NO-GO, envoi d’un lien Stripe si on avance, puis production.</p>
                 </div>
               </li>
             </ol>
@@ -96,10 +96,14 @@ const PlanGratuit24h = () => {
               <div className="flex gap-3 bg-concrete-50 rounded-xl p-4 border border-concrete-200">
                 <CheckCircle2 className="w-5 h-5 text-safety mt-0.5" aria-hidden="true" />
                 <p className="text-sm text-concrete-700">
-                  Temps cible: 20 à 30 minutes. Même template à chaque fois. Ton neutre, clair, professionnel.
+                  Même template à chaque fois. Ton neutre, clair, professionnel.
                 </p>
               </div>
             </div>
+
+            <p className="mt-6 text-center text-sm text-concrete-500">
+              Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires.
+            </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <Button className="btn-cta px-8 py-6 h-auto text-lg" onClick={scrollToContact}>

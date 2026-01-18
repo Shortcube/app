@@ -20,10 +20,10 @@ export default function MetiersPage() {
         <h2 className="text-2xl font-semibold text-safety">Vous ne trouvez pas votre métier ?</h2>
         <p className="mt-2 text-concrete-700 leading-relaxed">
           Même si on ne l’a pas listé, on pourrait peut-être tout de même vous aider. Décrivez rapidement
-          votre activité et vos objectifs, on vous propose un plan concret sous 24 heures ouvrables.
+          votre activité et vos objectifs, on vous propose un plan concret. Retour sous 24–48 h ouvrables.
         </p>
         <Link
-          href="/#contact"
+          href="/#diagnostic"
           className="mt-4 inline-flex items-center text-sm font-semibold text-safety hover:underline"
         >
           Contacter l’équipe

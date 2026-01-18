@@ -1,78 +1,98 @@
-import { Phone, FileCheck, Rocket, Ship, AlertTriangle, Clock, CheckCircle2 } from 'lucide-react'
+import { FileCheck, CheckCircle2, CreditCard, Hammer, Rocket, ShieldCheck, Clock } from 'lucide-react'
 
 const Process = () => {
   const steps = [
     {
       number: '01',
-      icon: Phone,
-      title: 'On jase ensemble',
-      duration: '15 min environ (téléphone ou vidéo)',
+      icon: FileCheck,
+      title: 'Diagnostic',
+      duration: 'Étape 1',
       color: 'bg-blue-500',
       content: [
         {
           type: 'text',
-          value: 'On vérifie si votre métier et votre coin correspondent à ce qu\'on fait. Pas de perte de temps des deux côtés.',
+          value: 'On analyse votre site, votre fiche Google et les infos que vous fournissez. Diagnostic écrit, 1 page.',
         },
         {
           type: 'highlight',
-          value: 'Vous recevez une liste claire de ce qu\'on a besoin : photos, textes, accès à votre fiche Google.',
+          value: 'Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires.',
         },
       ],
     },
     {
       number: '02',
-      icon: FileCheck,
-      title: 'Vous envoyez, on construit',
-      duration: 'Cible : 21 jours ouvrables',
+      icon: CheckCircle2,
+      title: 'Décision',
+      duration: 'Étape 2',
       color: 'bg-safety',
       content: [
         {
-          type: 'split',
-          vous: 'Vous nous envoyez vos documents dans les 7 jours suivant la signature.',
-          nous: 'On audite votre présence Google, on configure l\'hébergement, on construit le site.',
+          type: 'text',
+          value: 'GO/NO-GO clair et offre (2 options max) si c’est pertinent.',
         },
         {
-          type: 'note',
-          value: 'Si vous demandez des changements majeurs après qu\'on a validé le design ensemble, ça peut prendre plus de temps.',
-        },
-        {
-          type: 'warning',
-          value: 'Si on n\'a pas vos documents après 14 jours, le projet est mis sur pause jusqu\'à réception.',
+          type: 'highlight',
+          value: 'Si on avance, on précise le périmètre et les limites mensuelles.',
         },
       ],
     },
     {
       number: '03',
-      icon: Rocket,
-      title: 'Lancement et formation',
-      duration: '1 h environ (vidéo)',
+      icon: CreditCard,
+      title: 'Paiement',
+      duration: 'Étape 3',
       color: 'bg-green-500',
       content: [
         {
           type: 'text',
-          value: 'On vous montre comment fonctionne le système pour demander des avis à vos clients.',
+          value: 'Paiement envoyé après diagnostic (lien Stripe).',
         },
         {
           type: 'text',
-          value: 'Vous recevez vos accès (en lecture) et on s\'occupe de toute la technique.',
+          value: 'Une fois le paiement reçu, l’abonnement est actif et la production démarre.',
         },
       ],
     },
     {
       number: '04',
-      icon: Ship,
-      title: 'On roule',
-      duration: 'Service continu',
+      icon: Hammer,
+      title: 'Production',
+      duration: 'Étape 4',
       color: 'bg-navy',
       content: [
         {
-          type: 'split',
-          vous: 'Vous nous signalez les changements à faire (nouveaux services, photos de chantiers récents).',
-          nous: 'On gère les sauvegardes, la sécurité, les mises à jour techniques.',
+          type: 'text',
+          value: 'On construit le site à partir du template BureauWeb et des éléments fournis.',
         },
         {
           type: 'highlight',
-          value: 'Chaque mois, vous recevez un rapport simple par courriel : visiteurs, demandes reçues, nouveaux avis.',
+          value: 'Échanges écrits par défaut. Appel optionnel si utile.',
+        },
+      ],
+    },
+    {
+      number: '05',
+      icon: Rocket,
+      title: 'Livraison',
+      duration: 'Étape 5',
+      color: 'bg-slate-700',
+      content: [
+        {
+          type: 'text',
+          value: 'Go-live + handoff court (accès, checklist, points d’attention).',
+        },
+      ],
+    },
+    {
+      number: '06',
+      icon: ShieldCheck,
+      title: 'Exploitation mensuelle',
+      duration: 'Étape 6',
+      color: 'bg-slate-900',
+      content: [
+        {
+          type: 'text',
+          value: 'Rapport 1 page, 1 micro-amélioration, QA mensuelle.',
         },
       ],
     },
@@ -91,7 +111,7 @@ const Process = () => {
             Comment ça se passe
           </h2>
           <p className="text-xl text-concrete-600 max-w-2xl mx-auto">
-            Un processus simple avec des délais réalistes. Pas de promesses en l'air.
+            Un processus clair, sans téléphone obligatoire et sans promesse inventée.
           </p>
         </div>
 
@@ -172,15 +192,6 @@ const Process = () => {
                             <div key={itemIndex} className="flex items-start gap-3 text-sm text-concrete-500 italic">
                               <span className="text-concrete-400">Note :</span>
                               <p>{item.value}</p>
-                            </div>
-                          )
-                        }
-                        
-                        if (item.type === 'warning') {
-                          return (
-                            <div key={itemIndex} className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-lg p-4">
-                              <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                              <p className="text-amber-800 text-sm">{item.value}</p>
                             </div>
                           )
                         }

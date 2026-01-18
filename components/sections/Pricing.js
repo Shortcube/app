@@ -6,7 +6,7 @@ import { PRICING_PLANS, ENGAGEMENT_INITIAL_MOIS } from '@/lib/content'
 
 const Pricing = () => {
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('diagnostic')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -42,18 +42,26 @@ const Pricing = () => {
                   <h3 className="text-2xl font-bold text-navy mb-3">{plan.name}</h3>
                   <p className="text-concrete-600 mb-5">{plan.description}</p>
 
-                  <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-5xl font-bold text-navy">{plan.monthlyPrice}</span>
-                    <span className="text-xl text-concrete-500">$/mois</span>
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-4xl md:text-5xl font-bold text-navy">{plan.monthlyPrice}</span>
+                    {typeof plan.monthlyPrice === 'number' && (
+                      <span className="text-xl text-concrete-500">$/mois</span>
+                    )}
                   </div>
 
-                  {plan.activationFee > 0 ? (
-                    <p className="text-concrete-500 mt-2">
-                      + frais d’activation: <span className="font-semibold text-navy">{plan.activationFee}$</span>
-                    </p>
+                  {typeof plan.activationFee === 'number' ? (
+                    plan.activationFee > 0 ? (
+                      <p className="text-concrete-500 mt-2">
+                        + frais d’activation: <span className="font-semibold text-navy">{plan.activationFee}$</span>
+                      </p>
+                    ) : (
+                      <p className="text-concrete-500 mt-2">
+                        <span className="font-semibold text-navy">Sans frais d’activation</span>
+                      </p>
+                    )
                   ) : (
                     <p className="text-concrete-500 mt-2">
-                      <span className="font-semibold text-navy">Sans frais d’activation</span>
+                      Frais d’activation: <span className="font-semibold text-navy">{plan.activationFee}</span>
                     </p>
                   )}
                 </div>
@@ -89,6 +97,9 @@ const Pricing = () => {
                 >
                   Recevoir mon diagnostic gratuit
                 </Button>
+                <p className="mt-4 text-center text-sm text-concrete-500">
+                  <a href="/limites" className="text-safety hover:underline">Voir les limites mensuelles</a>
+                </p>
               </div>
             </div>
           ))}
@@ -103,28 +114,26 @@ const Pricing = () => {
 
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="text-center p-4 bg-concrete-50 rounded-lg">
-                <p className="text-2xl font-bold text-navy">{ENGAGEMENT_INITIAL_MOIS} mois</p>
+                <p className="text-2xl font-bold text-navy">{ENGAGEMENT_INITIAL_MOIS}</p>
                 <p className="text-concrete-600 text-sm mt-1">Engagement initial</p>
-                <p className="text-concrete-500 text-xs mt-2">
-                  Assez long pour livrer, stabiliser, et itérer sans courir après des changements au jour le jour.
-                </p>
+                <p className="text-concrete-500 text-xs mt-2">À préciser selon votre contexte.</p>
               </div>
               <div className="text-center p-4 bg-concrete-50 rounded-lg">
                 <p className="text-2xl font-bold text-navy">Mensuel</p>
                 <p className="text-concrete-600 text-sm mt-1">Ensuite</p>
-                <p className="text-concrete-500 text-xs mt-2">Renouvellement automatique chaque mois, résiliable avec préavis.</p>
+                <p className="text-concrete-500 text-xs mt-2">Modalités: unknown / à déterminer.</p>
               </div>
               <div className="text-center p-4 bg-concrete-50 rounded-lg">
-                <p className="text-2xl font-bold text-navy">30 jours</p>
-                <p className="text-concrete-600 text-sm mt-1">Préavis</p>
-                <p className="text-concrete-500 text-xs mt-2">Préavis écrit. On fait un offboarding propre (accès, transferts, doc).</p>
+                <p className="text-2xl font-bold text-navy">Préavis</p>
+                <p className="text-concrete-600 text-sm mt-1">Condition</p>
+                <p className="text-concrete-500 text-xs mt-2">unknown / à déterminer.</p>
               </div>
             </div>
 
             <div className="bg-concrete-50 rounded-lg p-4 text-sm text-concrete-600">
-              <p className="font-medium text-navy mb-1">Délai de production cible</p>
+              <p className="font-medium text-navy mb-1">Paiement</p>
               <p>
-                Cible: 21 jours ouvrables après réception des accès et des informations nécessaires. Si des éléments manquent, on bloque plutôt que de deviner.
+                Paiement envoyé après diagnostic (lien Stripe). Si le lien n’est pas disponible, on indique unknown / à déterminer.
               </p>
             </div>
           </div>

@@ -72,7 +72,7 @@ export default function SecteurSlugPage({ params }) {
       </section>
 
       <div className="mt-12 flex flex-col sm:flex-row gap-3">
-        <Link href="/#contact" className="btn-cta inline-flex items-center justify-center px-6 py-3 rounded-md text-white">
+        <Link href="/#diagnostic" className="btn-cta inline-flex items-center justify-center px-6 py-3 rounded-md text-white">
           Diagnostic gratuit
         </Link>
       </div>
