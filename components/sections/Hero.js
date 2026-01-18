@@ -24,16 +24,16 @@ const Hero = () => {
   }
 
   return (
-    <section className="relative min-h-[50vh] flex items-center bg-gradient-to-b from-white via-concrete-50/80 to-concrete-50 pt-6 md:pt-8 mt-8 pb-10">
+    <section className="relative min-h-[50vh] flex items-center bg-gradient-to-b from-white via-concrete-50/80 to-concrete-50 pt-4 md:pt-6 mt-6 pb-8">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 right-0 w-72 h-72 bg-safety/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-navy/5 rounded-full blur-3xl" />
       </div>
 
       <div className="section-container py-4 md:py-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="space-y-8">
-            <div className="space-y-6">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+          <div className="space-y-6">
+            <div className="space-y-4">
               <h1 className="text-navy leading-tight text-3xl md:text-4xl font-semibold max-w-3xl">
                 Site rapide, fiche Google solide, demandes de soumission qui entrent.
               </h1>
@@ -43,17 +43,20 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+            <div className="flex flex-col gap-2">
               <Button
-                className="btn-cta text-lg px-8 py-6 h-auto"
+                className="btn-cta text-lg px-7 py-4 h-auto"
                 onClick={scrollToContact}
                 aria-label="Recevoir mon diagnostic gratuit"
               >
                 Recevoir mon diagnostic gratuit
                 <ArrowRight className="w-5 h-5 ml-2" aria-hidden="true" />
               </Button>
+              <p className="text-concrete-500 text-xs md:text-sm leading-tight">
+                Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires.
+              </p>
               <button
-                className="text-link text-lg py-3"
+                className="text-concrete-600 text-sm font-semibold hover:text-navy transition"
                 onClick={scrollToForfaits}
                 aria-label="Voir les forfaits et les prix"
               >
@@ -61,8 +64,8 @@ const Hero = () => {
               </button>
             </div>
 
-            <div className="mt-6 max-w-sm">
-              <label htmlFor="hero-sector" className="text-sm font-semibold text-navy">
+            <div className="mt-3 md:mt-4 w-full max-w-xs">
+              <label htmlFor="hero-sector" className="text-xs font-semibold text-navy uppercase tracking-wide">
                 Votre secteur (optionnel)
               </label>
               <select
@@ -70,7 +73,7 @@ const Hero = () => {
                 name="hero-sector"
                 defaultValue=""
                 onChange={handleSectorChange}
-                className="mt-2 block w-full rounded-full border border-concrete-200 bg-white px-3 py-2 text-sm text-navy focus:border-safety focus:outline-none focus:ring-2 focus:ring-safety transition"
+                className="mt-1 block w-full h-9 rounded-full border border-concrete-200 bg-white px-3 text-xs text-navy focus:border-safety focus:outline-none focus:ring-0 transition"
               >
                 <option value="" disabled>
                   Choisissez votre secteur
@@ -82,16 +85,10 @@ const Hero = () => {
                 ))}
               </select>
             </div>
-
-            <div className="pt-6 border-t border-concrete-200">
-              <p className="text-concrete-500 text-sm">
-                Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires.
-              </p>
-            </div>
           </div>
 
           <div className="relative order-first lg:order-last">
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl bg-white">
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-xl bg-white">
               <Image
                 src="/images/hero-illustration.svg"
                 alt="Illustration de BureauWeb: présence en ligne gérée pendant que vous gérez vos chantiers"
@@ -103,9 +100,9 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-navy/10 to-transparent" />
             </div>
 
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-lg shadow-xl p-4 border border-concrete-100">
+            <div className="absolute -bottom-6 -left-6 bg-white rounded-lg shadow-lg p-3 border border-concrete-100">
               <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-safety/10 rounded-full flex items-center justify-center">
+              <div className="w-10 h-10 bg-safety/10 rounded-full flex items-center justify-center">
                 <svg className="w-6 h-6 text-safety" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -117,7 +114,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="absolute top-4 right-4 md:-top-4 md:right-8 bg-navy text-white rounded-lg shadow-xl p-4 z-10">
+            <div className="absolute top-4 right-4 md:-top-4 md:right-8 bg-navy text-white rounded-lg shadow-lg p-3 z-10">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
                   <svg className="w-5 h-5 text-safety" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

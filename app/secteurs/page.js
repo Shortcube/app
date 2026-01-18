@@ -14,6 +14,14 @@ export default function SecteursPage() {
         <p className="mt-3 text-concrete-600">
           Un point d’entrée par secteur pour clarifier l’infrastructure web proposée, sans promesse chiffrée.
         </p>
+        <div className="mt-5">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-safety hover:text-navy transition"
+          >
+            ← Retour à l’accueil
+          </Link>
+        </div>
       </header>
 
       <div className="grid md:grid-cols-2 gap-4">

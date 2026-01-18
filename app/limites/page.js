@@ -1,3 +1,5 @@
+import GoBackButton from '@/components/GoBackButton'
+
 export const metadata = {
   title: 'Limites mensuelles | BureauWeb',
   description: 'Cadre public des limites mensuelles BureauWeb.',
@@ -6,11 +8,14 @@ export const metadata = {
 export default function LimitesPage() {
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-12">
-      <header className="mb-10">
+      <header className="mb-6 space-y-4">
         <h1 className="text-3xl md:text-4xl font-semibold text-navy">Limites mensuelles</h1>
         <p className="mt-4 text-concrete-600">
           Cette page décrit le cadre public pour éviter le scope creep. Tout besoin hors cadre est traité sur devis.
         </p>
+        <div>
+          <GoBackButton />
+        </div>
       </header>
 
       <section className="mb-10 rounded-xl border border-concrete-200 bg-white p-6">
