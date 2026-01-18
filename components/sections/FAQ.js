@@ -7,27 +7,42 @@ const FAQ = () => {
     {
       question: 'Êtes-vous une agence ?',
       answer:
-        'Non. BureauWeb est un partenaire d’infrastructure web. On met en place un système stable (site, fiche Google, parcours de contact) et on l’opère dans le temps.',
+        'Non. BureauWeb est un partenaire d’infrastructure web. On installe un site, on structure la fiche Google et on opère cette infrastructure en continu. On ne vend pas de campagnes publicitaires ni de promesses de résultats.',
     },
     {
       question: 'Pourquoi ne pas rester sur Wix ou Squarespace ?',
       answer:
-        'Si votre site actuel fait le travail, on ne force pas un changement. Le diagnostic sert à vérifier ce qui bloque la visibilité locale ou la conversion, puis à décider si une refonte est utile.',
+        'Si votre plateforme actuelle fait le travail, on n’impose pas un changement. Le diagnostic gratuit permet de vérifier ce qui bloque la visibilité locale ou la conversion, puis de décider si une itération est nécessaire.',
     },
     {
       question: 'Qu’est-ce qui est inclus chaque mois ?',
       answer:
-        'Une micro-amélioration par mois, une vérification QA mensuelle et un rapport simple. Le détail est décrit dans les limites mensuelles.',
+        'Une intervention ciblée plafonnée (micro-amélioration), une vérification QA et un rapport synthèse. On maintient l’infrastructure, on corrige ce qui tombe dans le périmètre et on documente les limites mensuelles; on n’ajoute pas des campagnes marketing ou des grosses refontes sans scope séparé.',
     },
     {
-      question: 'Que se passe-t-il après le diagnostic ?',
+      question: 'Que se passe-t-il après le diagnostic gratuit ?',
       answer:
-        'On envoie une décision GO/NO-GO et, si on avance, un lien de paiement Stripe. Vous choisissez ensuite si vous démarrez la production.',
+        'On rend une décision GO/NO-GO. Si le dossier avance, on envoie un lien de paiement Stripe pour activer l’abonnement mensuel. Aucun travail n’est lancé tant qu’un paiement actif n’est pas confirmé.',
     },
     {
       question: 'Est-ce qu’il y a des engagements ou des délais garantis ?',
       answer:
-        'Non. Aucun engagement de durée, et aucun délai garanti. Le diagnostic précise ensuite le périmètre et le calendrier réaliste.',
+        'C’est un abonnement mensuel sans engagement de durée. Chaque mois est facturé d’avance et l’annulation passe par le portail client Stripe; elle prend effet à la fin de la période déjà payée. Aucun remboursement partiel n’est offert.',
+    },
+    {
+      question: 'Comment puis-je annuler le service ?',
+      answer:
+        'Utilisez le portail client Stripe (lien sur la page “Compte”) pour arrêter la facturation. Vous pouvez le faire à tout moment, mais l’annulation vaut uniquement pour la fin du mois déjà payé.',
+    },
+    {
+      question: 'Y a-t-il des remboursements ?',
+      answer:
+        'Non. Les frais sont prélevés pour couvrir le mois d’opération. Si vous stoppez via le portail, vous gardez l’accès jusqu’à la fin du mois en cours sans remboursement partiel.',
+    },
+    {
+      question: 'Garantissez-vous des résultats (leads, appels, ventes) ?',
+      answer:
+        'Non. BureauWeb fournit une infrastructure claire (site, fiche Google, conversion) et des moyens de suivi. Les volumes de leads/appels/demandes dépendent du marché et de votre capacité à répondre; nous ne garantissons pas de résultats chiffrés.',
     },
   ]
 

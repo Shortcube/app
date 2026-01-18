@@ -4,15 +4,15 @@ const Reviews = () => {
   const included = [
     {
       icon: MessageSquare,
-      text: 'Configuration complète du système (modèles SMS et courriels prêts à envoyer)',
+      text: 'Modèles SMS/courriels prêts; les envois restent déclenchés par vos systèmes, on ne les automatise pas à votre place.',
     },
     {
       icon: Link,
-      text: 'Instructions pour brancher ça à votre logiciel de facturation ou votre CRM',
+      text: 'Documentation précise pour brancher le flux à votre CRM ou votre facturation; la configuration technique reste de votre ressort sauf mandat additionnel.',
     },
     {
       icon: FileText,
-      text: 'Une page sur votre site qui facilite le dépôt d\'avis pour vos clients',
+      text: 'Une page conforme aux règles Google qui facilite le dépôt d’avis et clarifie le périmètre de vos témoignages.',
     },
     {
       icon: BookOpen,
@@ -23,11 +23,11 @@ const Reviews = () => {
   const notIncluded = [
     {
       icon: Send,
-      text: 'Envoi automatique depuis nos systèmes (c\'est vous qui déclenchez l\'envoi depuis votre outil)',
+      text: 'Envoi automatique par nos systèmes n’est pas offert; vous gardez le contrôle des déclencheurs et des suivis.',
     },
     {
       icon: Reply,
-      text: 'Réponses illimitées aux avis. On peut vous montrer quoi répondre, ou le faire pour vous : 75$/réponse.',
+      text: 'Réponses sur demande : on peut vous conseiller ou échanger la rédaction pour 75$/réponse, mais elles ne sont pas illimitées.',
     },
     {
       icon: AlertTriangle,
@@ -114,8 +114,10 @@ const Reviews = () => {
               </div>
             </div>
             <p className="text-concrete-600">
-              Les avis Google, c'est essentiel pour être trouvé localement. 
-              Notre système vous donne tous les outils pour en obtenir plus facilement.
+              Nous fournissons une structure claire et conforme pour faciliter la demande d’avis. BureauWeb n’apporte pas de volume garanti; vous gardez le contrôle du suivi.
+            </p>
+            <p className="mt-3 text-xs text-concrete-500">
+              Aucun nombre minimal d’avis ni résultat n’est garanti et aucune incitation, filtrage ou manipulation d’avis n’est proposée; on respecte les règles Google.
             </p>
           </div>
         </div>

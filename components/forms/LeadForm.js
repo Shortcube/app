@@ -89,9 +89,7 @@ const LeadForm = () => {
       newErrors.region = 'Choisissez votre région'
     }
     
-    if (!formData.telephone) {
-      newErrors.telephone = 'Entrez votre numéro de téléphone'
-    } else if (!validatePhone(formData.telephone)) {
+    if (formData.telephone && !validatePhone(formData.telephone)) {
       newErrors.telephone = 'Le numéro doit avoir au moins 10 chiffres'
     }
 
@@ -104,7 +102,9 @@ const LeadForm = () => {
       newErrors.ficheGoogle = 'URL trop longue'
     }
     
-    if (formData.courriel && !validateEmail(formData.courriel)) {
+    if (!formData.courriel) {
+      newErrors.courriel = 'Entrez une adresse courriel'
+    } else if (!validateEmail(formData.courriel)) {
       newErrors.courriel = 'Entrez une adresse courriel valide'
     }
     
@@ -344,10 +344,34 @@ const LeadForm = () => {
                     )}
                   </div>
                   
+                  {/* Courriel */}
+                  <div>
+                    <Label htmlFor="courriel" className="block text-sm font-medium text-navy mb-2">
+                      Courriel <span className="text-red-500">*</span>
+                    </Label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" aria-hidden="true" />
+                      <Input
+                        type="email"
+                        id="courriel"
+                        name="courriel"
+                        value={formData.courriel}
+                        onChange={handleChange}
+                        placeholder="votre@courriel.ca (pour recevoir le diagnostic gratuit)"
+                        className={`pl-10 ${errors.courriel ? 'border-red-500' : ''}`}
+                        aria-describedby={errors.courriel ? 'courriel-error' : undefined}
+                        aria-invalid={!!errors.courriel}
+                      />
+                    </div>
+                    {errors.courriel && (
+                      <p id="courriel-error" className="mt-1 text-sm text-red-500" role="alert">{errors.courriel}</p>
+                    )}
+                  </div>
+
                   {/* Téléphone */}
                   <div>
                     <Label htmlFor="telephone" className="block text-sm font-medium text-navy mb-2">
-                      Téléphone <span className="text-red-500">*</span>
+                      Téléphone <span className="text-concrete-400 text-xs">(optionnel)</span>
                     </Label>
                     <div className="relative">
                       <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" aria-hidden="true" />
@@ -366,30 +390,9 @@ const LeadForm = () => {
                     {errors.telephone && (
                       <p id="telephone-error" className="mt-1 text-sm text-red-500" role="alert">{errors.telephone}</p>
                     )}
-                  </div>
-                  
-                  {/* Courriel */}
-                  <div>
-                    <Label htmlFor="courriel" className="block text-sm font-medium text-navy mb-2">
-                      Courriel <span className="text-concrete-400 text-xs">(optionnel)</span>
-                    </Label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-concrete-400" aria-hidden="true" />
-                      <Input
-                        type="email"
-                        id="courriel"
-                        name="courriel"
-                        value={formData.courriel}
-                        onChange={handleChange}
-                        placeholder="votre@courriel.ca"
-                        className={`pl-10 ${errors.courriel ? 'border-red-500' : ''}`}
-                        aria-describedby={errors.courriel ? 'courriel-error' : undefined}
-                        aria-invalid={!!errors.courriel}
-                      />
-                    </div>
-                    {errors.courriel && (
-                      <p id="courriel-error" className="mt-1 text-sm text-red-500" role="alert">{errors.courriel}</p>
-                    )}
+                    <p className="mt-1 text-xs text-concrete-500">
+                      Utilisé uniquement si une clarification est nécessaire.
+                    </p>
                   </div>
                   
                   {/* Site web */}
@@ -448,7 +451,7 @@ const LeadForm = () => {
                   {/* Définition de succès */}
                   <div>
                     <Label htmlFor="definitionSucces" className="block text-sm font-medium text-navy mb-2">
-                      Comment on sait que ça a bien marché ? <span className="text-concrete-400 text-xs">(optionnel)</span>
+                      Indicateur mesurable de succès (si applicable) <span className="text-concrete-400 text-xs">(optionnel)</span>
                     </Label>
                     <textarea
                       id="definitionSucces"
@@ -480,8 +483,7 @@ const LeadForm = () => {
                   </Button>
                   
                   <p className="text-xs text-concrete-500 text-center mt-4">
-                    En soumettant ce formulaire, vous acceptez qu'on vous contacte pour donner suite à votre demande. 
-                    Vos données sont traitées selon notre{' '}
+                    En soumettant ce formulaire, vous acceptez qu'on vous contacte pour donner suite à votre demande. Vos données sont traitées uniquement pour analyser votre demande et transmettre le diagnostic gratuit, selon notre{' '}
                     <a href="/confidentialite" className="text-safety hover:underline">politique de confidentialité</a>.
                   </p>
                 </div>

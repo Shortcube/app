@@ -5,7 +5,7 @@ const Compliance = () => {
     {
       icon: Cookie,
       title: 'Bannière de cookies',
-      description: 'Conforme aux bonnes pratiques',
+      description: 'Alignée sur les bonnes pratiques courantes; on documente la configuration sans en imposer une interprétation normative.',
     },
     {
       icon: FileText,
@@ -15,7 +15,7 @@ const Compliance = () => {
     {
       icon: Globe,
       title: 'Hébergement au Canada',
-      description: 'On privilégie les serveurs canadiens quand c\'est possible',
+      description: 'Préférence pour les serveurs canadiens selon les contraintes techniques et les capacités des fournisseurs de l’infrastructure.',
     },
     {
       icon: Database,
@@ -115,8 +115,7 @@ const Compliance = () => {
                   Pour le référencement local
                 </h4>
                 <p className="text-concrete-600 leading-relaxed">
-                  On utilise vos coordonnées officielles (nom, adresse, téléphone) 
-                  pour préserver votre positionnement sur Google.
+                  On utilise vos coordonnées officielles (nom, adresse, téléphone) pour maintenir la cohérence des signaux locaux (NAP) et éviter les incohérences d’information.
                 </p>
               </div>
             </div>

@@ -115,27 +115,31 @@ const Pricing = () => {
             </h4>
 
             <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="text-center p-4 bg-concrete-50 rounded-lg">
-                <p className="text-2xl font-bold text-navy">{ENGAGEMENT_INITIAL_MOIS}</p>
-                <p className="text-concrete-600 text-sm mt-1">Engagement initial</p>
-                <p className="text-concrete-500 text-xs mt-2">À préciser selon votre contexte.</p>
-              </div>
-              <div className="text-center p-4 bg-concrete-50 rounded-lg">
-                <p className="text-2xl font-bold text-navy">Mensuel</p>
-                <p className="text-concrete-600 text-sm mt-1">Ensuite</p>
-                <p className="text-concrete-500 text-xs mt-2">Modalités: facturé au mois, renouvellement automatique.</p>
+                <div className="text-center p-4 bg-concrete-50 rounded-lg">
+                  <p className="text-2xl font-bold text-navy">{ENGAGEMENT_INITIAL_MOIS}</p>
+                  <p className="text-concrete-600 text-sm mt-1">Engagement initial</p>
+                  <p className="text-concrete-500 text-xs mt-2">
+                    Service mensuel, facturé d’avance. Chaque mois payé déclenche un mois d’opération.
+                  </p>
+                </div>
+                <div className="text-center p-4 bg-concrete-50 rounded-lg">
+                  <p className="text-2xl font-bold text-navy">Mensuel</p>
+                  <p className="text-concrete-600 text-sm mt-1">Ensuite</p>
+                  <p className="text-concrete-500 text-xs mt-2">Modalités: facturé au mois, renouvellement automatique.</p>
               </div>
               <div className="text-center p-4 bg-concrete-50 rounded-lg">
                 <p className="text-2xl font-bold text-navy">Préavis</p>
                 <p className="text-concrete-600 text-sm mt-1">Condition</p>
-                <p className="text-concrete-500 text-xs mt-2">Fin de la période mensuelle payée.</p>
+                <p className="text-concrete-500 text-xs mt-2">
+                  Annulation possible via le portail client Stripe. Elle prend effet à la fin de la période mensuelle déjà payée; aucun remboursement partiel.
+                </p>
               </div>
             </div>
 
             <div className="bg-concrete-50 rounded-lg p-4 text-sm text-concrete-600">
               <p className="font-medium text-navy mb-1">Paiement</p>
               <p>
-                Paiement envoyé après diagnostic (lien Stripe). Aucune production ni mise en ligne sans paiement actif.
+                Paiement requis pour démarrer toute production. Tant qu’un abonnement actif n’est pas en vigueur, aucun travail n’est effectué.
               </p>
             </div>
           </div>
@@ -146,16 +150,18 @@ const Pricing = () => {
                 <AlertCircle className="w-5 h-5 text-amber-600" aria-hidden="true" />
               </div>
               <div>
-                <h4 className="font-semibold text-amber-800 mb-2">Soyons clairs sur les résultats</h4>
-                <p className="text-amber-800 leading-relaxed">
-                  On installe et on opère l’infrastructure (site, fiche Google, conversion). Le volume de demandes dépend aussi du marché, de la concurrence et de votre capacité à répondre.
-                </p>
-                <p className="mt-3 text-amber-800 leading-relaxed">
-                  Le diagnostic gratuit existe justement pour montrer quoi faire, sans rien inventer, avant de s’engager.
-                </p>
-              </div>
+              <h4 className="font-semibold text-amber-800 mb-2">Soyons clairs sur les résultats</h4>
+              <p className="text-amber-800 leading-relaxed">
+                On installe et on opère l’infrastructure (site, fiche Google, conversion). Le volume de demandes dépend aussi du marché, de la concurrence et de votre capacité à répondre.
+              </p>
+              <p className="mt-3 text-amber-800 leading-relaxed">
+                Le diagnostic gratuit existe justement pour montrer quoi faire, sans rien inventer, avant de s’engager.
+                <br />
+                BureauWeb fournit des moyens (infrastructure, visibilité, conversion), pas des garanties de volume.
+              </p>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>
