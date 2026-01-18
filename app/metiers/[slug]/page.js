@@ -26,7 +26,7 @@ export default function MetierSlugPage({ params }) {
         'Vous êtes invisible sur Google Maps quand quelqu\'un cherche « plombier Longueuil » ou « urgence plomberie Rive-Sud »',
         'Votre numéro de téléphone n\'est pas cliquable sur mobile - les gens appellent votre concurrent',
         'Votre site ne montre pas vos services clairement (drain bouché, chauffe-eau, réparation, installation)',
-        'Vous avez 3 avis Google, votre concurrent en a 50+',
+        'Votre fiche Google manque d’avis récents, vos concurrents paraissent plus actifs.',
       ],
       implementation: [
         {
@@ -35,7 +35,7 @@ export default function MetierSlugPage({ params }) {
         },
         {
           title: 'Fiche Google complète',
-          description: 'Catégories précises (plomberie, urgence 24h, drain), photos de chantiers, zones desservies visibles.'
+          description: 'Catégories précises (plomberie, urgence, drain), photos de chantiers, zones desservies visibles.'
         },
         {
           title: 'Pages services et zones',
@@ -49,7 +49,7 @@ export default function MetierSlugPage({ params }) {
       faq: [
         {
           q: 'Combien de temps avant d\'être visible sur Google ?',
-          a: 'Votre fiche Google est active dès qu\'on la complète (1-2 jours). Pour le référencement organique (apparaître dans les résultats de recherche), ça prend généralement 4-8 semaines selon la concurrence dans votre coin.'
+          a: 'La visibilité dépend de la concurrence locale et de votre profil actuel. On ne promet pas de délai; si ce n’est pas déterminé, on l’indique comme unknown / à déterminer.'
         },
         {
           q: 'Qu\'est-ce qui est inclus dans le suivi mensuel ?',
@@ -57,7 +57,7 @@ export default function MetierSlugPage({ params }) {
         },
         {
           q: 'Est-ce que je peux annuler si ça marche pas ?',
-          a: 'Oui. Engagement initial de 3 mois (le temps de livrer et de stabiliser), ensuite mensuel avec préavis de 30 jours. Si vous quittez, on fait un transfert propre des accès et du contenu.'
+          a: 'Les modalités d’engagement et de sortie sont précisées après le diagnostic. Si elles ne sont pas déterminées, on les indique comme unknown / à déterminer.'
         },
         {
           q: 'Vous garantissez un nombre de demandes par mois ?',
@@ -83,7 +83,7 @@ export default function MetierSlugPage({ params }) {
         },
         {
           title: 'Formulaire de soumission court',
-          description: 'Type de toiture, urgence ou pas, code postal. Rien de plus. Les gens remplissent en 30 secondes sur mobile.'
+          description: 'Type de toiture, urgence ou pas, code postal. Rien de plus. On privilégie un formulaire rapide.'
         },
         {
           title: 'Zones géographiques visibles',
@@ -101,7 +101,7 @@ export default function MetierSlugPage({ params }) {
         },
         {
           q: 'Qu\'est-ce qui se passe si mon concurrent est déjà bien positionné ?',
-          a: 'On travaille sur votre différenciation : vos zones spécifiques, vos spécialités, vos avis clients. Parfois, être #2-3 dans votre coin, c\'est déjà très rentable.'
+          a: 'On travaille sur votre différenciation : vos zones spécifiques, vos spécialités, vos avis clients. L’objectif est une présence claire et crédible.'
         },
       ],
     },
@@ -148,14 +148,14 @@ export default function MetierSlugPage({ params }) {
     deneigement: {
       problems: [
         'Les clients cherchent “déneigement urgent” et tombent sur les services municipaux plutôt que sur votre entreprise.',
-        'Votre site ne clarifie pas vos forfaits (résidentiel, commercial, licence sous contrat) ni vos délais.',
-        'Impossible de savoir si vous intervenez 24/7, et le CTA “Demander une soumission” est caché.',
+        'Votre site ne clarifie pas vos forfaits (résidentiel, commercial, licence sous contrat).',
+        'Impossible de savoir comment demander une soumission rapidement, et le CTA est caché.',
         'Vous recevez trop de demandes hors zone parce que vos villes desservies ne sont pas affichées clairement.',
       ],
       implementation: [
         {
-          title: 'CTA “Urgence 24/7” visible partout',
-          description: 'Bouton fixe ou bandeau sur mobile, formulaire ultra court (type de contrat + type de propriété + code postal).',
+          title: 'CTA urgence visible partout',
+          description: 'Bouton fixe ou bandeau sur mobile, formulaire court (type de contrat + type de propriété + code postal).',
         },
         {
           title: 'Pages forfaits et contrats',
@@ -163,17 +163,17 @@ export default function MetierSlugPage({ params }) {
         },
         {
           title: 'Zones desservies avec filtres',
-          description: 'Liste ou carte qui montre la couverture par secteur (Montréal, Rive-Sud, couronne nord) et les délais par zone.',
+          description: 'Liste ou carte qui montre la couverture par secteur (Montréal, Rive-Sud, couronne nord).',
         },
         {
           title: 'Processus de confirmation',
-          description: 'Section “Comment ça marche” pour rassurer : confirmation par SMS, photos de camions, suivi météo.',
+          description: 'Section “Comment ça marche” pour rassurer, avec les étapes et les points de contact.',
         },
       ],
       faq: [
         {
           q: 'Comment vous gérez les demandes urgentes la nuit ?',
-          a: 'On affiche clairement vos heures de couverture 24/7 et on met en place un formulaire qui vous alerte immédiatement par SMS et email.',
+          a: 'On affiche vos heures de couverture si elles sont définies. Sinon, on indique unknown / à déterminer.',
         },
         {
           q: 'J’ai plusieurs contrats, est-ce que je peux montrer ça ?',
@@ -199,7 +199,7 @@ export default function MetierSlugPage({ params }) {
         },
         {
           title: 'Sections preuve sociale',
-          description: 'Témoignages, études de cas avec budgets et résultats (ex : “Rénovation cuisine 36 000$ en 6 semaines”).',
+          description: 'Témoignages, études de cas et preuves visuelles, sans promesse de budget ou de délai.',
         },
         {
           title: 'Formulaire filtre (type + budget)',
@@ -279,7 +279,7 @@ export default function MetierSlugPage({ params }) {
         },
         {
           title: 'Contrats d’entretien mis de l’avant',
-          description: 'Section “Maintenance” avec tarifs indicatifs et FAQs sur la fréquence des visites.',
+          description: 'Section “Maintenance” avec FAQs sur le périmètre et les limites.',
         },
         {
           title: 'Formulaire “Type d’équipement”',
@@ -287,7 +287,7 @@ export default function MetierSlugPage({ params }) {
         },
         {
           title: 'Témoignages industriels ou commerciaux',
-          description: 'Études de cas avec logos de clients, résultats (ex : “Réduction des pannes de 30%”).',
+          description: 'Études de cas avec logos de clients, preuves visuelles et contexte factuel.',
         },
       ],
       faq: [
@@ -319,7 +319,7 @@ export default function MetierSlugPage({ params }) {
         },
         {
           title: 'CTA adaptée',
-          description: 'Choix entre “Demander un plan 24h”, “Vérifier la disponibilité” ou “Recevoir notre fiche technique”.',
+          description: 'Choix entre “Demander un plan”, “Vérifier la disponibilité” ou “Recevoir notre fiche technique”.',
         },
         {
           title: 'Zones locales et témoignages',
@@ -428,7 +428,7 @@ export default function MetierSlugPage({ params }) {
       )}
 
       <div className="mt-12 flex flex-col sm:flex-row gap-4 pt-8 border-t border-concrete-200">
-        <Link href="/#contact" className="btn-cta inline-flex items-center justify-center px-8 py-4 rounded-lg text-white font-semibold">
+        <Link href="/#diagnostic" className="btn-cta inline-flex items-center justify-center px-8 py-4 rounded-lg text-white font-semibold">
           Recevoir mon diagnostic gratuit
         </Link>
         <Link href="/#forfaits" className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-concrete-300 text-navy hover:bg-concrete-50 font-semibold">

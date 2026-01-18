@@ -15,12 +15,12 @@ const NotIncluded = () => {
     {
       icon: Clock,
       title: 'Pas de support 24/7',
-      description: 'On répond du lundi au vendredi, 9h à 17h. Urgence (site complètement planté) : réponse en 4 heures ouvrables.',
+      description: 'Support pendant les heures ouvrables (horaires exacts: unknown / à déterminer).',
     },
     {
       icon: Edit3,
       title: 'Pas de modifications illimitées',
-      description: 'Les limites sont claires dans chaque forfait. Au-delà, c\'est facturé à l\'heure.',
+      description: 'Les limites mensuelles sont définies publiquement. Au-delà, on clarifie le périmètre avant d’agir.',
     },
   ]
 
@@ -72,7 +72,10 @@ const NotIncluded = () => {
               Besoin d'un de ces services ?
             </p>
             <p className="text-concrete-300">
-              On peut en discuter. Certains sont disponibles en extra selon vos besoins.
+              On peut en discuter. Certains sont disponibles en extra selon vos besoins (détails: unknown / à déterminer).
+            </p>
+            <p className="mt-3 text-concrete-300 text-sm">
+              <a href="/limites" className="text-safety hover:underline">Voir les limites mensuelles</a>
             </p>
           </div>
         </div>

@@ -26,11 +26,11 @@ const Header = () => {
   }, [])
 
   const navLinks = [
-    { href: '#diagnostic', label: 'Diagnostic gratuit' },
+    { href: '#processus', label: 'Comment ça marche' },
     { href: '#forfaits', label: 'Forfaits' },
-    { href: '#processus', label: 'Comment ça fonctionne' },
+    { href: '#diagnostic', label: 'Diagnostic gratuit' },
+    { href: '#faq', label: 'FAQ' },
     { href: '#conformite', label: 'Conformité' },
-    { href: '#contact', label: 'Contact' },
   ]
 
   const handleNavClick = (e, href) => {
@@ -116,7 +116,7 @@ const Header = () => {
             )}
             <Button 
               className="hidden md:inline-flex btn-cta whitespace-nowrap shrink-0"
-              onClick={(e) => handleNavClick(e, '#contact')}
+              onClick={(e) => handleNavClick(e, '#diagnostic')}
               aria-label="Diagnostic gratuit"
             >
               Diagnostic gratuit
@@ -176,7 +176,7 @@ const Header = () => {
               <div className="px-4 pt-4 border-t border-concrete-100 mt-2">
                 <Button 
                   className="w-full btn-cta"
-                  onClick={(e) => handleNavClick(e, '#contact')}
+                  onClick={(e) => handleNavClick(e, '#diagnostic')}
                   aria-label="Diagnostic gratuit"
                 >
                   Diagnostic gratuit

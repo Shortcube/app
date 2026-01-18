@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 const Hero = () => {
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('diagnostic')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const scrollToForfaits = () => {
@@ -53,7 +53,7 @@ const Hero = () => {
 
             <div className="pt-6 border-t border-concrete-200">
               <p className="text-concrete-500 text-sm">
-                Retour sous 48 h ouvrables. 1 page. Actions prioritaires.
+                Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires.
               </p>
             </div>
           </div>

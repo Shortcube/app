@@ -163,7 +163,7 @@ const LeadForm = () => {
 
   if (isSubmitted) {
     return (
-      <section id="contact" className="py-20 md:py-28 bg-navy scroll-mt-header">
+      <section id="diagnostic" className="py-20 md:py-28 bg-navy scroll-mt-header">
         <div className="section-container">
           <div className="max-w-2xl mx-auto text-center">
             <div className="bg-white rounded-2xl p-8 md:p-12 shadow-xl">
@@ -174,7 +174,7 @@ const LeadForm = () => {
                 Parfait, c'est reçu
               </h2>
               <p className="text-lg text-concrete-600 leading-relaxed">
-                C’est reçu. On te renvoie ton diagnostic (1 page) sous 24 h ouvrables.
+                Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires.
               </p>
               <Button 
                 className="mt-8 btn-secondary"
@@ -190,7 +190,7 @@ const LeadForm = () => {
   }
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-navy scroll-mt-header">
+    <section id="diagnostic" className="py-20 md:py-28 bg-navy scroll-mt-header">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-5 gap-12 items-start">
@@ -199,8 +199,11 @@ const LeadForm = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Parlons de votre projet
               </h2>
+              <p className="text-concrete-300 text-lg mb-3 leading-relaxed">
+                Remplissez ces infos et on vous revient avec :
+              </p>
               <p className="text-concrete-300 text-lg mb-8 leading-relaxed">
-                Remplissez ça (2 minutes max) et on vous revient en 24 heures ouvrables avec :
+                Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires.
               </p>
               <ul className="text-concrete-300 text-lg mb-8 space-y-2">
                 <li>• Un diagnostic gratuit (1 page) basé sur du vérifiable</li>

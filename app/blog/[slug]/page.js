@@ -48,7 +48,7 @@ export default function BlogPostPage({ params }) {
             Si vous voulez une version adaptée à votre entreprise, utilisez le diagnostic gratuit. On part de votre site, de votre mobile, et de votre fiche Google, sans rien inventer.
           </p>
           <div className="mt-4">
-        <Link href="/#contact" className="btn-cta inline-flex items-center justify-center px-6 py-3 rounded-md text-white">Recevoir mon diagnostic gratuit</Link>
+        <Link href="/#diagnostic" className="btn-cta inline-flex items-center justify-center px-6 py-3 rounded-md text-white">Recevoir mon diagnostic gratuit</Link>
           </div>
         </div>
       </article>
