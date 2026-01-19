@@ -4,8 +4,6 @@ import { Button } from '@/components/ui/button'
 import { siteConfig } from '@/lib/site-config'
 import { normalizePlan } from '@/lib/stripe-edge'
 
-export const runtime = 'edge'
-
 export const metadata = {
   title: 'Paiement annulé | BureauWeb',
   description: 'Le paiement a été annulé. Vous pouvez réessayer ou revenir à l’accueil.',

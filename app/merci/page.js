@@ -2,8 +2,6 @@ import Link from 'next/link'
 
 import { siteConfig } from '@/lib/site-config'
 
-export const runtime = 'edge'
-
 export const metadata = {
   title: 'Paiement confirmé | BureauWeb',
   description: 'Confirmation de paiement et accès au portail client.',

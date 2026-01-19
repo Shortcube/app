@@ -3,9 +3,6 @@ import { notFound } from 'next/navigation'
 import { SECTOR_PAGES } from '@/lib/sectors'
 import { TRADE_PAGES } from '@/lib/content'
 
-// Edge Runtime pour Cloudflare Pages
-export const runtime = 'edge'
-
 export function generateMetadata({ params }) {
   const sector = SECTOR_PAGES.find((s) => s.slug === params.slug)
   if (!sector) return { title: 'Secteurs d’activité | BureauWeb' }

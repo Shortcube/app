@@ -3,8 +3,6 @@ import { redirect } from 'next/navigation'
 import PageNavBack from '@/components/layout/PageNavBack'
 import { normalizePlan } from '@/lib/stripe-edge'
 
-export const runtime = 'edge'
-
 export const metadata = {
   title: 'Redirection vers Stripe | BureauWeb',
   description: 'Redirection vers Stripe pour finaliser le paiement.',

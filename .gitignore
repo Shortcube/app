@@ -24,6 +24,7 @@ node_modules/
 /out/
 next-env.d.ts
 *.tsbuildinfo
+/.open-next/
 
 # Production builds
 /build
