@@ -1,8 +1,10 @@
 'use client'
 
-import { HelpCircle } from 'lucide-react'
+import { useState } from 'react'
+import { ChevronDown, HelpCircle } from 'lucide-react'
 
 const FAQ = () => {
+  const [openIndex, setOpenIndex] = useState(null)
   const items = [
     {
       question: 'Êtes-vous une agence ?',
@@ -32,7 +34,7 @@ const FAQ = () => {
     {
       question: 'Comment puis-je annuler le service ?',
       answer:
-        'Utilisez le portail client Stripe (lien sur la page “Compte”) pour arrêter la facturation. Vous pouvez le faire à tout moment, mais l’annulation vaut uniquement pour la fin du mois déjà payé.',
+        'Utilisez le Portail client pour arrêter la facturation. Vous pouvez le faire à tout moment. L’annulation prend effet à la fin du mois déjà payé.',
     },
     {
       question: 'Y a-t-il des remboursements ?',
@@ -61,15 +63,44 @@ const FAQ = () => {
         </div>
 
         <div className="max-w-4xl mx-auto space-y-4">
-          {items.map((item) => (
+          {items.map((item, index) => {
+            const isOpen = openIndex === index
+            const buttonId = `faq-button-${index}`
+            const panelId = `faq-panel-${index}`
+            return (
             <div
               key={item.question}
               className="rounded-xl border border-concrete-200 bg-concrete-50 p-6"
             >
-              <h3 className="text-lg font-semibold text-navy">{item.question}</h3>
-              <p className="mt-2 text-concrete-600 leading-relaxed">{item.answer}</p>
+              <h3>
+                <button
+                  type="button"
+                  id={buttonId}
+                  aria-controls={panelId}
+                  aria-expanded={isOpen}
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="flex w-full items-center justify-between gap-4 text-left text-lg font-semibold text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-safety focus-visible:ring-offset-2"
+                >
+                  <span>{item.question}</span>
+                  <ChevronDown
+                    className={`h-5 w-5 text-concrete-500 transition-transform ${
+                      isOpen ? 'rotate-180' : ''
+                    }`}
+                    aria-hidden="true"
+                  />
+                </button>
+              </h3>
+              <div
+                id={panelId}
+                role="region"
+                aria-labelledby={buttonId}
+                hidden={!isOpen}
+                className="mt-2 text-concrete-600 leading-relaxed"
+              >
+                {item.answer}
+              </div>
             </div>
-          ))}
+          )})}
         </div>
       </div>
     </section>
