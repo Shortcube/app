@@ -31,12 +31,13 @@ BureauWeb = département web externe (infrastructure), pas une agence créative.
 
 ## Offre
 - Diagnostic gratuit écrit (1 page)
-- Décision: GO / Attendre / NO-GO (basée sur preuves)
+- GO / NO-GO clair
 - Paiement Stripe uniquement après diagnostic
-- Aucun travail sans statut “Payé” confirmé (abonnement actif + dernière facture paid)
+- Aucun travail sans abonnement actif confirmé
 - Abonnement mensuel avec limites publiques (par forfait)
-- Échanges écrits par défaut; téléphone optionnel (selon forfait), jamais requis
+- Support en français, humain, principalement par écrit (courriel ou texto). Téléphone au besoin (selon le forfait).
 - Services complémentaires hors forfait: sur devis, facturés uniquement après acceptation écrite
+
 
 ## Processus validé (6 étapes)
 1. Diagnostic (site, mobile, fiche Google, parcours existant)

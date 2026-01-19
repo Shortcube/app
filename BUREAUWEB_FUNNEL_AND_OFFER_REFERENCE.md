@@ -335,3 +335,14 @@ vérifier si le changement touche le funnel, les forfaits, le blog, le formulair
 mettre à jour ce document si comportement ou périmètre change.
 
 Ce fichier prévaut sur toute interprétation implicite du code.
+
+### Support et communication
+- Support en français, humain, principalement par écrit (courriel ou texto)
+- Téléphone au besoin, selon le forfait actif
+- Aucune promesse de disponibilité immédiate ou 24/7
+- Les échanges servent à cadrer, prioriser et exécuter dans les limites mensuelles
+
+### Annulation et facturation
+- L’abonnement peut être annulé à tout moment via le Portail client Stripe
+- L’annulation prend effet à la fin de la période déjà payée
+- Aucun remboursement rétroactif
