@@ -22,7 +22,7 @@ export default function PaiementAnnulePage({ searchParams }) {
     plan = null
   }
 
-  const retryHref = plan ? `/payer?plan=${plan}` : '/tarifs'
+  const retryHref = plan ? `/payer?plan=${plan}` : '/#forfaits'
 
   return (
     <main className="section-container min-h-screen py-20">

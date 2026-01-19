@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server'
 
 const TOLERANCE_SECONDS = 300
+const methodNotAllowed = () => NextResponse.json(
+  { error: 'Method Not Allowed. Use POST.' },
+  { status: 405 }
+)
 
 const parseSignatureHeader = (header) => {
   if (!header) return null
@@ -162,4 +166,28 @@ export async function POST(request) {
   }
 
   return NextResponse.json({ received: true })
+}
+
+export function GET() {
+  return methodNotAllowed()
+}
+
+export function PUT() {
+  return methodNotAllowed()
+}
+
+export function PATCH() {
+  return methodNotAllowed()
+}
+
+export function DELETE() {
+  return methodNotAllowed()
+}
+
+export function OPTIONS() {
+  return methodNotAllowed()
+}
+
+export function HEAD() {
+  return methodNotAllowed()
 }

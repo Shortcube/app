@@ -2,6 +2,11 @@ import { siteConfig } from '@/lib/site-config'
 
 export const runtime = 'edge'
 
+const methodNotAllowed = () => Response.json(
+  { error: 'Method Not Allowed. Use POST.' },
+  { status: 405 }
+)
+
 const MAX_REQUESTS_PER_MINUTE = 6
 const RATE_LIMIT_TTL_SECONDS = 60
 const HONEYPOT_FIELD = 'website'
@@ -105,4 +110,28 @@ export async function POST(request) {
 
   console.log('Démo soumission reçue (sans persistance):', payload)
   return Response.json({ ok: true })
+}
+
+export function GET() {
+  return methodNotAllowed()
+}
+
+export function PUT() {
+  return methodNotAllowed()
+}
+
+export function PATCH() {
+  return methodNotAllowed()
+}
+
+export function DELETE() {
+  return methodNotAllowed()
+}
+
+export function OPTIONS() {
+  return methodNotAllowed()
+}
+
+export function HEAD() {
+  return methodNotAllowed()
 }
