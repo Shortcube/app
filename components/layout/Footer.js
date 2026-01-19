@@ -72,12 +72,20 @@ const Footer = () => {
             <h4 className="font-semibold text-lg">Infos légales</h4>
             <ul className="space-y-3">
               <li>
-              <Link
-                href="/"
-                className="text-concrete-300 hover:text-safety transition-colors"
-              >
-                Accueil
-              </Link>
+                <Link
+                  href="/compte"
+                  className="text-concrete-300 hover:text-safety transition-colors"
+                >
+                  Compte client
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/secteurs"
+                  className="text-concrete-300 hover:text-safety transition-colors"
+                >
+                  Secteurs d’activités
+                </Link>
               </li>
               <li>
                 <Link
@@ -97,10 +105,10 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/compte"
+                  href="/blog"
                   className="text-concrete-300 hover:text-safety transition-colors"
                 >
-                  Compte client
+                  Blogue
                 </Link>
               </li>
               <li>
@@ -126,22 +134,6 @@ const Footer = () => {
                 >
                   Gestion des renseignements
                 </a>
-              </li>
-              <li>
-              <Link
-                href="/blog"
-                className="text-concrete-300 hover:text-safety transition-colors"
-              >
-                Blogue
-              </Link>
-              </li>
-              <li>
-              <Link
-                href="/secteurs"
-                className="text-concrete-300 hover:text-safety transition-colors"
-              >
-                Secteurs d’activité
-              </Link>
               </li>
             </ul>
           </div>
