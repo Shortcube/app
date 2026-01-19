@@ -29,8 +29,6 @@ const iconMap = {
   Wrench,
 }
 
-export const dynamicParams = false
-
 export function generateStaticParams() {
   return Object.keys(MODELES_BY_SLUG).map((slug) => ({ metier: slug }))
 }
