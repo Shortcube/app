@@ -163,7 +163,7 @@ const LeadForm = () => {
 
   if (isSubmitted) {
     return (
-      <section id="diagnostic" className="py-20 md:py-28 bg-navy scroll-mt-header">
+    <section id="diagnostic" className="py-16 md:py-20 bg-navy scroll-mt-header">
         <div className="section-container">
           <div className="max-w-2xl mx-auto text-center">
             <div className="bg-white rounded-2xl p-8 md:p-12 shadow-xl">
@@ -190,7 +190,7 @@ const LeadForm = () => {
   }
 
   return (
-    <section id="diagnostic" className="py-20 md:py-28 bg-navy scroll-mt-header">
+    <section id="diagnostic" className="py-16 md:py-20 bg-navy scroll-mt-header">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-5 gap-12 items-start">

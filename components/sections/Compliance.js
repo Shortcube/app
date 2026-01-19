@@ -25,10 +25,10 @@ const Compliance = () => {
   ]
 
   return (
-    <section id="conformite" className="py-20 md:py-28 bg-concrete-50 scroll-mt-header">
+    <section id="conformite" className="py-16 md:py-20 bg-concrete-50 scroll-mt-header">
       <div className="section-container">
         {/* En-tête */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-6 md:mb-10">
           <div className="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full mb-6">
             <Shield className="w-4 h-4" />
             <span className="text-sm font-medium">Protection des données</span>

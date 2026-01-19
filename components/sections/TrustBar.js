@@ -21,7 +21,7 @@ const TrustBar = () => {
   ]
 
   return (
-    <section className="bg-navy py-8 md:py-10">
+    <section className="bg-navy py-12 md:py-16">
       <div className="section-container">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {trustItems.map((item, index) => (

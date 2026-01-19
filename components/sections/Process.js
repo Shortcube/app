@@ -95,7 +95,7 @@ const Process = () => {
   ]
 
   return (
-    <section id="processus" className="process-section py-8 md:py-10 bg-white scroll-mt-header">
+    <section id="processus" className="process-section py-12 md:py-16 bg-white scroll-mt-header">
       <div className="section-container space-y-6 md:space-y-8">
         {/* En-tête */}
         <div className="text-center space-y-2 md:space-y-3">

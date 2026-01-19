@@ -47,7 +47,7 @@ const FAQ = () => {
   ]
 
   return (
-    <section id="faq" className="py-20 md:py-28 bg-white scroll-mt-header">
+    <section id="faq" className="py-16 md:py-20 bg-white scroll-mt-header">
       <div className="section-container">
         <div className="text-center mb-12 md:mb-16">
           <div className="inline-flex items-center space-x-2 bg-safety/10 text-safety-700 px-4 py-2 rounded-full mb-6">

@@ -5,57 +5,57 @@ const Problem = () => {
     {
       icon: MapPin,
       title: 'Invisible sur Google Maps',
-      description: 'Vos concurrents apparaissent en premier quand quelqu\'un cherche votre service dans votre coin. Vous, vous êtes en bas de page ou carrément absent.',
+      description: 'Vos concurrents occupent les résultats locaux et votre fiche est reléguée en bas de page ou absente.',
     },
     {
       icon: Smartphone,
       title: 'Clients perdus sur mobile',
-      description: 'Plus de 70% des gens visitent sur leur téléphone. Si votre numéro n\'est pas cliquable ou que le site charge lentement, ils appellent votre concurrent.',
+      description: 'Plus de 70% visitent via mobile, et un site lent ou sans numéro cliquable les pousse vers un concurrent.',
     },
     {
       icon: Star,
       title: 'Pas assez d\'avis',
-      description: 'Vous avez 3 avis Google, votre concurrent en a 47. Devinez qui va être appelé en premier, même si vous faites du meilleur travail.',
+      description: 'Une poignée d’avis contre plusieurs dizaines chez vos compétiteurs augmente le risque d’être ignoré.',
     },
     {
       icon: Clock,
       title: 'Site qui vieillit mal',
-      description: 'Votre site a 3 ans, il manque des infos, des photos sont floues, les formulaires marchent plus. Personne pour s\'en occuper.',
+      description: 'Un site de 3 ans sans infos à jour, photos nettes ou formulaires fonctionnels ne convertit plus.',
     },
   ]
 
   return (
-    <section className="py-20 md:py-28 bg-concrete-50">
+    <section className="py-16 md:py-20 bg-concrete-50">
       <div className="section-container">
         <div className="max-w-5xl mx-auto">
           {/* En-tête */}
-          <div className="text-center mb-12 md:mb-16">
-            <div className="inline-flex items-center space-x-2 bg-red-50 text-red-700 px-4 py-2 rounded-full mb-6">
+          <div className="text-center mb-6 md:mb-10">
+            <div className="inline-flex items-center space-x-2 bg-red-50 text-red-700 px-4 py-2 rounded-full mb-4">
               <AlertCircle className="w-4 h-4" />
               <span className="text-sm font-medium">Le problème</span>
             </div>
-            <h2 className="text-navy mb-6">
+            <h2 className="text-navy text-3xl md:text-[2.6rem] mb-4">
               Ces problèmes vous coûtent des clients chaque semaine
             </h2>
-            <p className="text-xl text-concrete-600 leading-relaxed max-w-2xl mx-auto">
-              C'est pas de votre faute. Vous êtes occupé à faire votre métier. Mais pendant ce temps, des clients potentiels vous cherchent et ne vous trouvent pas.
+            <p className="text-base md:text-lg text-concrete-600 leading-relaxed max-w-2xl mx-auto">
+              Des clients cherchent vos services en ligne et atterrissent sur les profils des concurrents parce que vous êtes difficile à trouver.
             </p>
           </div>
 
           {/* Cartes des problèmes */}
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
             {problems.map((problem, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-xl p-6 md:p-8 border border-concrete-200 hover:border-concrete-300 transition-colors"
+                className="bg-white rounded-xl px-5 py-4 md:px-6 md:py-5 border border-concrete-200 hover:border-concrete-300 transition-colors"
               >
                 <div className="w-12 h-12 bg-red-50 rounded-lg flex items-center justify-center mb-5">
                   <problem.icon className="w-6 h-6 text-red-600" />
                 </div>
-                <h3 className="text-lg font-semibold text-navy mb-3">
+                <h3 className="text-lg font-semibold text-navy mb-2">
                   {problem.title}
                 </h3>
-                <p className="text-concrete-600 leading-relaxed">
+                <p className="text-concrete-600 text-sm leading-snug">
                   {problem.description}
                 </p>
               </div>
