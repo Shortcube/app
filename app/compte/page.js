@@ -6,6 +6,11 @@ const PORTAL_URL =
   process.env.NEXT_PUBLIC_STRIPE_PORTAL_LOGIN_URL ||
   'https://billing.stripe.com/p/login/6oUeVe9WJ6wra7VeYJeEo00'
 
+export const metadata = {
+  title: 'Portail client Stripe | BureauWeb',
+  description: 'Accès au portail Stripe pour gérer abonnement, factures et moyens de paiement.',
+}
+
 export default function ComptePage() {
   return (
     <main className="section-container min-h-screen py-20">

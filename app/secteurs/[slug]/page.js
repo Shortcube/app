@@ -26,6 +26,8 @@ export default function SecteurSlugPage({ params }) {
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-12">
       <nav className="text-sm text-concrete-600">
+        <Link href="/" className="text-safety hover:underline">Accueil</Link>
+        <span className="mx-2">/</span>
         <Link href="/secteurs" className="text-safety hover:underline">Secteurs</Link>
         <span className="mx-2">/</span>
         <span className="text-navy">{sector.title}</span>

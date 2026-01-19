@@ -6,6 +6,11 @@ import { normalizePlan } from '@/lib/stripe-edge'
 
 export const runtime = 'edge'
 
+export const metadata = {
+  title: 'Paiement annulé | BureauWeb',
+  description: 'Le paiement a été annulé. Vous pouvez réessayer ou revenir à l’accueil.',
+}
+
 export default function PaiementAnnulePage({ searchParams }) {
   const planParam = String(searchParams?.plan || '')
   let plan

@@ -5,6 +5,11 @@ import { normalizePlan } from '@/lib/stripe-edge'
 
 export const runtime = 'edge'
 
+export const metadata = {
+  title: 'Redirection vers Stripe | BureauWeb',
+  description: 'Redirection vers Stripe pour finaliser le paiement.',
+}
+
 export default function PayerPage({ searchParams }) {
   const planParam = String(searchParams?.plan || '')
   let plan = null
