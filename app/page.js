@@ -39,7 +39,7 @@ export default function Home() {
       <Reviews />
       <Process />
       <PlanIntentProvider>
-        <div className="space-y-8">
+        <div className="space-y-6">
           <Pricing />
           <WhyNotWix />
           <NotIncluded />

@@ -211,7 +211,7 @@ const LeadForm = () => {
               <ul className="text-concrete-300 text-lg mb-8 space-y-2">
                 <li>• Un diagnostic gratuit (1 page) basé sur du vérifiable</li>
                 <li>• 2 à 3 problèmes observables + 2 à 3 quick wins</li>
-                <li>• Une recommandation claire: avancer, attendre, ou pas un fit</li>
+                <li>• Une recommandation claire: avancer, attendre, ou pas un bon fit</li>
               </ul>
               
               {/* Coordonnées */}

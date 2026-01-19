@@ -44,7 +44,7 @@ const Process = () => {
       content: [
         {
           type: 'text',
-          value: 'Paiement envoyé après diagnostic (Paiement Stripe (Checkout)).',
+          value: 'Paiement envoyé après diagnostic (Paiement sécurisé via Stripe).',
         },
         {
           type: 'text',

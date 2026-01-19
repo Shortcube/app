@@ -16,7 +16,7 @@ const Reviews = () => {
     },
     {
       icon: BookOpen,
-      text: 'Guide PDF : « Comment demander des avis sans être gossant »',
+      text: 'Comment demander des avis Google de la bonne façon',
     },
   ]
 
@@ -27,7 +27,7 @@ const Reviews = () => {
     },
     {
       icon: Reply,
-      text: 'Réponses sur demande : on peut vous conseiller ou échanger la rédaction pour 75$/réponse, mais elles ne sont pas illimitées.',
+      text: 'Réponses aux avis Google sur demande: 75$ par réponse (rédaction), non illimité.',
     },
     {
       icon: AlertTriangle,
@@ -36,10 +36,10 @@ const Reviews = () => {
   ]
 
   return (
-    <section id="avis" className="py-16 md:py-24 bg-white scroll-mt-header">
+    <section id="avis" className="py-14 md:py-20 bg-concrete-50 scroll-mt-header">
       <div className="section-container">
         {/* En-tête */}
-        <div className="text-center mb-8 md:mb-12">
+        <div className="text-center mb-6 md:mb-8">
           <div className="inline-flex items-center space-x-2 bg-yellow-50 text-yellow-700 px-4 py-2 rounded-full mb-6">
             <Star className="w-4 h-4 fill-yellow-500" />
             <span className="text-sm font-medium">Réputation en ligne</span>
@@ -106,7 +106,7 @@ const Reviews = () => {
         </div>
 
         {/* Note du bas */}
-        <div className="max-w-3xl mx-auto mt-12 text-center">
+        <div className="max-w-3xl mx-auto mt-10 text-center">
           <div className="bg-navy/5 rounded-xl p-6">
             <div className="flex justify-center mb-3">
               <div className="flex text-yellow-400 text-2xl">

@@ -20,7 +20,7 @@ const Pricing = () => {
   }
 
   return (
-    <section id="forfaits" className="py-16 md:py-24 bg-concrete-50 scroll-mt-header">
+    <section id="forfaits" className="py-14 md:py-20 bg-concrete-50 scroll-mt-header">
       <div className="section-container">
         <div className="text-center mb-12 md:mb-16">
           <div className="inline-flex items-center space-x-2 bg-safety/10 text-safety-700 px-4 py-2 rounded-full mb-6">
@@ -88,7 +88,7 @@ const Pricing = () => {
         <p className="text-sm text-concrete-500 text-center">
           Frais d’activation possibles selon le forfait, payables une seule fois après le diagnostic.
         </p>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto mt-4">
           <div className="bg-white rounded-xl border border-concrete-200 p-6 md:p-8">
             <h4 className="text-xl font-semibold text-navy mb-6 flex items-center gap-2">
               <Clock className="w-5 h-5 text-safety" aria-hidden="true" />
@@ -123,10 +123,10 @@ const Pricing = () => {
                 Paiement requis pour démarrer toute production. Tant qu’un abonnement actif n’est pas en vigueur, aucun travail n’est effectué.
               </p>
             </div>
-            <div className="bg-concrete-50 rounded-lg p-4 text-sm text-concrete-600">
+            <div className="bg-concrete-50 rounded-lg p-4 text-sm text-concrete-600 mt-4">
               <p className="font-medium text-navy mb-1">Limites mensuelles</p>
               <p>
-                <Link href="/limites" className="text-safety font-semibold hover:text-safety/80 hover:underline">
+                <Link href="/limites" className="text-navy underline underline-offset-2 decoration-concrete-300 hover:text-navy/80 hover:decoration-navy/50">
                   Cliquez ici afin de consulter les limites mensuelles pour chaque forfait
                 </Link>
               </p>

@@ -55,13 +55,14 @@ const Hero = () => {
               <p className="text-concrete-500 text-xs md:text-sm leading-tight">
                 Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires.
               </p>
-              <button
-                className="w-full text-[#F97316] text-base md:text-lg font-semibold text-center hover:text-[#ea580c] transition"
+              <Button
+                variant="outline"
+                className="w-full h-auto border-concrete-200 text-navy text-base md:text-lg font-semibold py-3 hover:bg-concrete-50"
                 onClick={scrollToForfaits}
                 aria-label="Voir les forfaits et les prix"
               >
                 Voir les forfaits
-              </button>
+              </Button>
             </div>
 
             <div className="mt-3 md:mt-4 w-full">

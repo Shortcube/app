@@ -23,7 +23,7 @@ const WhyNotWix = () => {
   ]
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-14 md:py-20 bg-white">
       <div className="section-container">
         <div className="max-w-4xl mx-auto">
           {/* En-tête */}

@@ -73,27 +73,19 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
               <Link
-                href="/secteurs"
+                href="/"
                 className="text-concrete-300 hover:text-safety transition-colors"
               >
-                Secteurs d’activité
+                Accueil
               </Link>
               </li>
               <li>
-              <Link
-                href="/blog"
-                className="text-concrete-300 hover:text-safety transition-colors"
-              >
-                Blogue
-              </Link>
-              </li>
-              <li>
-                <a
-                  href="/confidentialite"
+                <Link
+                  href="/#forfaits"
                   className="text-concrete-300 hover:text-safety transition-colors"
                 >
-                  Politique de confidentialité
-                </a>
+                  Forfaits
+                </Link>
               </li>
               <li>
                 <a
@@ -101,6 +93,22 @@ const Footer = () => {
                   className="text-concrete-300 hover:text-safety transition-colors"
                 >
                   Limites mensuelles
+                </a>
+              </li>
+              <li>
+                <Link
+                  href="/compte"
+                  className="text-concrete-300 hover:text-safety transition-colors"
+                >
+                  Compte client
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="/confidentialite"
+                  className="text-concrete-300 hover:text-safety transition-colors"
+                >
+                  Politique de confidentialité
                 </a>
               </li>
               <li>
@@ -120,12 +128,20 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <Link
-                  href="/compte"
-                  className="text-concrete-300 hover:text-safety transition-colors"
-                >
-                  Compte client
-                </Link>
+              <Link
+                href="/blog"
+                className="text-concrete-300 hover:text-safety transition-colors"
+              >
+                Blogue
+              </Link>
+              </li>
+              <li>
+              <Link
+                href="/secteurs"
+                className="text-concrete-300 hover:text-safety transition-colors"
+              >
+                Secteurs d’activité
+              </Link>
               </li>
             </ul>
           </div>
@@ -153,7 +169,7 @@ const Footer = () => {
             <div className="text-concrete-500 text-sm text-center lg:text-left">
               <p className="flex items-center justify-center lg:justify-start gap-2">
                 <Briefcase className="w-4 h-4" aria-hidden="true" />
-                <span>Entreprise enregistrée au Québec. Support par courriel.</span>
+                <span>Entreprise enregistrée au Québec. Support principalement par courriel.</span>
               </p>
             </div>
             <p className="text-concrete-500 text-sm">

@@ -70,7 +70,7 @@ export default function LimitesPage() {
           <ul className="space-y-2 text-concrete-600">
             {bullet('Contrôle qualité mensuel (vérifications de base): site accessible (mobile et desktop), formulaire fonctionnel, liens clés actifs, vérification de base de la fiche Google.')}
             {bullet('Rapport 1 page: faits observables et points d’attention.')}
-            {bullet('Support par courriel (première réponse sous 2 jours ouvrables).')}
+            {bullet('Support principalement par courriel (première réponse sous 2 jours ouvrables).')}
             {bullet('1 intervention mineure mensuelle (selon la définition ci-dessous).')}
           </ul>
         </div>

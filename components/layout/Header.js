@@ -83,7 +83,7 @@ const Header = () => {
               href={portalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-navy/70 hover:text-navy font-medium transition-colors"
+              className="text-concrete-700 hover:text-navy font-medium transition-colors whitespace-nowrap"
             >
               Portail client
             </a>
