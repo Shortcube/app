@@ -196,7 +196,7 @@ const LeadForm = () => {
       <div className="section-container">
         <div id="lead-form" aria-hidden="true" className="scroll-mt-24" />
         <div className="max-w-4xl mx-auto">
-          <div className="grid lg:grid-cols-5 gap-12 items-start">
+          <div className="grid lg:grid-cols-5 gap-1 md:gap-6 lg:gap-12 items-start">
             {/* Contenu gauche */}
             <div className="lg:col-span-2 text-white">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -205,17 +205,20 @@ const LeadForm = () => {
               <p className="text-concrete-300 text-lg mb-3 leading-relaxed">
                 Remplissez ces infos et on vous revient avec :
               </p>
-              <p className="text-concrete-300 text-lg mb-8 leading-relaxed">
+              <p className="text-concrete-300 text-lg mb-8 leading-relaxed hidden lg:block">
                 Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires.
               </p>
               <ul className="text-concrete-300 text-lg mb-8 space-y-2">
                 <li>• Un diagnostic gratuit (1 page) basé sur du vérifiable</li>
-                <li>• 2 à 3 problèmes observables + 2 à 3 quick wins</li>
-                <li>• Une recommandation claire: avancer, attendre, ou pas un bon fit</li>
+                <li>
+                  • 2 à 3 problèmes observables + 2 à 3{' '}
+                  <em className="italic">quick wins</em>
+                </li>
+                <li>• Une recommandation claire entre avancer, attendre ou pas un bon fit</li>
               </ul>
               
               {/* Coordonnées */}
-              <div className="space-y-4">
+              <div className="space-y-4 hidden lg:block">
                 {hasPhone && (
                   <a 
                     href={`tel:${String(phoneDigits).replace(/\D/g, '')}`}
@@ -483,6 +486,42 @@ const LeadForm = () => {
                   </p>
                 </div>
               </form>
+            </div>
+
+            <div className="text-white lg:hidden mt-4">
+              <p className="text-concrete-300 text-lg mb-8 leading-relaxed">
+                Retour sous 24–48 h ouvrables. 1 page. Actions prioritaires.
+              </p>
+              <div className="space-y-4">
+                {hasPhone && (
+                  <a
+                    href={`tel:${String(phoneDigits).replace(/\D/g, '')}`}
+                    className="flex items-center space-x-3 text-white hover:text-safety transition-colors"
+                    aria-label={`Appelez-nous au ${phoneDisplay}`}
+                  >
+                    <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                      <Phone className="w-5 h-5" aria-hidden="true" />
+                    </div>
+                    <span className="font-medium">{phoneDisplay}</span>
+                  </a>
+                )}
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="flex items-center space-x-3 text-white hover:text-safety transition-colors"
+                  aria-label={`Écrivez-nous à ${siteConfig.email}`}
+                >
+                  <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                    <Mail className="w-5 h-5" aria-hidden="true" />
+                  </div>
+                  <span className="font-medium">{siteConfig.email}</span>
+                </a>
+                <div className="flex items-center space-x-3 text-concrete-300">
+                  <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                    <MapPin className="w-5 h-5" aria-hidden="true" />
+                  </div>
+                  <span>{siteConfig.city}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

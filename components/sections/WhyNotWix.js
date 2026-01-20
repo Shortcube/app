@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 
 const WhyNotWix = () => {
   const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('diagnostic')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const wixLimits = [

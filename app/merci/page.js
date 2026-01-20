@@ -1,6 +1,8 @@
 import Link from 'next/link'
 
 import { siteConfig } from '@/lib/site-config'
+import { buildHomeHref } from '@/lib/navigation'
+import BackToHomeLink from '@/components/layout/BackToHomeLink'
 
 export const metadata = {
   title: 'Paiement confirmé | BureauWeb',
@@ -11,7 +13,9 @@ export const metadata = {
   },
 }
 
-export default function MerciPage() {
+export default function MerciPage({ searchParams }) {
+  const homeHref = buildHomeHref(searchParams)
+
   return (
     <main className="section-container min-h-screen py-20">
       <div className="max-w-3xl mx-auto space-y-6 text-center">
@@ -29,12 +33,12 @@ export default function MerciPage() {
           >
             Gérer mon abonnement
           </Link>
-          <Link
-            href="/"
+          <BackToHomeLink
+            homeHref={homeHref}
             className="inline-flex items-center justify-center rounded-xl border border-safety px-5 py-3 text-sm font-semibold text-safety hover:bg-safety/10"
           >
             Retour à l'accueil
-          </Link>
+          </BackToHomeLink>
         </div>
         <p className="text-sm text-concrete-500">
           Si vous avez des questions, répondez au diagnostic ou écrivez-nous à <a className="text-safety hover:underline" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.

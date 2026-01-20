@@ -1,6 +1,7 @@
 import PageNavBack from '@/components/layout/PageNavBack'
 import { Button } from '@/components/ui/button'
 import { siteConfig } from '@/lib/site-config'
+import { buildHomeHref } from '@/lib/navigation'
 
 const PORTAL_URL =
   process.env.NEXT_PUBLIC_STRIPE_PORTAL_LOGIN_URL ||
@@ -15,10 +16,12 @@ export const metadata = {
   },
 }
 
-export default function ComptePage() {
+export default function ComptePage({ searchParams }) {
+  const homeHref = buildHomeHref(searchParams)
+
   return (
     <main className="section-container min-h-screen py-20">
-      <PageNavBack className="mb-8" />
+      <PageNavBack className="mb-8" homeHref={homeHref} />
       <div className="max-w-3xl mx-auto space-y-6 text-center">
         <h1 className="text-4xl font-semibold text-navy">Votre portail client</h1>
         <p className="text-lg text-concrete-600 leading-relaxed">

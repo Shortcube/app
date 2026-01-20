@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import PageNavBack from '@/components/layout/PageNavBack'
 import { Button } from '@/components/ui/button'
 import { normalizePlan } from '@/lib/stripe-edge'
+import { buildHomeHref } from '@/lib/navigation'
 
 export const metadata = {
   title: 'Redirection vers Stripe | BureauWeb',
@@ -37,6 +38,7 @@ const getMissingStripeConfig = (plan) => {
 export default function PayerPage({ searchParams }) {
   const planParam = String(searchParams?.plan || '')
   const pricingHref = '/#tarifs'
+  const homeHref = buildHomeHref(searchParams)
   let plan = null
   let planError = ''
   try {
@@ -54,7 +56,7 @@ export default function PayerPage({ searchParams }) {
 
   return (
     <main className="mx-auto w-full max-w-2xl px-4 py-16">
-      <PageNavBack className="mb-6" />
+      <PageNavBack className="mb-6" homeHref={homeHref} />
       <h1 className="text-3xl font-semibold text-navy">Redirection vers Stripe</h1>
       <p className="mt-4 text-concrete-600">
         Ce point d’entrée redirige vers Stripe lorsque la configuration est prête.

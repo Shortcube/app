@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { siteConfig } from '@/lib/site-config'
 import { normalizePlan } from '@/lib/stripe-edge'
+import { buildHomeHref } from '@/lib/navigation'
+import BackToHomeLink from '@/components/layout/BackToHomeLink'
 
 export const metadata = {
   title: 'Paiement annulé | BureauWeb',
@@ -23,6 +25,7 @@ export default function PaiementAnnulePage({ searchParams }) {
   }
 
   const retryHref = plan ? `/payer?plan=${plan}` : '/#tarifs'
+  const homeHref = buildHomeHref(searchParams)
 
   return (
     <main className="section-container min-h-screen py-20">
@@ -41,7 +44,7 @@ export default function PaiementAnnulePage({ searchParams }) {
             <Link href={retryHref}>Réessayer</Link>
           </Button>
           <Button asChild variant="ghost" size="lg">
-            <Link href="/">Retour à l'accueil</Link>
+            <BackToHomeLink homeHref={homeHref}>Retour à l'accueil</BackToHomeLink>
           </Button>
         </div>
         <p className="text-sm text-concrete-500">

@@ -1,16 +1,19 @@
 import Link from 'next/link'
 import PageNavBack from '@/components/layout/PageNavBack'
 import { TRADE_PAGES } from '@/lib/content'
+import { buildHomeHref } from '@/lib/navigation'
 
 export const metadata = {
   title: 'Corps de métier | BureauWeb',
   description: 'Pages de base par corps de métier pour expliquer l’approche BureauWeb.',
 }
 
-export default function MetiersPage() {
+export default function MetiersPage({ searchParams }) {
+  const homeHref = buildHomeHref(searchParams)
+
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-12">
-      <PageNavBack className="mb-6" />
+      <PageNavBack className="mb-6" homeHref={homeHref} />
       <header className="mb-10">
         <h1 className="text-3xl font-semibold tracking-tight text-navy">Corps de métier</h1>
         <p className="mt-3 text-concrete-600">

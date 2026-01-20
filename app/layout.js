@@ -3,6 +3,7 @@ import './globals.css'
 import CookieBanner from '@/components/privacy/CookieBanner'
 import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
 import ScrollToTopButton from '@/components/layout/ScrollToTopButton'
+import RouteTracker from '@/components/layout/RouteTracker'
 
 const inter = localFont({
   src: [
@@ -122,6 +123,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="min-h-screen bg-background antialiased">
         {children}
+        <RouteTracker />
         <ScrollToTopButton />
         <CookieBanner />
       </body>

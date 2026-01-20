@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { TRADE_PAGES } from '@/lib/content'
 import PageNavBack from '@/components/layout/PageNavBack'
 import { Check, AlertCircle } from 'lucide-react'
+import { buildHomeHref } from '@/lib/navigation'
 
 export function generateMetadata({ params }) {
   const trade = TRADE_PAGES.find((t) => t.slug === params.slug)
@@ -13,7 +14,8 @@ export function generateMetadata({ params }) {
   }
 }
 
-export default function MetierSlugPage({ params }) {
+export default function MetierSlugPage({ params, searchParams }) {
+  const homeHref = buildHomeHref(searchParams)
   const trade = TRADE_PAGES.find((t) => t.slug === params.slug)
   if (!trade) return notFound()
 
@@ -349,7 +351,12 @@ export default function MetierSlugPage({ params }) {
 
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-12 md:py-20">
-      <PageNavBack className="mb-8" backHref="/metiers" backLabel="Retour aux métiers" />
+      <PageNavBack
+        className="mb-8"
+        backHref="/metiers"
+        backLabel="Retour aux métiers"
+        homeHref={homeHref}
+      />
 
       <header className="mb-12">
         <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-navy mb-4">{trade.title}</h1>

@@ -3,6 +3,7 @@ import PageNavBack from '@/components/layout/PageNavBack'
 import { MODELES } from '@/lib/modeles.data'
 import { SECTOR_PAGES } from '@/lib/sectors'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { buildHomeHref } from '@/lib/navigation'
 
 export const metadata = {
   title: 'Modèles de démonstration | BureauWeb',
@@ -29,7 +30,8 @@ function ModeleCard({ modele }) {
   )
 }
 
-export default function ModelesPage() {
+export default function ModelesPage({ searchParams }) {
+  const homeHref = buildHomeHref(searchParams)
   const modeleMap = new Map(MODELES.map((modele) => [modele.slug, modele]))
   const usedSlugs = new Set()
 
@@ -52,7 +54,7 @@ export default function ModelesPage() {
 
   return (
     <main className="section-container py-12 md:py-16 space-y-10">
-      <PageNavBack className="mb-4" />
+      <PageNavBack className="mb-4" homeHref={homeHref} />
       <header className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-wide text-concrete-500">Modèles</p>
         <h1 className="text-3xl font-semibold tracking-tight text-navy">Modèles de démonstration</h1>

@@ -1,4 +1,5 @@
 import PageNavBack from '@/components/layout/PageNavBack'
+import { buildHomeHref } from '@/lib/navigation'
 
 export const metadata = {
   title: 'Limites mensuelles | BureauWeb',
@@ -12,7 +13,9 @@ const bullet = (text) => (
   </li>
 )
 
-export default function LimitesPage() {
+export default function LimitesPage({ searchParams }) {
+  const homeHref = buildHomeHref(searchParams)
+
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-12 space-y-8">
       <header className="space-y-4">
@@ -20,7 +23,7 @@ export default function LimitesPage() {
         <p className="text-concrete-600">
           Ces limites encadrent ce qui est inclus dans l’abonnement mensuel. Tout besoin hors cadre est confirmé par écrit (périmètre, coût) avant d’agir. Aucun travail n’est fait sans abonnement actif confirmé.
         </p>
-        <PageNavBack />
+        <PageNavBack homeHref={homeHref} />
       </header>
 
       <section className="rounded-xl border border-concrete-200 bg-white p-6 space-y-4">

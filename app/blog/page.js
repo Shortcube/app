@@ -1,16 +1,19 @@
 import Link from 'next/link'
 import PageNavBack from '@/components/layout/PageNavBack'
 import { BLOG_POSTS } from '@/lib/content'
+import { buildHomeHref } from '@/lib/navigation'
 
 export const metadata = {
   title: 'Blogue | BureauWeb',
   description: 'Articles courts sur la conversion, la fiche Google, et les bases d’une présence en ligne.',
 }
 
-export default function BlogPage() {
+export default function BlogPage({ searchParams }) {
+  const homeHref = buildHomeHref(searchParams)
+
   return (
     <main className="mx-auto w-full max-w-4xl px-4 py-12">
-      <PageNavBack className="mb-6" />
+      <PageNavBack className="mb-6" homeHref={homeHref} />
       <header className="mb-10">
         <h1 className="text-3xl font-semibold tracking-tight text-navy">Blogue</h1>
         <p className="mt-3 text-concrete-600">

@@ -1,14 +1,20 @@
 import Link from 'next/link'
+import BackToHomeLink from '@/components/layout/BackToHomeLink'
 
-const PageNavBack = ({ backHref, backLabel = 'Retour', className = '' }) => {
+const PageNavBack = ({
+  backHref,
+  backLabel = 'Retour',
+  className = '',
+  homeHref = '/',
+}) => {
   return (
     <nav className={`flex flex-wrap items-center gap-3 text-sm ${className}`.trim()} aria-label="Navigation de retour">
-      <Link
-        href="/"
+      <BackToHomeLink
+        homeHref={homeHref}
         className="inline-flex items-center gap-2 font-semibold text-safety hover:text-navy transition"
       >
         ← Retour à l'accueil
-      </Link>
+      </BackToHomeLink>
       {backHref ? (
         <Link
           href={backHref}
