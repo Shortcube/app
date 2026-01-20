@@ -6,11 +6,13 @@ import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
 import { SECTOR_PAGES } from '@/lib/content'
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
 import Logo from '@/components/ui/Logo'
 
 const Header = () => {
   const router = useRouter()
+  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const phoneDigits = siteConfig.phoneDigits
@@ -53,17 +55,19 @@ const Header = () => {
       <div className="section-container">
         <div className="flex items-center justify-between py-2 md:py-3">
           {/* Logo */}
-          <a 
-            href="#" 
+          <Link
+            href="/"
             className="flex items-center"
             onClick={(e) => {
-              e.preventDefault()
-              window.scrollTo({ top: 0, behavior: 'smooth' })
+              if (pathname === '/') {
+                e.preventDefault()
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }
             }}
             aria-label="Retour à l'accueil BureauWeb"
           >
             <Logo className="h-[4.05rem] w-auto md:h-[4.6rem]" aria-hidden="true" />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-4" aria-label="Navigation principale">
