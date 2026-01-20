@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { Phone, Menu, X } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { siteConfig, formatPhoneDisplay } from '@/lib/site-config'
 import Logo from '@/components/ui/Logo'
@@ -12,6 +14,7 @@ const Header = () => {
     'https://billing.stripe.com/p/login/6oUeVe9WJ6wra7VeYJeEo00'
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
   const phoneDigits = siteConfig.phoneDigits
   const phoneDisplay = formatPhoneDisplay(phoneDigits)
   const hasPhone = phoneDigits && String(phoneDigits).replace(/\D/g, '').length >= 10
@@ -55,17 +58,19 @@ const Header = () => {
       <div className="section-container">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a 
-            href="#" 
+          <Link
+            href="/"
             className="flex items-center"
             onClick={(e) => {
-              e.preventDefault()
-              window.scrollTo({ top: 0, behavior: 'smooth' })
+              if (pathname === '/') {
+                e.preventDefault()
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }
             }}
             aria-label="Retour à l'accueil BureauWeb"
           >
             <Logo className="h-[4.05rem] w-auto md:h-[4.6rem]" aria-hidden="true" />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-6" aria-label="Navigation principale">
