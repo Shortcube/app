@@ -1,16 +1,14 @@
-import type { OpenNextConfig } from "open-next/types/open-next";
+import { defineCloudflareConfig } from "@opennextjs/cloudflare/config";
 
+const baseConfig = defineCloudflareConfig();
 const edgeOverride = {
-  wrapper: "cloudflare",
+  wrapper: "cloudflare-edge",
   converter: "edge",
+  proxyExternalRequest: "fetch",
 } as const;
 
-const config: OpenNextConfig = {
-  buildCommand: "npm run build:next",
-  default: {
-    runtime: "node",
-    override: edgeOverride,
-  },
+export default {
+  ...baseConfig,
   functions: {
     apiStripeCheckout: {
       placement: "global",
@@ -42,5 +40,3 @@ const config: OpenNextConfig = {
     },
   },
 };
-
-export default config;

@@ -1,9 +1,0 @@
-name = "bureauweb-ca"
-compatibility_date = "2024-09-23"
-compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = ".open-next"
-
-
-# Variables d'environnement
-[vars]
-NEXT_PUBLIC_CONTACT_PHONE = "5145340837"
