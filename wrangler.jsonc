@@ -7,6 +7,7 @@
   "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
   "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "bureauweb" }],
   "vars": {
-    "NEXT_PUBLIC_CONTACT_PHONE": "5145340837"
+    "NEXT_PUBLIC_CONTACT_PHONE": "5145340837",
+    "NEXT_PUBLIC_BASE_URL": "https://bureauweb.jlaieu.workers.dev"
   }
 }
